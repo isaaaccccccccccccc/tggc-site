@@ -658,16 +658,20 @@ body.has-player .totop { bottom: 104px; }
 .in-idx::after { content: ""; display: inline-block; width: 26px; height: 1px; margin-left: 14px; vertical-align: middle; background: rgba(255,255,255,.3); }
 .in-word { display: block; position: relative; overflow: hidden; height: 1.3em; min-width: 9em; text-align: left; }
 .in-word span { position: absolute; left: 0; top: 0; animation: inUp .75s var(--x) both; }
-/* Final photo: wipes into the card, then opens to the full screen */
-.in-full { position: absolute; inset: 0; z-index: 3; clip-path: inset(calc(50% + var(--ch) / 2) calc(50% - var(--cw) / 2) calc(50% - var(--ch) / 2) calc(50% - var(--cw) / 2) round 18px); }
-.in-full img { display: block; width: 100%; height: 100%; object-fit: cover; transform: scale(1.35); transition: transform 2.4s var(--x); }
-.in-full::after { content: ""; position: absolute; inset: 0; background: radial-gradient(75% 70% at 50% 52%, rgba(5,10,26,.5) 0%, rgba(5,10,26,.86) 100%); opacity: 0; transition: opacity 1.2s ease .2s; }
+/* Blended colour: wipes into the card, then opens to the full screen */
+.in-full { position: absolute; inset: 0; z-index: 3; overflow: hidden; background: #081129; clip-path: inset(calc(50% + var(--ch) / 2) calc(50% - var(--cw) / 2) calc(50% - var(--ch) / 2) calc(50% - var(--cw) / 2) round 18px); }
+.in-full::before { content: ""; position: absolute; inset: -40%; background:
+    radial-gradient(circle at 50% 47%, rgba(236,201,120,.16), rgba(236,201,120,0) 22vmax),
+    radial-gradient(circle at 33% 38%, rgba(47,95,208,.8), rgba(47,95,208,0) 30vmax),
+    radial-gradient(circle at 66% 32%, rgba(26,58,140,.9), rgba(26,58,140,0) 32vmax),
+    radial-gradient(circle at 62% 68%, rgba(36,74,170,.55), rgba(36,74,170,0) 28vmax),
+    radial-gradient(circle at 36% 70%, rgba(15,33,82,.95), rgba(15,33,82,0) 34vmax);
+  animation: inMesh 16s ease-in-out infinite alternate; }
+.in-full::after { content: ""; position: absolute; inset: 0; background: radial-gradient(80% 75% at 50% 50%, rgba(4,8,20,0) 40%, rgba(4,8,20,.7) 100%); }
 .intro.s-last .in-full { clip-path: inset(calc(50% - var(--ch) / 2) calc(50% - var(--cw) / 2) calc(50% - var(--ch) / 2) calc(50% - var(--cw) / 2) round 18px); transition: clip-path 1.05s var(--io); }
-.intro.s-last .in-full img { transform: scale(1.15); }
 .intro.s-full .in-full { clip-path: inset(0px 0px 0px 0px round 0px); transition: clip-path 1.4s var(--io); }
-.intro.s-full .in-full img { transform: scale(1); }
-.intro.s-full .in-full::after { opacity: 1; }
-.intro.s-full .in-top, .intro.s-full .in-bot, .intro.s-full .in-bar, .intro.s-full .in-cap { opacity: 0; }
+.intro.s-full .in-top, .intro.s-full .in-bot, .intro.s-full .in-bar { opacity: 0; }
+.intro.s-last .in-cap { opacity: 0; }
 /* Name */
 .in-brand { position: absolute; inset: 0; z-index: 5; display: grid; place-content: center; justify-items: center; text-align: center; padding: 24px; pointer-events: none; }
 .in-logo { width: clamp(70px, 9vw, 104px); height: auto; margin-bottom: clamp(18px, 3.2vh, 30px); clip-path: circle(0% at 50% 50%); transform: scale(1.25) rotate(-12deg); transition: clip-path 1.2s var(--io), transform 1.6s var(--x); }
@@ -697,19 +701,15 @@ html.intro-lift #top { animation: siteTop 1s ease .55s both; }
 /* Short version when the page is reloaded in the same visit */
 .intro.quick .in-top, .intro.quick .in-bot, .intro.quick .in-bar, .intro.quick .in-card, .intro.quick .in-cap, .intro.quick .in-skip { display: none; }
 .intro.quick .in-full { clip-path: none; }
-.intro.quick .in-full img { transform: scale(1.08); transition-duration: 1.6s; }
-.intro.quick.s-full .in-full img { transform: scale(1); }
-.intro.quick .in-full::after { opacity: 1; transition: none; }
 /* Reduced motion: a still title card */
 .intro.still, .intro.still * { transition: none !important; animation: none !important; }
 .intro.still .in-top, .intro.still .in-bot, .intro.still .in-bar, .intro.still .in-card, .intro.still .in-cap, .intro.still .in-skip, .intro.still .in-grain { display: none; }
 .intro.still .in-full { clip-path: none; }
-.intro.still .in-full img { transform: none; }
-.intro.still .in-full::after { opacity: 1; }
 .intro.still .in-logo { clip-path: none; transform: none; }
 .intro.still .in-name .in-ln > span { transform: none; }
 .intro.still .in-tag { opacity: 1; transform: none; }
 .intro.still.out { opacity: 0; transform: none; }
+@keyframes inMesh { 0% { transform: scale(1) rotate(0deg) translate(0, 0); } 50% { transform: scale(1.12) rotate(14deg) translate(2%, -3%); } 100% { transform: scale(1.04) rotate(28deg) translate(-3%, 2%); } }
 @keyframes inUp { from { transform: translateY(105%); } to { transform: none; } }
 @keyframes inGrain { 0% { transform: translate(0, 0); } 25% { transform: translate(-4%, 3%); } 50% { transform: translate(3%, -2%); } 75% { transform: translate(-2%, -4%); } 100% { transform: translate(4%, 2%); } }
 @keyframes inFailsafe { to { opacity: 0; visibility: hidden; } }
@@ -727,8 +727,8 @@ html.intro-lift #top { animation: siteTop 1s ease .55s both; }
       <img class="in-ph" src="photos/intro/4-fellowship.jpg" alt="" decoding="async">
       <img class="in-ph" src="photos/intro/5-celebration.jpg" alt="" decoding="async">
     </div>
-    <div class="in-cap"><span class="in-idx">01 / 06</span><span class="in-word"></span></div>
-    <div class="in-full"><img src="photos/fellowship.jpg" alt="" decoding="async"></div>
+    <div class="in-cap"><span class="in-idx">01 / 05</span><span class="in-word"></span></div>
+    <div class="in-full"></div>
     <div class="in-brand">
       <img class="in-logo" src="logo.png" alt="" width="400" height="377">
       <div class="in-name"><span class="in-ln"><span>Tarlac Gospel</span></span><span class="in-ln"><span>of <em>Grace</em> Church</span></span></div>
@@ -749,8 +749,8 @@ html.intro-lift #top { animation: siteTop 1s ease .55s both; }
   try { seen = sessionStorage.getItem("tggc-intro") === "1"; sessionStorage.setItem("tggc-intro", "1"); } catch (e) {}
   var mode = reduce ? "still" : (seen || location.hash === "#login") ? "quick" : "full";
   el.classList.add(mode); root.classList.add("intro-on");
-  var WORDS = ["Worship", "The Word", "Prayer", "Fellowship", "Celebration", "Family"];
-  var phs = el.querySelectorAll(".in-ph"), full = el.querySelector(".in-full img");
+  var WORDS = ["Worship", "The Word", "Prayer", "Fellowship", "Celebration"];
+  var phs = el.querySelectorAll(".in-ph");
   var num = el.querySelector(".in-num"), bar = el.querySelector(".in-bar i"), idx = el.querySelector(".in-idx"), word = el.querySelector(".in-word");
   var loaded = function (img) { return new Promise(function (r) { if (img.complete && img.naturalWidth) return r(); img.addEventListener("load", r); img.addEventListener("error", r); }); };
   var cap = function (p, ms) { return Promise.race([p, new Promise(function (r) { setTimeout(r, ms); })]); };
@@ -760,7 +760,7 @@ html.intro-lift #top { animation: siteTop 1s ease .55s both; }
   api.done = new Promise(function (r) { doneRes = r; });
   api.ready = function (o) {
     o = o || {};
-    if (o.img && full.getAttribute("src") !== o.img) { var im = new Image(); im.onload = function () { if (!el.classList.contains("s-last")) full.src = o.img; readyRes(); }; im.onerror = readyRes; im.src = o.img; setTimeout(readyRes, 2000); }
+    if (o.img) { var im = new Image(); im.onload = im.onerror = readyRes; im.src = o.img; setTimeout(readyRes, 2000); }
     else readyRes();
   };
   // counter
@@ -772,7 +772,7 @@ html.intro-lift #top { animation: siteTop 1s ease .55s both; }
     raf(tick);
   };
   var setCap = function (i) {
-    idx.textContent = "0" + (i + 1) + " / 06";
+    idx.textContent = "0" + (i + 1) + " / 05";
     word.innerHTML = "<span>" + WORDS[i] + "</span>";
   };
   var run = function () {
@@ -783,12 +783,12 @@ html.intro-lift #top { animation: siteTop 1s ease .55s both; }
       var seq = Promise.resolve().then(function () { return wait(400); });
       Array.prototype.forEach.call(phs, function (ph, i) {
         seq = seq.then(function () { return cap(loaded(ph), 2500); }).then(function () {
-          if (gone) return; ph.classList.add("on"); setCap(i); target = Math.round((i + 1) * 15);
+          if (gone) return; ph.classList.add("on"); setCap(i); target = Math.round((i + 1) * 17);
           return wait(i === 0 ? 650 : 520);
         });
       });
-      seq.then(function () { return cap(Promise.all([isReady, loaded(full)]), 3500); })
-        .then(function () { if (gone) return; el.classList.add("s-last"); setCap(5); target = 92; return wait(950); })
+      seq.then(function () { return cap(isReady, 3500); })
+        .then(function () { if (gone) return; el.classList.add("s-last"); target = 92; return wait(950); })
         .then(function () { if (gone) return; target = 100; el.classList.add("s-full"); return wait(600); })
         .then(function () { if (gone) return; el.classList.add("s-brand"); return wait(1900); })
         .then(exit);
