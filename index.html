@@ -743,12 +743,13 @@ html.intro-on #topbar .brand img { opacity: 0; }
   api.start = function () {
     if (started || gone) return; started = true;
     var raf = window.requestAnimationFrame || function (f) { setTimeout(f, 16); };
-    raf(function () { raf(function () {
-      if (gone) return; ts = Date.now(); playing = true; el.classList.add("go");
+    var kick = function () {
+      if (gone || playing) return; ts = Date.now(); playing = true; el.classList.add("go");
       if (mode === "full") fontsReady.then(function () { at(function () { el.classList.add("txt"); }, 850); });
       at(function () { if (!ready && !gone) el.classList.add("wait"); }, MIN + 250);
       if (ready) at(exit, MIN);
-    }); });
+    };
+    raf(function () { raf(kick); }); setTimeout(kick, 400);
   };
   api.ready = function (o) {
     if (ready || gone) return; o = o || {}; api.logo = o.logo;
