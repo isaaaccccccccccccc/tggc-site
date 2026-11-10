@@ -223,7 +223,7 @@ section.block { padding: 64px 0 8px; }
 .b-lg { grid-column: span 2; grid-row: span 2; }
 .b-wide { grid-column: span 2; }
 .b-photo { color: #fff; border-color: transparent; background: var(--deep); }
-.b-photo::after { content: ""; position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(180deg, rgba(4,9,24,.15) 0%, rgba(4,9,24,.55) 45%, rgba(4,9,24,.92) 100%), var(--img); background-size: cover; background-position: center 30%; transition: transform .8s cubic-bezier(.2,.7,.2,1); }
+.b-photo::after { content: ""; position: absolute; inset: 0; z-index: -2; background-image: linear-gradient(180deg, rgba(4,9,24,.15) 0%, rgba(4,9,24,.55) 45%, rgba(4,9,24,.92) 100%), var(--img); background-size: cover; background-position: var(--pos, center 30%); transition: transform .8s cubic-bezier(.2,.7,.2,1); }
 .b-photo:hover::after { transform: scale(1.04); }
 .b-photo .tb-label { color: rgba(255,255,255,.8); }
 .b-photo .meta { color: rgba(255,255,255,.78); }
@@ -496,6 +496,19 @@ body.has-player .selbar { bottom: 104px; }
 
 /* About / visit */
 .about-img { border-radius: 16px; width: 100%; object-fit: cover; }
+.rd { margin: clamp(48px, 7vw, 88px) 0 0; border-radius: 30px; overflow: hidden; background: var(--deep); color: #fff; }
+.rd img { display: block; width: 100%; height: auto; }
+.rd-foot { display: flex; justify-content: space-between; align-items: center; gap: 14px 28px; flex-wrap: wrap; padding: clamp(20px, 3vw, 30px) clamp(22px, 4vw, 40px); }
+.rd-foot p { font-family: var(--serif); font-style: italic; font-size: clamp(1.15rem, 2vw, 1.5rem); line-height: 1.3; margin: 0; max-width: 54ch; color: rgba(255,255,255,.92); }
+.rd-foot .ref-link { color: var(--gold); font-weight: 600; white-space: nowrap; }
+.rd-foot .eyebrow { color: rgba(255,255,255,.7); margin: 0; width: 100%; }
+@media (min-width: 900px) {
+  .rd { display: grid; grid-template-columns: 1.6fr 1fr; }
+  .rd img { height: 100%; object-fit: cover; }
+  .rd-foot { flex-direction: column; align-items: flex-start; justify-content: center; gap: 18px; padding: 40px; }
+  .rd-foot p { font-size: clamp(1.35rem, 2vw, 1.75rem); }
+}
+.banner.dim { background-image: linear-gradient(180deg, rgba(4,9,24,.25) 0%, rgba(4,9,24,.8) 100%), linear-gradient(90deg, rgba(4,9,24,.9) 0%, rgba(4,9,24,.78) 48%, rgba(4,9,24,0) 82%), var(--img); }
 .logo-meaning { display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: center; }
 @media (max-width: 640px) { .logo-meaning { grid-template-columns: 1fr; justify-items: center; text-align: center; } }
 .ev-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 16px; align-items: start; }
@@ -668,21 +681,34 @@ const ICON = {
   book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg>'
 };
 
-const P = { fellowship: "photos/fellowship.jpg", worship: "photos/worship-team.jpg", brothers: "photos/brothers.jpg", night: "photos/night-fellowship.jpg", nightWide: "photos/night-fellowship-wide.jpg", family: "photos/tggc-family.jpg" };
+const P = { fellowship: "photos/fellowship.jpg", worship: "photos/worship-team.jpg", brothers: "photos/brothers.jpg", night: "photos/night-fellowship.jpg", nightWide: "photos/night-fellowship-wide.jpg", family: "photos/tggc-family.jpg",
+  preaching: "photos/pastor-preaching.jpg", rightly: "photos/rightly-dividing.jpg", nightMeal: "photos/night-meal.jpg", familySelfie: "photos/church-family-selfie.jpg", courtyard: "photos/courtyard-gathering.jpg", evening: "photos/evening-prayer.jpg", celebration: "photos/celebration.jpg", brethren: "photos/brethren.jpg", meal: "photos/fellowship-meal.jpg", lunch: "photos/fellowship-lunch.jpg" };
 const SLIDES = [
   { src: P.fellowship, pos: "center 40%", cap: "Fellowship after the service" },
   { src: P.worship, pos: "center 35%", cap: "Our worship team" },
   { src: P.brothers, pos: "center 28%", cap: "Brothers in Christ" },
-  { src: P.nightWide, pos: "center 55%", cap: "Fellowship night" }
+  { src: P.nightWide, pos: "center 55%", cap: "Fellowship night" },
+  { src: P.celebration, pos: "center 38%", cap: "Celebrating together" },
+  { src: P.evening, pos: "center 62%", cap: "Praying together at dusk" },
+  { src: P.lunch, pos: "center 40%", cap: "Fellowship lunch" }
 ];
 const BUILTIN_PHOTOS = [
-  { id: "tggc-1", src: P.fellowship, caption: "Fellowship after the service", album: "Our church family" },
-  { id: "tggc-2", src: P.worship, caption: "Our worship team", album: "Our church family" },
+  { id: "tggc-6", src: P.preaching, caption: "Preaching the Word", album: "Worship & the Word" },
+  { id: "tggc-2", src: P.worship, caption: "Our worship team", album: "Worship & the Word" },
+  { id: "tggc-7", src: P.evening, caption: "Praying together at dusk", album: "Worship & the Word" },
+  { id: "tggc-8", src: P.courtyard, caption: "Gathered in the courtyard", album: "Worship & the Word" },
+  { id: "tggc-5", src: P.family, caption: "The TGGC family", album: "Our church family" },
+  { id: "tggc-9", src: P.familySelfie, caption: "Sunday with the church family", album: "Our church family" },
+  { id: "tggc-10", src: P.brethren, caption: "Brethren in the Lord", album: "Our church family" },
   { id: "tggc-3", src: P.brothers, caption: "Brothers in Christ", album: "Our church family" },
-  { id: "tggc-4", src: P.night, caption: "Fellowship night", album: "Our church family" },
-  { id: "tggc-5", src: P.family, caption: "The TGGC family", album: "Our church family" }
+  { id: "tggc-11", src: P.celebration, caption: "Celebrating together", album: "Fellowship" },
+  { id: "tggc-1", src: P.fellowship, caption: "Fellowship after the service", album: "Fellowship" },
+  { id: "tggc-12", src: P.meal, caption: "Sharing a meal together", album: "Fellowship" },
+  { id: "tggc-13", src: P.lunch, caption: "Fellowship lunch", album: "Fellowship" },
+  { id: "tggc-14", src: P.nightMeal, caption: "Night fellowship meal", album: "Fellowship" },
+  { id: "tggc-4", src: P.night, caption: "Fellowship night", album: "Fellowship" }
 ];
-const COVERS = [P.worship, P.fellowship, P.brothers, P.nightWide];
+const COVERS = [P.preaching, P.worship, P.evening, P.courtyard, P.fellowship, P.nightWide];
 const SITE_URL = ((window.TGGC_CONFIG || {}).SITE_URL || "").trim() || (/^https?:$/.test(location.protocol) ? location.origin + "/" : "https://tggc.netlify.app/");
 const NOTE = { baseline: null, read: new Set(), announced: new Set(), ready: false, popShown: false, sessionStart: Date.now(), entry: new Set(), mine: new Set() };
 const ACTS_20_24 = "But none of these things move me, neither count I my life dear unto myself, so that I might finish my course with joy, and the ministry, which I have received of the Lord Jesus, to testify the gospel of the grace of God.";
@@ -719,7 +745,7 @@ const logoSrc = () => blobUrl(cfg().logoId) || "logo.png";
 const coverFor = s => blobUrl(s.coverId) || COVERS[hashIdx(s.id, COVERS.length)];
 const heroSlides = () => { const u = blobUrl(cfg().heroImageId); return u ? [{ src: u, pos: "center", cap: "" }, ...SLIDES] : SLIDES; };
 const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
-const banner = (img, pos, inner, narrow = false) => `<section class="banner" style="--img:url('${img}');--pos:${pos}"><div class="${narrow ? "narrow" : "wrap"}">${inner}</div></section>`;
+const banner = (img, pos, inner, narrow = false, cls = "") => `<section class="banner${cls ? " " + cls : ""}" style="--img:url('${img}');--pos:${pos}"><div class="${narrow ? "narrow" : "wrap"}">${inner}</div></section>`;
 function setSlide(n) {
   const sl = heroSlides(); S.slide = ((n % sl.length) + sl.length) % sl.length;
   document.querySelectorAll(".slide").forEach((el, i) => el.classList.toggle("on", i === S.slide));
@@ -1251,7 +1277,7 @@ function viewHome() {
       <div class="meta"><span>${esc(fmtDate(latest.date, { month: "long", day: "numeric", year: "numeric" }))}</span>${latest.preacher ? `<span>${esc(latest.preacher)}</span>` : ""}</div>
       <div class="actions"><a class="btn light small" href="#preaching-${esc(latest.id)}">Read the preaching ${ARR}</a><a class="btn glass small" href="#preachings">All preachings</a></div>
     </article>`
-    : `<article class="tb b-lg b-photo" style="--img:url('${P.worship}')"><div class="tb-label"><span>Preaching Archives</span></div><div class="spacer"></div>
+    : `<article class="tb b-lg b-photo" style="--img:url('${P.preaching}');--pos:78% 30%"><div class="tb-label"><span>Preaching Archives</span></div><div class="spacer"></div>
       <h3>Every message, <em>kept</em> in one place.</h3><p class="snip">New preachings will appear here as they're posted.</p>
       <div class="actions">${S.isAdmin ? `<button class="btn light small" type="button" data-act="new-preaching">Add the first preaching</button>` : `<a class="btn light small" href="#preachings">Open the archive ${ARR}</a>`}</div></article>`;
   const cdTile = `<article class="tb b-dark"><div class="tb-label"><span>Join us this week</span></div>${countdownHtml() || `<p style="color:rgba(255,255,255,.82)">Service times will be posted soon.</p>${S.isAdmin ? `<div class="actions"><button class="btn light small" type="button" data-act="edit-settings">Add service times</button></div>` : ""}`}</article>`;
@@ -1323,10 +1349,10 @@ function viewPreachings() {
   const series = Object.keys(seriesMap).sort();
   const years = [...new Set(all.map(s => (s.date || "").slice(0, 4)).filter(Boolean))].sort().reverse();
   const first = pub.length ? pub[pub.length - 1].date : "";
-  return banner(P.worship, "center 35%", `<div class="eyebrow">Every message, kept</div><h1>Preaching Archives</h1>
+  return banner(P.preaching, "78% 30%", `<div class="eyebrow">Every message, kept</div><h1>Preaching Archives</h1>
       <p class="lead">Search by title, passage or series, browse by book of the Bible, or tap a scripture reference to read it in the King James Version.</p>
       <div class="stats"><span class="stat"><b>${pub.length}</b> ${pub.length === 1 ? "preaching" : "preachings"}</span><span class="stat"><b>${series.length}</b> series</span><span class="stat"><b>${new Set(pub.map(s => s.book).filter(Boolean)).size}</b> books of the Bible</span>${first ? `<span class="stat">Since <b>${esc(fmtDate(first, { month: "long", year: "numeric" }))}</b></span>` : ""}</div>
-      ${S.isAdmin ? `<div class="actions" style="margin-top:8px"><button class="btn light" data-act="new-preaching">Add a preaching</button></div>` : ""}`) + `<div class="wrap">
+      ${S.isAdmin ? `<div class="actions" style="margin-top:8px"><button class="btn light" data-act="new-preaching">Add a preaching</button></div>` : ""}`, false, "dim") + `<div class="wrap">
     ${series.length ? `<h3 style="margin:18px 0 10px">Series</h3><div class="shelf">${series.map(x => `<button class="series" type="button" data-act="filter-series" data-id="${esc(x)}" aria-pressed="${f.series === x}"><b>${esc(x)}</b><span>${plural(seriesMap[x], "message")}</span></button>`).join("")}</div>` : ""}
     <div class="filters" role="search">
       <div class="q searchbox">${ICON.search}<label class="sr" for="f-q">Search the Preaching Archives</label><input id="f-q" type="search" placeholder="Search title, passage, notes…" value="${esc(f.q)}" data-filter="q"></div>
@@ -1336,6 +1362,10 @@ function viewPreachings() {
       <div><label class="sr" for="f-sort">Sort</label><select id="f-sort" data-filter="sort"><option value="new"${f.sort === "new" ? " selected" : ""}>Newest first</option><option value="old"${f.sort === "old" ? " selected" : ""}>Oldest first</option><option value="bible"${f.sort === "bible" ? " selected" : ""}>Bible order</option></select></div>
     </div>
     <div id="results"></div>
+    <section class="rd rv" data-rv="rd" aria-label="Rightly dividing the word of truth">
+      <img src="${P.rightly}" width="1600" height="1026" alt="An open Bible on a desk with the words: All Scripture given by inspiration of God, but rightly dividing matters. 2 Timothy 2:15" loading="lazy">
+      <div class="rd-foot"><span class="eyebrow">Rightly dividing</span><p>“${esc(KV_TEXT)}”</p><button type="button" class="ref-link" data-act="ref" data-ref="2 Timothy 2:15">2 Timothy 2:15 · KJV ${ARR}</button></div>
+    </section>
   </div>`;
 }
 function renderResults() {
@@ -1396,7 +1426,7 @@ function viewAnnouncements() {
   const live = liveAnns(); const cats = [...new Set(live.map(a => a.category).filter(Boolean))];
   const shown = S.annCat ? live.filter(a => a.category === S.annCat) : live;
   const other = S.isAdmin ? S.announcements.filter(a => annState(a) !== "live").sort((a, b) => (b.postDate || "").localeCompare(a.postDate || "")) : [];
-  return banner(P.fellowship, "center 40%", `<div class="eyebrow">Church news</div><h1>Announcements</h1><p class="lead">Updates, reminders and news for the whole church family.</p>
+  return banner(P.meal, "center 48%", `<div class="eyebrow">Church news</div><h1>Announcements</h1><p class="lead">Updates, reminders and news for the whole church family.</p>
       ${S.isAdmin ? `<div class="actions"><button class="btn light" data-act="new-ann">Post an announcement</button></div>` : ""}`) + `<div class="wrap">
     ${cats.length > 1 ? `<div class="seg" role="group" aria-label="Filter by category" style="margin:14px 0;flex-wrap:wrap"><button type="button" data-act="ann-cat" data-id="" aria-pressed="${!S.annCat}">All</button>${cats.map(c => `<button type="button" data-act="ann-cat" data-id="${esc(c)}" aria-pressed="${S.annCat === c}">${esc(c)}</button>`).join("")}</div>` : ""}
     <section class="block" style="padding-top:12px">${isLoading() ? skel(2) : shown.length ? `<div class="grid two">${shown.map(a => annCard(a)).join("")}</div>` : emptyBox("No announcements right now. Check back soon.", "new-ann", "Post an announcement")}</section>
@@ -1406,7 +1436,7 @@ function viewAnnouncements() {
 
 function viewEvents() {
   const up = upcomingEvents(), past = pastEvents().slice(0, 20); const times = lines(cfg().serviceTimes);
-  return banner(P.nightWide, "center 60%", `<div class="eyebrow">Calendar</div><h1>Events</h1><p class="lead">Special services, fellowships and gatherings. Everyone is welcome.</p>
+  return banner(P.evening, "center 62%", `<div class="eyebrow">Calendar</div><h1>Events</h1><p class="lead">Special services, fellowships and gatherings. Everyone is welcome.</p>
       ${S.isAdmin ? `<div class="actions"><button class="btn light" data-act="new-event">Add an event</button></div>` : ""}`) + `<div class="wrap">
     ${times.length ? `<section class="block" style="padding-top:16px"><h3 style="margin-bottom:10px">Every week</h3><div class="rows">${times.map(([a, b]) => `<div class="row" style="grid-template-columns:1fr auto"><div><strong>${esc(a)}</strong></div><div class="side" style="font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700">${esc(b)}</div></div>`).join("")}</div></section>` : ""}
     <section class="block"><h3 style="margin-bottom:10px">Coming up</h3>${isLoading() ? `<div class="skel"></div>` : up.length ? `<div class="rows">${up.map(eventRow).join("")}</div>` : emptyBox("No upcoming events yet.", "new-event", "Add an event")}</section>
@@ -1465,7 +1495,7 @@ function bibleSearch(q) {
 function viewGallery() {
   const items = galleryOrder(); const albums = []; const map = {};
   for (const g of items) { const k = g.album || "Church life"; if (!map[k]) { map[k] = []; albums.push(k); } map[k].push(g); }
-  return banner(P.brothers, "center 30%", `<div class="eyebrow">Memories</div><h1>Gallery</h1><p class="lead">Photos from our services, fellowships and gatherings. Tap a photo to view it larger, then use the arrows to move between photos.</p>
+  return banner(P.celebration, "center 32%", `<div class="eyebrow">Memories</div><h1>Gallery</h1><p class="lead">Photos from our services, fellowships and gatherings. Tap a photo to view it larger, then use the arrows to move between photos.</p>
       <div class="stats"><span class="stat"><b>${items.length}</b> photos</span><span class="stat"><b>${albums.length}</b> ${albums.length === 1 ? "album" : "albums"}</span></div>
       ${S.isAdmin ? `<div class="actions"><button class="btn light" data-act="add-photos">Upload photos</button></div>` : ""}`) + `<div class="wrap">
     ${albums.map(a => `<section class="album"><h3>${esc(a)} <small>${plural(map[a].length, "photo")}</small></h3><div class="photos">${map[a].map(g => { const u = photoSrc(g); return u ? `<button class="photo" data-act="open-photo" data-id="${esc(g.id)}" aria-label="${esc(g.caption || "Open photo")}"><img src="${u}" alt="${esc(g.caption || "")}" loading="lazy">${g.caption ? `<span>${esc(g.caption)}</span>` : ""}</button>` : ""; }).join("")}</div></section>`).join("")}
@@ -1477,8 +1507,8 @@ const galleryOrder = () => { const items = [...S.gallery].sort(sortByDateDesc); 
 
 function viewAbout() {
   const s = cfg(); const photo = blobUrl(s.pastorPhotoId); const mins = lines(s.ministries); const times = lines(s.serviceTimes); const map = safeUrl(s.mapUrl);
-  const minPhotos = [P.worship, P.fellowship, P.brothers, P.nightWide];
-  return banner(P.brothers, "center 28%", `<div class="eyebrow">Who we are</div><h1>About ${esc(CHURCH)}</h1>${s.tagline ? `<p class="lead">${esc(s.tagline)}</p>` : ""}
+  const minPhotos = [P.worship, P.preaching, P.meal, P.evening, P.brethren, P.nightWide];
+  return banner(P.courtyard, "center 55%", `<div class="eyebrow">Who we are</div><h1>About ${esc(CHURCH)}</h1>${s.tagline ? `<p class="lead">${esc(s.tagline)}</p>` : ""}
     ${S.isAdmin ? `<div class="actions"><button class="btn light" data-act="edit-settings">Edit church details</button></div>` : ""}`) + `<div class="wrap">
     <section class="block"><div class="card logo-meaning"><img src="logo.png" alt="${esc(CHURCH)} logo">
       <div><div class="eyebrow">Our logo and theme verse</div><h2 style="margin:6px 0 10px">The gospel of the grace of God</h2>
@@ -1486,7 +1516,7 @@ function viewAbout() {
       <p style="font-family:var(--read);font-style:italic;font-size:1.15rem;margin-top:10px">“${esc(ACTS_20_24)}” <button class="ref-link scripture" style="font-style:normal" data-act="ref" data-ref="Acts 20:24">Acts 20:24 (KJV)</button></p></div></div></section>
     <div class="grid two" style="margin-top:8px;align-items:start">
       <section class="card"><img class="about-img" src="${P.family}" alt="Photo collage of the TGGC church family" style="max-height:380px;object-fit:contain;background:var(--accent-soft)"><h2>Our story &amp; mission</h2>${s.about ? `<div class="prose" style="font-size:1.05rem">${md(s.about)}</div>` : `<p class="hint">The church's story and mission will be shared here soon.</p>`}</section>
-      <section class="card">${photo ? `<img class="about-img" src="${photo}" alt="${esc(s.pastorName || "Our pastor")}" style="max-height:380px">` : `<img class="about-img" src="${P.fellowship}" alt="Church family gathered after the service" style="max-height:380px">`}
+      <section class="card">${photo ? `<img class="about-img" src="${photo}" alt="${esc(s.pastorName || "Our pastor")}" style="max-height:380px">` : `<img class="about-img" src="${P.preaching}" alt="Our pastor preaching the Word" style="max-height:380px;object-position:72% 30%">`}
         <div class="eyebrow">Our pastor</div><h2>${esc(s.pastorName || "Our Pastor")}</h2>${s.pastorBio ? `<div class="prose" style="font-size:1.05rem">${md(s.pastorBio)}</div>` : `<p class="hint">A message from our pastor will be posted here soon.</p>`}</section>
     </div>
     ${s.beliefs ? `<section class="block"><div class="card"><h2>What we believe</h2><div class="prose" style="font-size:1.05rem">${md(s.beliefs)}</div></div></section>` : ""}
