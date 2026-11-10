@@ -1,0 +1,1859 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tarlac Gospel of Grace Church</title>
+<link rel="icon" href="logo.png">
+<meta name="description" content="Tarlac Gospel of Grace Church: preachings, announcements, events and the King James Bible.">
+<meta property="og:title" content="Tarlac Gospel of Grace Church">
+<meta property="og:description" content="Preachings, announcements, events and the King James Bible. “…to testify the gospel of the grace of God.” Acts 20:24">
+<meta property="og:image" content="photos/fellowship.jpg">
+<meta name="theme-color" content="#142a5c">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a chapel-blue band carries the church's name, a live countdown to the next service and the week's KJV verse;
+   below it, a calm stone page of bulletin-style lists (dated blocks, scripture first) with the King James Bible one tap away. */
+:root {
+  --paper: #f1f2f5;
+  --surface: #ffffff;
+  --ink: #1a2233;
+  --muted: #5a6273;
+  --line: #dde0e8;
+  --deep: #142a5c;
+  --deep-2: #1f3f85;
+  --deep-ink: #eef0f6;
+  --gold: #e7cf95;
+  --accent: #8a6a2f;
+  --accent-soft: #f3ecdf;
+  --on-accent: #ffffff;
+  --ok: #2f6b45;
+  --warn: #9a5a12;
+  --danger: #a33a32;
+  --hl: #fff1c7;
+  --display: "Cormorant Garamond", "Iowan Old Style", Georgia, serif;
+  --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --read: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --r: 12px;
+  --scale: 1;
+  --shadow: 0 1px 2px rgba(20,30,50,.06), 0 8px 24px rgba(20,30,50,.06);
+  --shadow-up: 0 2px 4px rgba(20,30,50,.08), 0 16px 40px rgba(20,30,50,.12);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0f1420; --surface: #171e2d; --ink: #e7e9f0; --muted: #9aa3b6; --line: #2a3347;
+    --deep: #0a1430; --deep-2: #142450; --deep-ink: #e7e9f0; --accent: #d6b06a; --accent-soft: #2a2416; --on-accent: #1a1408;
+    --ok: #7cc495; --warn: #e3a557; --danger: #ee8a80; --hl: #3a3117;
+    --shadow: 0 1px 2px rgba(0,0,0,.3); --shadow-up: 0 12px 32px rgba(0,0,0,.45); color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0f1420; --surface: #171e2d; --ink: #e7e9f0; --muted: #9aa3b6; --line: #2a3347;
+  --deep: #0a1430; --deep-2: #142450; --deep-ink: #e7e9f0; --accent: #d6b06a; --accent-soft: #2a2416; --on-accent: #1a1408;
+  --ok: #7cc495; --warn: #e3a557; --danger: #ee8a80; --hl: #3a3117;
+  --shadow: 0 1px 2px rgba(0,0,0,.3); --shadow-up: 0 12px 32px rgba(0,0,0,.45); color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { font-size: calc(16px * var(--scale)); }
+html, body { margin: 0; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 1.125rem; line-height: 1.55; }
+body.has-player { padding-bottom: 84px; }
+img { max-width: 100%; display: block; }
+a { color: var(--accent); }
+button { font-family: inherit; }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.12; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(2.4rem, 6vw, 3.9rem); }
+h2 { font-size: clamp(1.8rem, 4vw, 2.3rem); }
+h3 { font-size: 1.45rem; }
+p { margin: 0; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.wrap { width: min(1160px, 100% - 32px); margin-inline: auto; }
+.narrow { width: min(740px, 100% - 32px); margin-inline: auto; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* Header */
+.top { background: var(--deep); color: var(--deep-ink); position: sticky; top: 0; z-index: 30; border-bottom: 1px solid rgba(255,255,255,.08); }
+.top .bar { display: flex; align-items: center; gap: 14px; padding: 10px 0; }
+.brand { display: flex; align-items: center; gap: 12px; color: inherit; text-decoration: none; min-width: 0; flex: 1 1 auto; }
+.brand img { width: 52px; height: auto; flex: none; filter: drop-shadow(0 2px 6px rgba(0,0,0,.35)); }
+.brand img.custom { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; }
+footer .flogo { width: 92px; margin-bottom: 10px; }
+.brand-mark { width: 42px; height: 42px; flex: none; }
+.brand b { font-family: var(--display); font-size: 1.45rem; font-weight: 700; line-height: 1.05; }
+.brand small { display: block; font-family: var(--body); font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.tools { display: flex; gap: 6px; align-items: center; flex: none; }
+.tool { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); color: var(--deep-ink); height: 38px; min-width: 38px; padding: 0 10px; border-radius: 999px; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; font-size: .9rem; font-weight: 600; }
+.tool:hover { background: rgba(255,255,255,.16); }
+.tool kbd { font: 600 .7rem var(--body); opacity: .7; border: 1px solid rgba(255,255,255,.3); border-radius: 4px; padding: 0 4px; }
+.tool svg { width: 18px; height: 18px; }
+.menu-btn { display: none; }
+nav.main { display: flex; gap: 2px; padding-bottom: 10px; overflow-x: auto; scrollbar-width: none; }
+nav.main a { color: var(--deep-ink); opacity: .8; text-decoration: none; padding: 7px 13px; border-radius: 999px; font-size: .95rem; font-weight: 500; white-space: nowrap; transition: background .15s, opacity .15s; }
+nav.main a:hover { opacity: 1; background: rgba(255,255,255,.08); }
+nav.main a[aria-current="page"] { opacity: 1; background: var(--gold); color: var(--deep); font-weight: 700; }
+nav.main a.admin-link { color: var(--gold); }
+nav.main a.admin-link[aria-current="page"] { color: var(--deep); }
+@media (max-width: 900px) {
+  .menu-btn { display: inline-flex; }
+  .tool .lbl, .tool kbd { display: none; }
+  nav.main { display: none; flex-direction: column; padding: 4px 0 14px; }
+  body.nav-open nav.main { display: flex; }
+  nav.main a { padding: 12px 14px; font-size: 1.05rem; border-radius: 10px; }
+  .brand b { font-size: 1.2rem; }
+}
+.progress { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); z-index: 40; width: 0; transition: width .1s linear; }
+
+/* Ribbon */
+.ribbon { background: var(--accent-soft); color: var(--ink); font-size: .95rem; }
+.ribbon .wrap { padding: 10px 0; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+
+/* Hero */
+.hero { background: var(--deep); color: var(--deep-ink); position: relative; overflow: hidden; }
+.hero .wrap { display: grid; grid-template-columns: 1.35fr 1fr; gap: 40px; padding: 76px 0 92px; position: relative; z-index: 1; }
+.slides { position: absolute; inset: 0; z-index: 0; }
+.slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity 1.4s ease; }
+.slide.on { opacity: 1; animation: kb 9s ease-out both; }
+@keyframes kb { from { transform: scale(1.12); } to { transform: scale(1.02); } }
+.hero::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(90deg, rgba(8,20,50,.94) 0%, rgba(8,20,50,.74) 48%, rgba(8,20,50,.38) 100%), linear-gradient(0deg, rgba(8,20,50,.9), transparent 42%); pointer-events: none; }
+.hero h1 { text-shadow: 0 2px 24px rgba(0,0,0,.35); }
+.slide-ui { position: absolute; z-index: 2; right: max(16px, calc((100% - 1160px) / 2)); bottom: 20px; display: flex; gap: 12px; align-items: center; color: #fff; font-size: .85rem; }
+.slide-ui #slide-cap { opacity: .85; text-shadow: 0 1px 6px rgba(0,0,0,.6); }
+.dots { display: flex; gap: 6px; align-items: center; }
+.dots button { width: 10px; height: 10px; border-radius: 999px; border: 0; background: rgba(255,255,255,.5); cursor: pointer; padding: 0; transition: width .3s, background .3s; }
+.dots button[aria-current="true"] { background: var(--gold); width: 28px; }
+.slide-pause { background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.3); color: #fff; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; }
+.slide-pause svg { width: 14px; height: 14px; }
+@media (max-width: 600px) { .slide-ui #slide-cap { display: none; } }
+
+/* Photo banners */
+.banner { position: relative; color: var(--deep-ink); background-color: var(--deep); background-image: linear-gradient(90deg, rgba(8,20,50,.94) 0%, rgba(8,20,50,.78) 50%, rgba(8,20,50,.45) 100%), var(--img); background-size: cover; background-position: var(--pos, center); }
+.banner > .wrap, .banner > .narrow { padding: 60px 0 50px; display: grid; gap: 12px; position: relative; }
+.banner .eyebrow { color: var(--gold); }
+.banner h1 { text-shadow: 0 2px 20px rgba(0,0,0,.3); }
+.banner p.lead { color: rgba(238,240,246,.9); font-size: 1.15rem; max-width: 62ch; }
+.banner .stat { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); color: rgba(238,240,246,.85); backdrop-filter: blur(4px); }
+.banner .stat b { color: #fff; }
+.banner .meta { color: rgba(238,240,246,.85); }
+.banner .scripture { color: var(--gold); }
+.banner .back { color: var(--gold); margin-top: 0; }
+
+/* Theme verse band */
+.theme { background: radial-gradient(900px 400px at 15% 50%, var(--deep-2), var(--deep)); color: var(--deep-ink); overflow: hidden; }
+.theme .wrap { display: grid; grid-template-columns: 280px 1fr; gap: 52px; align-items: center; padding: 60px 0; }
+.theme img { width: 100%; max-width: 280px; filter: drop-shadow(0 14px 34px rgba(0,0,0,.45)); }
+.theme blockquote { margin: 10px 0 0; font-family: var(--read); font-size: clamp(1.25rem, 2.3vw, 1.65rem); line-height: 1.55; }
+.theme blockquote mark { background: none; color: var(--gold); font-style: italic; font-weight: 600; }
+@media (max-width: 760px) { .theme .wrap { grid-template-columns: 1fr; justify-items: center; text-align: center; gap: 24px; padding: 44px 0; } .theme img { max-width: 190px; } .theme .actions { justify-content: center; } }
+
+/* Notifications & sharing */
+.tool { position: relative; }
+.tool .badge { position: absolute; top: -5px; right: -5px; min-width: 20px; height: 20px; border-radius: 999px; background: #e5484d; color: #fff; font-size: .72rem; font-weight: 700; display: grid; place-items: center; padding: 0 5px; border: 2px solid var(--deep); }
+.tool.ring svg { animation: ring 1.1s ease 2; transform-origin: 50% 10%; }
+@keyframes ring { 0%, 100% { transform: rotate(0); } 15% { transform: rotate(16deg); } 35% { transform: rotate(-13deg); } 55% { transform: rotate(9deg); } 75% { transform: rotate(-5deg); } }
+nav.main a .ndot { display: inline-grid; place-items: center; min-width: 19px; height: 19px; border-radius: 999px; background: #e5484d; color: #fff; font-size: .7rem; font-weight: 700; margin-left: 6px; padding: 0 5px; vertical-align: 1px; }
+.notice-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.notice-list button { width: 100%; text-align: left; display: grid; grid-template-columns: 46px 1fr auto; gap: 12px; align-items: center; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); cursor: pointer; color: var(--ink); font: inherit; transition: border-color .15s, transform .15s; }
+.notice-list button:hover { border-color: var(--accent); transform: translateX(2px); }
+.notice-list button.seen { opacity: .7; }
+.notice-list .ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; color: #fff; }
+.notice-list .ic svg { width: 22px; height: 22px; }
+.ic.preaching { background: var(--deep-2); } .ic.announcement { background: var(--accent); } .ic.event { background: var(--ok); }
+.notice-list b { display: block; font-size: 1rem; }
+.notice-list small { color: var(--muted); font-size: .85rem; }
+.unread-dot { width: 10px; height: 10px; border-radius: 50%; background: #e5484d; }
+.notice-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin: 4px 0 10px; flex-wrap: wrap; }
+.popcard { position: fixed; left: 18px; bottom: 18px; z-index: 44; width: min(390px, calc(100% - 36px)); background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow-up); overflow: hidden; animation: slidein .5s cubic-bezier(.2,.8,.2,1); }
+.popcard[hidden] { display: none; }
+@keyframes slidein { from { transform: translateY(30px); } }
+.popcard .pc-top { background: linear-gradient(135deg, var(--deep), var(--deep-2)); color: #fff; padding: 14px 16px; display: flex; gap: 12px; align-items: center; }
+.popcard .pc-top img { width: 42px; flex: none; }
+.popcard .pc-top b { font-family: var(--display); font-size: 1.35rem; line-height: 1.1; display: block; }
+.popcard .pc-top small { color: var(--gold); font-weight: 600; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; }
+.popcard .pc-x { margin-left: auto; background: rgba(255,255,255,.12); border: 0; color: #fff; width: 30px; height: 30px; border-radius: 50%; cursor: pointer; flex: none; }
+.popcard .pc-body { padding: 14px 16px 16px; display: grid; gap: 10px; }
+.popcard ul { margin: 0; padding-left: 18px; color: var(--muted); }
+body.has-player .popcard { bottom: 100px; }
+.qr-box { display: grid; grid-template-columns: 260px 1fr; gap: 26px; align-items: center; }
+.qr-box > img { width: 100%; border-radius: 16px; border: 1px solid var(--line); background: #fff; }
+@media (max-width: 640px) { .qr-box { grid-template-columns: 1fr; justify-items: center; text-align: center; } .qr-box > img { max-width: 240px; } .qr-box .actions { justify-content: center; } }
+.url-field { display: flex; gap: 8px; } .url-field input { font-size: .9rem; } .url-field .btn { white-space: nowrap; flex: none; }
+footer .fqr { width: 132px; border-radius: 12px; background: #fff; padding: 6px; cursor: zoom-in; border: 0; display: block; }
+footer .fqr img { width: 100%; }
+.share-card-prev { width: 100%; max-width: 220px; border-radius: 12px; box-shadow: var(--shadow); }
+
+/* Key verse: 2 Timothy 2:15 */
+.keyverse { position: relative; color: #fff; text-align: center; background-image: linear-gradient(180deg, rgba(8,20,50,.86), rgba(8,20,50,.8)), url('photos/worship-team.jpg'); background-size: cover; background-position: center 35%; overflow: hidden; }
+.keyverse .narrow { padding: 84px 0 80px; display: grid; gap: 18px; justify-items: center; width: min(920px, 100% - 32px); }
+.keyverse .ref-badge { display: inline-flex; gap: 10px; align-items: center; border: 1px solid rgba(231,207,149,.5); color: var(--gold); border-radius: 999px; padding: 6px 16px; font-weight: 700; letter-spacing: .12em; font-size: .78rem; text-transform: uppercase; background: rgba(8,20,50,.4); }
+.keyverse blockquote { margin: 0; font-family: var(--display); font-weight: 600; font-size: clamp(1.9rem, 4.4vw, 3.3rem); line-height: 1.18; text-wrap: balance; text-shadow: 0 2px 24px rgba(0,0,0,.4); }
+.keyverse blockquote .q { color: var(--gold); font-size: 1.3em; line-height: 0; vertical-align: -.25em; }
+.keyverse blockquote mark { background: linear-gradient(transparent 62%, rgba(231,207,149,.38) 62%); color: #fff2cf; font-style: italic; padding: 0 .08em; }
+.keyverse cite { font-style: normal; font-family: var(--read); font-size: 1.15rem; color: rgba(255,255,255,.85); letter-spacing: .04em; }
+.keyverse .rule { width: 64px; height: 2px; background: var(--gold); border-radius: 2px; }
+
+/* Photo mosaic */
+.mosaic { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 210px; gap: 12px; }
+.mosaic .ph { position: relative; overflow: hidden; border-radius: 14px; border: 0; padding: 0; cursor: zoom-in; background: var(--line); box-shadow: var(--shadow); }
+.mosaic .ph img { width: 100%; height: 100%; object-fit: cover; object-position: center 22%; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.mosaic .ph:hover img, .mosaic .ph:focus-visible img { transform: scale(1.07); }
+.mosaic .ph span { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 16px 14px; color: #fff; text-align: left; font-family: var(--display); font-size: 1.35rem; font-weight: 600; background: linear-gradient(transparent, rgba(8,20,50,.85)); }
+.mosaic .big { grid-column: span 2; grid-row: span 2; }
+.mosaic .big span { font-size: 1.8rem; }
+.mosaic .wide { grid-column: span 2; }
+@media (max-width: 760px) { .mosaic { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; } .mosaic .big { grid-row: span 2; } }
+
+/* Visit card */
+.ev-grid { display: grid; grid-template-columns: 1.7fr 1fr; gap: 16px; align-items: start; }
+@media (max-width: 860px) { .ev-grid { grid-template-columns: 1fr; } }
+.visit { border-radius: var(--r); padding: 26px; color: #fff; display: grid; gap: 10px; background-image: linear-gradient(180deg, rgba(8,20,50,.55), rgba(8,20,50,.94)), var(--img); background-size: cover; background-position: center 30%; min-height: 320px; align-content: end; box-shadow: var(--shadow-up); }
+.visit h3 { font-size: 1.9rem; }
+.visit ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 4px; }
+.visit li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid rgba(255,255,255,.15); padding: 6px 0; }
+.visit li span:last-child { color: var(--gold); font-variant-numeric: tabular-nums; }
+
+/* Preaching photo thumbs */
+.pc { padding: 0; overflow: hidden; }
+.pc .thumb { height: 150px; background-size: cover; background-position: center; display: flex; align-items: flex-end; padding: 14px 18px; }
+.pc .thumb span { font-family: var(--display); font-size: 1.5rem; font-weight: 700; color: #f4ead2; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+.pc .inner { padding: 16px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.about-img { border-radius: var(--r); width: 100%; object-fit: cover; }
+.logo-meaning { display: grid; grid-template-columns: 200px 1fr; gap: 28px; align-items: center; }
+@media (max-width: 640px) { .logo-meaning { grid-template-columns: 1fr; justify-items: center; text-align: center; } }
+.hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .2; }
+.hero canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.hero .eyebrow { color: var(--gold); }
+.hero p.tag { font-size: 1.2rem; opacity: .9; margin-top: 14px; max-width: 42ch; }
+.hero .actions { margin-top: 26px; }
+.verse { border-left: 3px solid var(--gold); padding: 4px 0 4px 18px; margin-top: 28px; max-width: 50ch; }
+.verse q { font-family: var(--read); font-style: italic; font-size: 1.15rem; quotes: "\201C" "\201D"; }
+.verse .cite { display: flex; gap: 10px; align-items: center; margin-top: 8px; font-size: .9rem; color: var(--gold); letter-spacing: .03em; flex-wrap: wrap; }
+.verse .cite button { background: none; border: 0; color: var(--gold); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; font: inherit; padding: 0; }
+.panel { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13); border-radius: 16px; padding: 22px; align-self: start; backdrop-filter: blur(4px); }
+.countdown { display: grid; gap: 6px; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,.12); }
+.countdown .what { font-size: .9rem; opacity: .85; }
+.cd { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.cd div { background: rgba(0,0,0,.18); border-radius: 10px; padding: 8px 0; text-align: center; }
+.cd b { display: block; font-family: var(--display); font-size: 2rem; line-height: 1; font-variant-numeric: tabular-nums; color: var(--gold); }
+.cd span { font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; opacity: .75; }
+.live-now { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; color: var(--gold); font-size: 1.2rem; }
+.live-now::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: #ff6b5b; box-shadow: 0 0 0 0 rgba(255,107,91,.6); animation: pulse 1.6s infinite; }
+@keyframes pulse { 70% { box-shadow: 0 0 0 10px rgba(255,107,91,0); } 100% { box-shadow: 0 0 0 0 rgba(255,107,91,0); } }
+.panel h3 { font-size: 1.3rem; margin-bottom: 8px; }
+.panel ul { list-style: none; margin: 0; padding: 0; display: grid; }
+.panel li { display: flex; justify-content: space-between; gap: 16px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,.1); }
+.panel li:last-child { border-bottom: 0; }
+.panel li span:last-child { font-variant-numeric: tabular-nums; color: var(--gold); text-align: right; }
+.panel .addr { margin-top: 12px; font-size: .95rem; opacity: .85; }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding: 36px 0 40px; gap: 28px; } }
+
+/* Sections */
+main { padding-bottom: 72px; min-height: 60vh; }
+main.enter > * { animation: rise .45s cubic-bezier(.2,.7,.2,1) both; }
+main.enter > *:nth-child(2) { animation-delay: .05s; } main.enter > *:nth-child(3) { animation-delay: .1s; }
+@keyframes rise { from { transform: translateY(14px); } to { transform: none; } }
+section.block { padding: 44px 0 8px; }
+.sec-head { display: flex; align-items: end; justify-content: space-between; gap: 16px; margin-bottom: 18px; flex-wrap: wrap; }
+.eyebrow { font-size: .76rem; text-transform: uppercase; letter-spacing: .15em; font-weight: 700; color: var(--accent); }
+.page-head { padding: 40px 0 8px; display: grid; gap: 10px; }
+.page-head p.lead { color: var(--muted); font-size: 1.12rem; max-width: 62ch; }
+.grid { display: grid; gap: 16px; }
+.grid.two { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid.three { grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); }
+.more-link { font-weight: 600; text-decoration: none; display: inline-flex; gap: 6px; align-items: center; }
+.more-link:hover { text-decoration: underline; }
+
+/* Buttons */
+.btn { display: inline-flex; align-items: center; gap: 8px; font: 600 .95rem var(--body); padding: 10px 18px; border-radius: 999px; border: 1px solid transparent; cursor: pointer; text-decoration: none; background: var(--accent); color: var(--on-accent); transition: transform .15s, box-shadow .15s, background .15s; }
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn:active { transform: none; }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn.light { background: #f4ead2; color: #1d2b4a; }
+.btn.outline-light { background: transparent; color: var(--deep-ink); border-color: rgba(255,255,255,.35); }
+.btn.danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+.btn.small { padding: 6px 13px; font-size: .86rem; }
+.btn:disabled { opacity: .55; cursor: progress; transform: none; }
+.btn svg { width: 16px; height: 16px; }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.link-btn { background: none; border: 0; color: var(--accent); font: 600 .9rem var(--body); cursor: pointer; padding: 4px 6px; border-radius: 6px; }
+.link-btn:hover { background: var(--accent-soft); }
+.link-btn.danger { color: var(--danger); }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; padding: 3px; background: var(--surface); }
+.seg button { border: 0; background: none; color: var(--muted); padding: 6px 12px; border-radius: 999px; cursor: pointer; font-weight: 600; font-size: .86rem; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+/* Cards */
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; display: flex; flex-direction: column; gap: 10px; min-width: 0; box-shadow: var(--shadow); transition: transform .18s, box-shadow .18s, border-color .18s; }
+.card.hover:hover { transform: translateY(-3px); box-shadow: var(--shadow-up); border-color: color-mix(in srgb, var(--accent) 40%, var(--line)); }
+.card h3 a { color: var(--ink); text-decoration: none; }
+.card h3 a:hover { color: var(--accent); }
+.card h3 a::after { content: ""; position: absolute; inset: 0; }
+.card.hover { position: relative; }
+.card .admin-row, .card .play-btn, .card .ref-link, .card .chips { position: relative; z-index: 1; }
+.meta { color: var(--muted); font-size: .92rem; display: flex; gap: 6px 14px; flex-wrap: wrap; align-items: center; }
+.scripture { font-family: var(--read); color: var(--accent); font-weight: 600; }
+.chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.chip { font-size: .78rem; font-weight: 600; padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); letter-spacing: .02em; border: 1px solid transparent; }
+button.chip { cursor: pointer; font-family: var(--body); }
+button.chip:hover { border-color: var(--accent); }
+.chip.draft { background: transparent; border: 1px dashed var(--muted); color: var(--muted); }
+.chip.urgent { background: var(--danger); color: #fff; }
+.chip.pin { background: var(--deep); color: var(--gold); }
+.chip.soon { background: transparent; border-color: var(--ok); color: var(--ok); }
+.chip.warn { background: transparent; border: 1px solid var(--warn); color: var(--warn); }
+.admin-row { display: flex; gap: 4px; margin-top: auto; padding-top: 8px; border-top: 1px dashed var(--line); }
+.summary { color: var(--muted); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.ref-link { background: none; border: 0; padding: 0; font: inherit; color: var(--accent); font-weight: 600; cursor: pointer; text-decoration: underline dotted; text-underline-offset: 3px; }
+.ref-link:hover { text-decoration-style: solid; }
+.play-btn { display: inline-flex; align-items: center; gap: 6px; background: var(--deep); color: var(--gold); border: 0; border-radius: 999px; padding: 5px 12px 5px 8px; font: 700 .8rem var(--body); cursor: pointer; }
+.play-btn svg { width: 16px; height: 16px; }
+.play-btn:hover { filter: brightness(1.15); }
+
+.feature { display: grid; grid-template-columns: 1.1fr 1fr; padding: 0; overflow: hidden; gap: 0; }
+.feature .cover { background: linear-gradient(135deg, var(--deep), var(--deep-2)); min-height: 260px; background-size: cover; background-position: center; position: relative; }
+.feature .cover .ref { position: absolute; left: 22px; right: 22px; bottom: 18px; font-family: var(--display); font-size: 2.1rem; color: #f4ead2; font-weight: 600; text-shadow: 0 1px 12px rgba(0,0,0,.4); }
+.feature .cover .kjv-snip { position: absolute; left: 22px; right: 22px; top: 22px; color: #f4ead2; font-family: var(--read); font-style: italic; opacity: .85; font-size: 1rem; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.feature .txt { padding: 26px; display: flex; flex-direction: column; gap: 10px; }
+@media (max-width: 760px) { .feature { grid-template-columns: 1fr; } }
+
+/* Rows */
+.rows { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); box-shadow: var(--shadow); overflow: hidden; }
+.row { display: grid; grid-template-columns: 78px 1fr auto; gap: 16px; padding: 16px 18px; border-bottom: 1px solid var(--line); align-items: start; transition: background .15s; position: relative; }
+.row:hover { background: color-mix(in srgb, var(--accent-soft) 45%, transparent); }
+.row:last-child { border-bottom: 0; }
+.datebox { text-align: center; border: 1px solid var(--line); border-radius: 10px; padding: 6px 0; font-variant-numeric: tabular-nums; background: var(--surface); }
+.datebox .m { font-size: .72rem; text-transform: uppercase; letter-spacing: .12em; color: var(--accent); font-weight: 700; }
+.datebox .d { font-family: var(--display); font-size: 1.95rem; font-weight: 700; line-height: 1; }
+.datebox .w { font-size: .72rem; color: var(--muted); }
+.row h3 { font-size: 1.3rem; }
+.row h3 a { color: var(--ink); text-decoration: none; }
+.row h3 a:hover { color: var(--accent); }
+.row .body { margin-top: 6px; }
+.row .side { display: flex; flex-direction: column; gap: 4px; align-items: end; }
+@media (max-width: 600px) { .row { grid-template-columns: 62px 1fr; } .row .side { grid-column: 1 / -1; flex-direction: row; justify-content: flex-start; flex-wrap: wrap; } }
+
+.ann { border-left: 4px solid var(--accent); }
+.ann.is-urgent { border-left-color: var(--danger); }
+.ann img { border-radius: 8px; max-height: 320px; object-fit: cover; width: 100%; cursor: zoom-in; }
+.ann .more { display: none; }
+.ann.open .more { display: block; }
+.ann .clip { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+.ann.open .clip { display: block; -webkit-line-clamp: unset; }
+
+/* Archive */
+.filters { display: grid; grid-template-columns: 2fr repeat(4, 1fr); gap: 10px; margin: 18px 0 10px; }
+@media (max-width: 900px) { .filters { grid-template-columns: 1fr 1fr; } .filters .q { grid-column: 1 / -1; } }
+.searchbox { position: relative; }
+.searchbox svg { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--muted); }
+.searchbox input { padding-left: 38px; }
+.stats { display: flex; gap: 10px; flex-wrap: wrap; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: .92rem; color: var(--muted); }
+.stat b { color: var(--ink); font-variant-numeric: tabular-nums; }
+.shelf { display: flex; gap: 12px; overflow-x: auto; padding: 4px 2px 12px; scroll-snap-type: x mandatory; }
+.series { flex: 0 0 220px; scroll-snap-align: start; text-align: left; border: 1px solid var(--line); background: linear-gradient(160deg, var(--deep), var(--deep-2)); color: var(--deep-ink); border-radius: var(--r); padding: 16px; cursor: pointer; display: grid; gap: 6px; transition: transform .18s, box-shadow .18s; }
+.series:hover { transform: translateY(-3px); box-shadow: var(--shadow-up); }
+.series b { font-family: var(--display); font-size: 1.35rem; line-height: 1.1; }
+.series span { font-size: .82rem; color: var(--gold); font-weight: 600; }
+.series[aria-pressed="true"] { outline: 3px solid var(--gold); outline-offset: 2px; }
+.active-filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 6px 0 4px; min-height: 30px; }
+.year-head { font-family: var(--display); font-size: 1.6rem; font-weight: 700; margin: 26px 0 10px; display: flex; align-items: center; gap: 12px; }
+.year-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+.year-head small { font-family: var(--body); font-size: .85rem; color: var(--muted); font-weight: 500; }
+
+/* Forms */
+input, select, textarea { width: 100%; font: 1rem var(--body); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; transition: border-color .15s, box-shadow .15s; }
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 25%, transparent); }
+textarea { resize: vertical; line-height: 1.5; }
+input[type="checkbox"] { width: auto; accent-color: var(--accent); }
+.field { display: grid; gap: 6px; align-content: start; }
+.field label { font-weight: 600; font-size: .92rem; }
+.hint { color: var(--muted); font-size: .86rem; }
+.form-grid { display: grid; gap: 14px; grid-template-columns: 1fr 1fr; }
+.form-grid .full { grid-column: 1 / -1; }
+@media (max-width: 640px) { .form-grid { grid-template-columns: 1fr; } }
+.check { display: flex; gap: 10px; align-items: center; font-weight: 500; }
+.current-file { display: flex; gap: 10px; align-items: center; font-size: .88rem; color: var(--muted); flex-wrap: wrap; }
+.current-file img { width: 56px; height: 56px; object-fit: cover; border-radius: 6px; }
+.kjv-preview { background: var(--accent-soft); border-radius: 10px; padding: 12px 14px; font-family: var(--read); font-size: .95rem; max-height: 160px; overflow: auto; }
+.kjv-preview sup { color: var(--accent); font-weight: 700; margin-right: 3px; font-family: var(--body); }
+
+/* Preaching reading */
+.p-head { padding: 28px 0 12px; display: grid; gap: 12px; }
+.p-head .scripture { font-size: 1.35rem; }
+.cover-img { border-radius: var(--r); overflow: hidden; margin: 12px 0; }
+.cover-img img { width: 100%; object-fit: cover; max-height: 420px; }
+.media-box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; display: flex; gap: 12px; margin: 18px 0; flex-wrap: wrap; align-items: center; box-shadow: var(--shadow); }
+.passage { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: var(--r); padding: 18px 20px; margin: 20px 0; }
+.passage .ph { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+.passage .vtext { font-family: var(--read); font-size: 1.08rem; line-height: 1.75; max-height: 260px; overflow: hidden; position: relative; }
+.passage.open .vtext { max-height: none; }
+.passage:not(.open) .vtext.long::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 70px; background: linear-gradient(transparent, var(--surface)); }
+.vtext sup { color: var(--accent); font-weight: 700; font-family: var(--body); font-size: .7em; margin-right: 3px; }
+.prose { font-family: var(--read); font-size: 1.14rem; line-height: 1.78; }
+.prose > * + * { margin-top: 1em; }
+.prose h2 { font-size: 1.85rem; margin-top: 1.6em; }
+.prose h3 { font-size: 1.45rem; margin-top: 1.4em; }
+.prose blockquote { margin: 1.2em 0; padding: 4px 0 4px 20px; border-left: 3px solid var(--accent); font-style: italic; color: var(--muted); }
+.prose ul, .prose ol { padding-left: 1.4em; }
+.prose li + li { margin-top: .3em; }
+.lead-sum { font-size: 1.22rem; color: var(--muted); font-family: var(--read); font-style: italic; }
+.pager { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 44px; }
+.pager a { display: block; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 16px; text-decoration: none; color: var(--ink); transition: border-color .15s, transform .15s; }
+.pager a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.pager a small { display: block; color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; }
+.pager a.next { text-align: right; }
+.back { display: inline-flex; gap: 6px; font-weight: 600; text-decoration: none; margin-top: 24px; }
+
+/* Bible */
+.bible-bar { position: sticky; top: var(--top-h, 64px); z-index: 10; background: color-mix(in srgb, var(--paper) 92%, transparent); backdrop-filter: blur(6px); padding: 10px 0; display: grid; grid-template-columns: 1.4fr .7fr auto 1.6fr; gap: 10px; align-items: center; border-bottom: 1px solid var(--line); }
+@media (max-width: 820px) { .bible-bar { grid-template-columns: 1fr 1fr; position: static; } .bible-bar .nav-ch { grid-column: 1 / -1; justify-content: space-between; } .bible-bar form { grid-column: 1 / -1; } }
+.nav-ch { display: flex; gap: 6px; }
+.chapter { font-family: var(--read); font-size: 1.16rem; line-height: 1.85; padding: 10px 0 30px; }
+.chapter h2 { margin: 24px 0 14px; }
+.vs { padding: 2px 6px; margin: 0 -6px; border-radius: 6px; cursor: pointer; transition: background .2s; }
+.vs:hover { background: color-mix(in srgb, var(--hl) 50%, transparent); }
+.vs.sel { background: var(--hl); }
+.vs.target { background: var(--hl); box-shadow: inset 3px 0 0 var(--accent); }
+.vs sup { color: var(--accent); font-weight: 700; font-family: var(--body); font-size: .68em; margin-right: 4px; user-select: none; }
+.selbar { position: fixed; left: 50%; transform: translateX(-50%); bottom: 22px; z-index: 35; background: var(--ink); color: var(--paper); border-radius: 999px; padding: 8px 8px 8px 18px; display: flex; gap: 8px; align-items: center; box-shadow: var(--shadow-up); max-width: calc(100% - 32px); }
+body.has-player .selbar { bottom: 100px; }
+.selbar button { border: 0; border-radius: 999px; padding: 8px 14px; font-weight: 700; cursor: pointer; background: var(--paper); color: var(--ink); }
+.selbar button.x { background: transparent; color: var(--paper); }
+.chgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 8px; margin: 14px 0 26px; }
+.chgrid a { display: grid; place-items: center; height: 48px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink); background: var(--surface); font-weight: 600; font-variant-numeric: tabular-nums; transition: background .15s, transform .15s; }
+.chgrid a:hover { background: var(--accent); color: var(--on-accent); transform: translateY(-2px); }
+.testament { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 8px; margin: 12px 0 28px; }
+.testament a { padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; text-decoration: none; color: var(--ink); background: var(--surface); font-weight: 500; transition: border-color .15s, transform .15s; }
+.testament a:hover { border-color: var(--accent); transform: translateY(-2px); }
+.results .res { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.results .res a { font-weight: 700; text-decoration: none; }
+.results mark { background: var(--hl); color: inherit; border-radius: 3px; padding: 0 2px; }
+
+/* Gallery */
+.album { margin-top: 28px; }
+.album h3 { margin-bottom: 12px; display: flex; gap: 10px; align-items: baseline; }
+.album h3 small { font-family: var(--body); font-size: .9rem; color: var(--muted); font-weight: 500; }
+.photos { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+.photo { position: relative; border-radius: 10px; overflow: hidden; background: var(--line); aspect-ratio: 4 / 3; border: 0; padding: 0; cursor: zoom-in; }
+.photo img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+.photo:hover img { transform: scale(1.05); }
+.photo span { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 10px 8px; color: #fff; font-size: .85rem; text-align: left; background: linear-gradient(transparent, rgba(0,0,0,.65)); }
+.lightbox { position: relative; }
+.lightbox img { width: 100%; max-height: 70vh; object-fit: contain; border-radius: 8px; background: #000; }
+.lb-nav { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border: 0; background: rgba(0,0,0,.55); color: #fff; font-size: 1.5rem; cursor: pointer; }
+.lb-nav.prev { left: 10px; } .lb-nav.next { right: 10px; }
+
+/* Admin */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; box-shadow: var(--shadow); }
+.tile b { display: block; font-family: var(--display); font-size: 2.4rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.tile span { color: var(--muted); font-size: .9rem; }
+.quick { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; margin: 14px 0 22px; }
+.quick button { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; cursor: pointer; display: grid; gap: 4px; color: var(--ink); box-shadow: var(--shadow); transition: transform .15s, border-color .15s; }
+.quick button:hover { transform: translateY(-2px); border-color: var(--accent); }
+.quick b { font-size: 1.02rem; }
+.quick span { color: var(--muted); font-size: .86rem; }
+.quick i { font-style: normal; font-size: 1.3rem; color: var(--accent); font-family: var(--display); font-weight: 700; }
+.meter { height: 8px; background: var(--line); border-radius: 999px; overflow: hidden; margin: 10px 0 14px; }
+.meter div { height: 100%; background: var(--ok); border-radius: 999px; transition: width .6s; }
+.checklist { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.checklist li { display: flex; gap: 10px; align-items: center; }
+.checklist .dot { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--line); flex: none; display: grid; place-items: center; font-size: .75rem; }
+.checklist .done .dot { background: var(--ok); border-color: var(--ok); color: #fff; }
+
+.empty { background: var(--surface); border: 1px dashed var(--line); border-radius: var(--r); padding: 30px; text-align: center; color: var(--muted); display: grid; gap: 12px; justify-items: center; }
+.skel { background: linear-gradient(90deg, var(--line), color-mix(in srgb, var(--line) 40%, var(--surface)), var(--line)); background-size: 200% 100%; animation: shimmer 1.2s infinite; border-radius: var(--r); height: 140px; }
+@keyframes shimmer { to { background-position: -200% 0; } }
+.note { background: var(--accent-soft); border-radius: var(--r); padding: 16px 18px; }
+
+/* Footer */
+footer { background: var(--deep); color: var(--deep-ink); padding: 44px 0 30px; font-size: .95rem; }
+footer .wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; }
+footer h3 { font-size: 1.3rem; margin-bottom: 8px; }
+footer a { color: var(--gold); }
+footer p + p { margin-top: 4px; }
+footer .small { opacity: .7; font-size: .85rem; }
+footer .copy { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,.1); padding-top: 16px; opacity: .65; font-size: .85rem; }
+
+/* Modal */
+.modal { position: fixed; inset: 0; background: rgba(8, 12, 22, .6); z-index: 50; display: grid; place-items: center; padding: 16px; animation: fade .18s ease; }
+.modal[hidden] { display: none; }
+@keyframes fade { from { background: rgba(8,12,22,0); } }
+.modal-card { background: var(--surface); color: var(--ink); border-radius: 16px; width: min(760px, 100%); max-height: calc(100% - 32px); display: flex; flex-direction: column; box-shadow: 0 20px 60px rgba(0,0,0,.35); animation: pop .22s cubic-bezier(.2,.8,.2,1); }
+@keyframes pop { from { transform: translateY(12px) scale(.98); } }
+.modal-card.wide { width: min(1000px, 100%); }
+.modal-card.palette { width: min(640px, 100%); align-self: start; margin-top: 8vh; }
+.modal-card header { display: flex; justify-content: space-between; align-items: center; padding: 16px 20px; border-bottom: 1px solid var(--line); gap: 12px; }
+.modal-card header h2 { font-size: 1.7rem; }
+.modal-body { padding: 20px; overflow-y: auto; }
+.modal-foot { display: flex; justify-content: flex-end; gap: 10px; padding-top: 18px; margin-top: 18px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+.icon-btn { background: none; border: 1px solid var(--line); color: var(--ink); width: 38px; height: 38px; border-radius: 50%; font-size: 1.3rem; cursor: pointer; line-height: 1; flex: none; }
+.pal-list { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 2px; max-height: 55vh; overflow: auto; }
+.pal-list li button { width: 100%; text-align: left; background: none; border: 0; padding: 10px 12px; border-radius: 10px; cursor: pointer; color: var(--ink); display: grid; grid-template-columns: 96px 1fr; gap: 10px; align-items: baseline; font-size: 1rem; }
+.pal-list li button small { color: var(--muted); font-size: .74rem; text-transform: uppercase; letter-spacing: .1em; font-weight: 700; }
+.pal-list li button[aria-selected="true"] { background: var(--accent-soft); }
+.pal-list li button span em { color: var(--muted); font-style: normal; font-size: .88rem; display: block; }
+
+/* Player */
+.player { position: fixed; left: 12px; right: 12px; bottom: 12px; z-index: 45; background: var(--deep); color: var(--deep-ink); border-radius: 16px; padding: 10px 14px; display: grid; grid-template-columns: auto 1fr auto auto; gap: 12px; align-items: center; box-shadow: 0 12px 40px rgba(0,0,0,.35); max-width: 980px; margin-inline: auto; }
+.player[hidden] { display: none; }
+.pl-btn { width: 44px; height: 44px; border-radius: 50%; border: 0; background: var(--gold); color: var(--deep); cursor: pointer; display: grid; place-items: center; }
+.pl-btn svg { width: 20px; height: 20px; }
+.pl-info { min-width: 0; display: grid; gap: 2px; }
+.pl-info b { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: .95rem; }
+.pl-row { display: flex; gap: 10px; align-items: center; font-size: .78rem; font-variant-numeric: tabular-nums; opacity: .85; }
+.pl-row input { padding: 0; height: 4px; accent-color: var(--gold); border: 0; background: transparent; }
+.pl-small { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); color: var(--deep-ink); border-radius: 999px; padding: 6px 10px; cursor: pointer; font-weight: 700; font-size: .8rem; }
+@media (max-width: 560px) { .player { grid-template-columns: auto 1fr auto; } .pl-skip { display: none; } }
+
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 12px 18px; border-radius: 12px; z-index: 60; font-weight: 500; max-width: calc(100% - 32px); box-shadow: var(--shadow-up); animation: pop .2s ease; }
+body.has-player .toast { bottom: 100px; }
+.toast.err { background: var(--danger); color: #fff; }
+.toast[hidden] { display: none; }
+.totop { position: fixed; right: 18px; bottom: 18px; z-index: 34; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; box-shadow: var(--shadow-up); font-size: 1.2rem; }
+body.has-player .totop { bottom: 100px; }
+.totop[hidden] { display: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<header class="top" id="top"><div class="wrap"><div class="bar" id="topbar"></div><nav class="main" id="nav" aria-label="Main"></nav></div></header>
+<div id="ribbon"></div>
+<main id="app" tabindex="-1"></main>
+<footer id="footer"></footer>
+<button class="totop" id="totop" type="button" aria-label="Back to top" hidden>↑</button>
+<div id="player" class="player" hidden>
+  <button class="pl-btn" id="pl-toggle" type="button" aria-label="Play"></button>
+  <div class="pl-info"><b id="pl-title"></b><div class="pl-row"><span id="pl-cur">0:00</span><input id="pl-seek" type="range" min="0" max="1000" value="0" aria-label="Seek"><span id="pl-dur">0:00</span></div></div>
+  <div class="actions" style="gap:6px"><button class="pl-small pl-skip" id="pl-back" type="button" aria-label="Back 15 seconds">−15s</button><button class="pl-small pl-skip" id="pl-fwd" type="button" aria-label="Forward 30 seconds">+30s</button><button class="pl-small" id="pl-speed" type="button" aria-label="Playback speed">1×</button></div>
+  <button class="pl-small" id="pl-close" type="button" aria-label="Close player">✕</button>
+  <audio id="pl-audio" preload="metadata"></audio>
+</div>
+<div id="modal" class="modal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <header><h2 id="modal-title"></h2><button class="icon-btn" type="button" data-close aria-label="Close">×</button></header>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+<div id="toast" class="toast" role="status" hidden></div>
+
+<script src="config.js"></script>
+<script src="js/supabase.js"></script>
+<script src="js/qrcode.js"></script>
+<script src="js/backend.js"></script>
+<script>
+"use strict";
+/* ---------- Constants ---------- */
+const CHURCH = "Tarlac Gospel of Grace Church";
+const BOOKS = ["Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi","Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"];
+const ABBR = { gen:0, ge:0, ex:1, exod:1, lev:2, num:3, deut:4, dt:4, josh:5, judg:6, sam:-1, "1 sam":8, "2 sam":9, "1 kgs":10, "2 kgs":11, "1 chr":12, "2 chr":13, neh:15, est:16, ps:18, psa:18, psalm:18, prov:19, pr:19, eccl:20, ecc:20, song:21, "song of songs":21, isa:22, jer:23, lam:24, ezek:25, eze:25, dan:26, hos:27, obad:30, mic:32, nah:33, hab:34, zeph:35, hag:36, zech:37, mal:38, matt:39, mt:39, mk:40, lk:41, jn:42, rom:44, "1 cor":45, "2 cor":46, gal:47, eph:48, phil:49, col:50, "1 thess":51, "2 thess":52, "1 tim":53, "2 tim":54, tit:55, philem:56, heb:57, jas:58, "1 pet":59, "2 pet":60, "1 jn":61, "2 jn":62, "3 jn":63, rev:65 };
+const ANN_CATS = ["General","Worship","Youth","Children","Women","Men","Outreach","Bible Study","Urgent"];
+const EVENT_CATS = ["Worship","Fellowship","Outreach","Youth","Children","Bible Study","Prayer","Special"];
+const NAV = [["home","Home"],["preachings","Preaching Archives"],["announcements","Announcements"],["events","Events"],["bible","Bible (KJV)"],["gallery","Gallery"],["about","About"],["give","Give"]];
+const COLLECTIONS = ["sermons","announcements","events","gallery"];
+const ICON = {
+  play: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  pause: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5h4v14H7zM13 5h4v14h-4z"/></svg>',
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>',
+  moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>',
+  sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
+  menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>',
+  bell: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg>',
+  qr: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3M21 14v.01M14 21h7v-4"/></svg>',
+  mic: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v4"/></svg>',
+  mega: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M17 9a4 4 0 0 1 0 6"/></svg>',
+  cal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+  book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2z"/><path d="M4 19V5"/></svg>'
+};
+
+const P = { fellowship: "photos/fellowship.jpg", worship: "photos/worship-team.jpg", brothers: "photos/brothers.jpg", night: "photos/night-fellowship.jpg", nightWide: "photos/night-fellowship-wide.jpg", family: "photos/tggc-family.jpg" };
+const SLIDES = [
+  { src: P.fellowship, pos: "center 40%", cap: "Fellowship after the service" },
+  { src: P.worship, pos: "center 35%", cap: "Our worship team" },
+  { src: P.brothers, pos: "center 28%", cap: "Brothers in Christ" },
+  { src: P.nightWide, pos: "center 55%", cap: "Fellowship night" }
+];
+const BUILTIN_PHOTOS = [
+  { id: "tggc-1", src: P.fellowship, caption: "Fellowship after the service", album: "Our church family" },
+  { id: "tggc-2", src: P.worship, caption: "Our worship team", album: "Our church family" },
+  { id: "tggc-3", src: P.brothers, caption: "Brothers in Christ", album: "Our church family" },
+  { id: "tggc-4", src: P.night, caption: "Fellowship night", album: "Our church family" },
+  { id: "tggc-5", src: P.family, caption: "The TGGC family", album: "Our church family" }
+];
+const COVERS = [P.worship, P.fellowship, P.brothers, P.nightWide];
+const SITE_URL = ((window.TGGC_CONFIG || {}).SITE_URL || "").trim() || (/^https?:$/.test(location.protocol) ? location.origin + "/" : "https://tggc.netlify.app/");
+const NOTE = { baseline: null, read: new Set(), announced: new Set(), ready: false, popShown: false, sessionStart: Date.now(), entry: new Set(), mine: new Set() };
+const ACTS_20_24 = "But none of these things move me, neither count I my life dear unto myself, so that I might finish my course with joy, and the ministry, which I have received of the Lord Jesus, to testify the gospel of the grace of God.";
+const hashIdx = (s, n) => { let h = 0; for (const c of String(s)) h = (h * 31 + c.charCodeAt(0)) >>> 0; return h % n; };
+
+const S = {
+  settings: {}, hasSettings: false, slide: 0, slidePaused: false, unread: [], unreadSet: new Set(),
+  sermons: [], announcements: [], events: [], gallery: [],
+  db: null, user: null, assets: null, isAdmin: false,
+  status: "connecting",
+  f: { q: "", book: "", series: "", year: "", sort: "new" }, view: "list", annCat: "", openAnn: new Set(),
+  bibleSel: new Set(), bibleQ: "", bibleResults: null, lastRoute: null
+};
+const store = { get(k, d) { try { const v = localStorage.getItem("tggc-" + k); return v == null ? d : JSON.parse(v); } catch { return d; } }, set(k, v) { try { localStorage.setItem("tggc-" + k, JSON.stringify(v)); } catch {} } };
+S.view = store.get("view", "list");
+
+/* ---------- Helpers ---------- */
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const safeUrl = u => { try { const x = new URL(String(u || "").trim()); return /^https?:$/.test(x.protocol) ? x.href : ""; } catch { return ""; } };
+const blobUrl = id => (typeof id === "string" && /^[A-Za-z0-9_\-~.]+$/.test(id) && !id.includes("..")) ? (window.MEDIA_BASE || "/_blob/") + id : "";
+const parseDate = s => { const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(s || ""); return m ? new Date(+m[1], +m[2] - 1, +m[3]) : null; };
+const fmtDate = (s, o) => { const d = parseDate(s); return d ? d.toLocaleDateString("en-US", o || { weekday: "long", year: "numeric", month: "long", day: "numeric" }) : ""; };
+const ymd = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+const today = () => ymd(new Date());
+const newId = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+const fmtTime = t => { const m = /^(\d{2}):(\d{2})$/.exec(t || ""); if (!m) return ""; let h = +m[1]; const ap = h >= 12 ? "PM" : "AM"; h = h % 12 || 12; return `${h}:${m[2]} ${ap}`; };
+const plural = (n, w) => `${n} ${w}${n === 1 ? "" : "s"}`;
+const refOf = s => [s.book, s.passage].filter(Boolean).join(" ");
+const lines = t => String(t || "").split("\n").map(l => l.trim()).filter(Boolean).map(l => { const i = l.indexOf("|"); return i < 0 ? [l, ""] : [l.slice(0, i).trim(), l.slice(i + 1).trim()]; });
+const cfg = () => S.settings || {};
+const churchName = () => CHURCH;
+const logoSrc = () => blobUrl(cfg().logoId) || "logo.png";
+const coverFor = s => blobUrl(s.coverId) || COVERS[hashIdx(s.id, COVERS.length)];
+const heroSlides = () => { const u = blobUrl(cfg().heroImageId); return u ? [{ src: u, pos: "center", cap: "" }, ...SLIDES] : SLIDES; };
+const reduceMotion = () => matchMedia("(prefers-reduced-motion: reduce)").matches;
+const banner = (img, pos, inner, narrow = false) => `<section class="banner" style="--img:url('${img}');--pos:${pos}"><div class="${narrow ? "narrow" : "wrap"}">${inner}</div></section>`;
+function setSlide(n) {
+  const sl = heroSlides(); S.slide = ((n % sl.length) + sl.length) % sl.length;
+  document.querySelectorAll(".slide").forEach((el, i) => el.classList.toggle("on", i === S.slide));
+  document.querySelectorAll(".dots button").forEach((b, i) => b.setAttribute("aria-current", String(i === S.slide)));
+  const c = document.getElementById("slide-cap"); if (c) c.textContent = sl[S.slide].cap;
+}
+setInterval(() => { if (route() === "home" && !S.slidePaused && !document.hidden && !reduceMotion() && $("#modal").hidden) setSlide(S.slide + 1); }, 6500);
+const daysUntil = s => { const d = parseDate(s); if (!d) return null; const t = parseDate(today()); return Math.round((d - t) / 864e5); };
+const relDay = n => n === 0 ? "Today" : n === 1 ? "Tomorrow" : n > 1 && n < 7 ? `In ${n} days` : n >= 7 && n < 14 ? "Next week" : n >= 14 ? `In ${Math.round(n / 7)} weeks` : "";
+const mmss = s => { s = Math.max(0, Math.floor(s || 0)); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = s % 60; return (h ? h + ":" + String(m).padStart(2, "0") : m) + ":" + String(x).padStart(2, "0"); };
+
+/* ---------- KJV ---------- */
+let KJV = null, kjvP = null;
+function loadKJV() {
+  if (KJV) return Promise.resolve(KJV);
+  if (window.KJV_DATA) { KJV = window.KJV_DATA; return Promise.resolve(KJV); }
+  const viaScript = () => new Promise((res, rej) => { const sc = document.createElement("script"); sc.src = "kjv.js"; sc.onload = () => window.KJV_DATA ? res(window.KJV_DATA) : rej(new Error("load")); sc.onerror = () => { sc.remove(); rej(new Error("load")); }; document.head.appendChild(sc); });
+  const viaFetch = () => fetch("kjv.json").then(r => { if (!r.ok) throw new Error("load"); return r.json(); });
+  if (!kjvP) kjvP = (location.protocol === "file:" ? viaScript() : viaFetch().catch(viaScript)).then(d => (KJV = d)).catch(e => { kjvP = null; throw e; });
+  return kjvP;
+}
+const ALIASES = (() => {
+  const m = new Map();
+  BOOKS.forEach((b, i) => { m.set(b.toLowerCase(), i); });
+  m.set("psalm", 18); m.set("song of songs", 21); m.set("canticles", 21);
+  for (const [k, v] of Object.entries(ABBR)) if (v >= 0) m.set(k, v);
+  for (const [k, v] of [...m]) { const n = /^([123]) (.+)$/.exec(k); if (n) { m.set(n[1] + n[2], v); m.set(["", "i", "ii", "iii"][+n[1]] + " " + n[2], v); m.set(n[1] + (n[1] === "1" ? "st" : n[1] === "2" ? "nd" : "rd") + " " + n[2], v); } }
+  return m;
+})();
+const ALIAS_SRC = [...ALIASES.keys()].sort((a, b) => b.length - a.length).map(a => a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/ /g, "\\s+")).join("|");
+const REF_RE = new RegExp(`(^|[^A-Za-z0-9])((?:${ALIAS_SRC}))\\.?\\s+(\\d{1,3})(?::(\\d{1,3})(?:\\s*[-–]\\s*(\\d{1,3})(?::(\\d{1,3}))?)?|\\s*[-–]\\s*(\\d{1,3})(?!\\s*:))?(?![\\d:])`, "gi");
+function parseRef(str) {
+  REF_RE.lastIndex = 0; const m = REF_RE.exec(" " + String(str || "").trim()); if (!m) return null;
+  const b = ALIASES.get(m[2].toLowerCase().replace(/\s+/g, " ")); if (b == null) return null;
+  const c1 = +m[3]; let v1 = m[4] ? +m[4] : null, c2 = c1, v2 = null;
+  if (v1 != null) { if (m[6]) { c2 = +m[5]; v2 = +m[6]; } else if (m[5]) v2 = +m[5]; else v2 = v1; }
+  else if (m[7]) c2 = Math.min(+m[7], c1 + 4);
+  return { b, c1, v1, c2, v2 };
+}
+function refLabel(r) {
+  let s = `${BOOKS[r.b]} ${r.c1}`;
+  if (r.v1 != null) { s += ":" + r.v1; if (r.c2 !== r.c1) s += `-${r.c2}:${r.v2}`; else if (r.v2 !== r.v1) s += "-" + r.v2; }
+  else if (r.c2 !== r.c1) s += "-" + r.c2;
+  return s;
+}
+function getPassage(r) {
+  if (!KJV || !r) return [];
+  const book = KJV[r.b]; if (!book) return [];
+  const out = [];
+  for (let c = r.c1; c <= r.c2 && c <= book.length; c++) {
+    const ch = book[c - 1]; if (!ch) continue;
+    let from = 1, to = ch.length;
+    if (r.v1 != null) { if (c === r.c1) from = r.v1; if (c === r.c2) to = Math.min(ch.length, r.v2 ?? ch.length); }
+    for (let v = from; v <= to; v++) if (ch[v - 1]) out.push({ c, v, t: ch[v - 1] });
+  }
+  return out;
+}
+const versesHtml = vs => vs.map((x, i) => `${i && x.v === 1 ? `<br><strong>Chapter ${x.c}</strong><br>` : ""}<sup>${x.c !== vs[0].c || vs[0].c !== vs[vs.length - 1].c ? x.c + ":" : ""}${x.v}</sup>${esc(x.t)} `).join("");
+const bibleHash = (b, c, v) => `#bible-${b + 1}-${c}${v ? "-" + v : ""}`;
+function linkRefs(escapedText) {
+  return escapedText.replace(REF_RE, (all, pre, book, c, v, e1, e2, e3) => {
+    const r = parseRef(all.slice(pre.length)); if (!r) return all;
+    const txt = all.slice(pre.length);
+    return `${pre}<button type="button" class="ref-link" data-act="ref" data-ref="${esc(refLabel(r))}">${txt}</button>`;
+  });
+}
+
+function md(src) {
+  const inline = t => linkRefs(esc(t)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/(^|[\s(])\*(?!\s)(.+?)\*(?=[\s).,;:!?]|$)/g, "$1<em>$2</em>"))
+    .replace(/(https?:\/\/[^\s<]+[^\s<.,;:!?)])/g, '<a href="$1" target="_blank" rel="noopener">$1</a>');
+  const out = []; let para = [], list = null, quote = [];
+  const flushP = () => { if (para.length) { out.push("<p>" + para.map(inline).join("<br>") + "</p>"); para = []; } };
+  const flushL = () => { if (list) { out.push(`<${list.t}>` + list.items.map(i => "<li>" + inline(i) + "</li>").join("") + `</${list.t}>`); list = null; } };
+  const flushQ = () => { if (quote.length) { out.push("<blockquote>" + quote.map(inline).join("<br>") + "</blockquote>"); quote = []; } };
+  const flush = () => { flushP(); flushL(); flushQ(); };
+  for (const raw of String(src || "").replace(/\r/g, "").split("\n")) {
+    const l = raw.trimEnd(); let m;
+    if (!l.trim()) { flush(); continue; }
+    if ((m = /^(#{1,3})\s+(.*)$/.exec(l))) { flush(); out.push(m[1].length === 1 ? `<h2>${inline(m[2])}</h2>` : `<h3>${inline(m[2])}</h3>`); continue; }
+    if ((m = /^>\s?(.*)$/.exec(l))) { flushP(); flushL(); quote.push(m[1]); continue; }
+    if ((m = /^\s*[-*•]\s+(.*)$/.exec(l))) { flushP(); flushQ(); if (!list || list.t !== "ul") { flushL(); list = { t: "ul", items: [] }; } list.items.push(m[1]); continue; }
+    if ((m = /^\s*\d+[.)]\s+(.*)$/.exec(l))) { flushP(); flushQ(); if (!list || list.t !== "ol") { flushL(); list = { t: "ol", items: [] }; } list.items.push(m[1]); continue; }
+    flushL(); flushQ(); para.push(l);
+  }
+  flush();
+  return out.join("");
+}
+
+function toast(msg, err) {
+  const t = $("#toast"); t.textContent = msg; t.className = "toast" + (err ? " err" : ""); t.hidden = false;
+  clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), err ? 6000 : 2800);
+}
+function errMsg(e) {
+  const c = e && e.code;
+  if (c === "quota_exceeded") return "Storage is full. Delete some old items or photos, then try again.";
+  if (c === "invalid_argument") return "You don't have permission to save this, or the entry is too large.";
+  if (c === "resource_exhausted") return "Too many changes at once. Wait a few seconds and try again.";
+  if (c === "revoked") return "Your access to this page changed. Reload it to continue.";
+  return (e && e.message) || "Something went wrong. Please try again.";
+}
+async function copyText(t) { try { await navigator.clipboard.writeText(t); toast("Copied to clipboard."); } catch { toast("Your browser blocked copying. Select the text and copy it instead.", true); } }
+
+/* ---------- Service countdown ---------- */
+const DAY_RE = [/\bsun(day)?s?\b/i, /\bmon(day)?s?\b/i, /\btue(s|sday)?s?\b/i, /\bwed(nesday)?s?\b/i, /\bthu(r|rs|rsday)?s?\b/i, /\bfri(day)?s?\b/i, /\bsat(urday)?s?\b/i];
+function nextService() {
+  const now = new Date(); let best = null;
+  for (const [a, b] of lines(cfg().serviceTimes)) {
+    const txt = a + " " + b; const days = DAY_RE.map((re, i) => re.test(txt) ? i : -1).filter(i => i >= 0);
+    const tm = /(\d{1,2})(?::(\d{2}))?\s*(am|pm|a\.m\.|p\.m\.)?/i.exec(b) || /(\d{1,2})(?::(\d{2}))\s*(am|pm)?/i.exec(a);
+    if (!days.length || !tm) continue;
+    let h = +tm[1]; const mi = +(tm[2] || 0); const ap = (tm[3] || "").toLowerCase();
+    if (ap.startsWith("p") && h < 12) h += 12; if (ap.startsWith("a") && h === 12) h = 0;
+    for (const d of days) for (let add = 0; add < 8; add++) {
+      const t = new Date(now.getFullYear(), now.getMonth(), now.getDate() + add, h, mi);
+      if (t.getDay() !== d) continue;
+      const end = new Date(t.getTime() + 2 * 3600e3);
+      if (end <= now) continue;
+      if (!best || t < best.at) best = { at: t, label: a, live: t <= now };
+      break;
+    }
+  }
+  return best;
+}
+function countdownHtml() {
+  const n = nextService(); if (!n) return "";
+  return `<div class="countdown" data-cd="${n.at.getTime()}" data-live="${n.live ? 1 : 0}">
+    <div class="what">${n.live ? "Happening now" : "Next gathering"} · <strong>${esc(n.label)}</strong> · ${esc(n.at.toLocaleDateString("en-US", { weekday: "long" }))} ${esc(n.at.toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" }))}</div>
+    <div class="cd-body">${cdInner(n.at.getTime(), n.live)}</div></div>`;
+}
+function cdInner(at, live) {
+  const ms = at - Date.now();
+  if (live || ms <= 0) return `<span class="live-now">We're gathered now. Come join us!</span>`;
+  const d = Math.floor(ms / 864e5), h = Math.floor(ms % 864e5 / 36e5), m = Math.floor(ms % 36e5 / 6e4), s = Math.floor(ms % 6e4 / 1e3);
+  return `<div class="cd"><div><b>${d}</b><span>Days</span></div><div><b>${String(h).padStart(2, "0")}</b><span>Hours</span></div><div><b>${String(m).padStart(2, "0")}</b><span>Mins</span></div><div><b>${String(s).padStart(2, "0")}</b><span>Secs</span></div></div>`;
+}
+setInterval(() => { document.querySelectorAll("[data-cd]").forEach(el => { const at = +el.dataset.cd; const b = el.querySelector(".cd-body"); if (b) b.innerHTML = cdInner(at, el.dataset.live === "1" || at <= Date.now()); }); }, 1000);
+
+/* ---------- Data ---------- */
+const sortByDateDesc = (a, b) => (b.date || "").localeCompare(a.date || "") || (b.createdAt || 0) - (a.createdAt || 0);
+const visiblePreachings = () => S.sermons.filter(s => S.isAdmin || s.status !== "draft").sort(sortByDateDesc);
+const publicPreachings = () => S.sermons.filter(s => s.status !== "draft").sort(sortByDateDesc);
+function annState(a) { const t = today(); if (a.status === "draft") return "draft"; if (a.postDate && a.postDate > t) return "scheduled"; if (a.expires && a.expires < t) return "expired"; return "live"; }
+const liveAnns = () => S.announcements.filter(a => annState(a) === "live")
+  .sort((a, b) => (!!b.pinned - !!a.pinned) || (b.category === "Urgent") - (a.category === "Urgent") || (b.postDate || "").localeCompare(a.postDate || "") || (b.createdAt || 0) - (a.createdAt || 0));
+const upcomingEvents = () => S.events.filter(e => (e.endDate || e.date || "") >= today()).sort((a, b) => (a.date || "").localeCompare(b.date || "") || (a.start || "").localeCompare(b.start || ""));
+const pastEvents = () => S.events.filter(e => (e.endDate || e.date || "") < today()).sort(sortByDateDesc);
+
+let loadTimer = null;
+async function boot() {
+  applyPrefs();
+  NOTE.baseline = store.get("baseline", null); NOTE.read = new Set(store.get("read", []));
+  render();
+  window.addEventListener("hashchange", () => { document.body.classList.remove("nav-open"); render(); window.scrollTo(0, 0); });
+  loadTimer = setTimeout(() => { if (S.status === "connecting") { S.status = "slow"; render(); } }, 10000);
+  if (!window.claude || typeof window.claude.use !== "function") { S.status = "nodb"; clearTimeout(loadTimer); render(); return; }
+  let db = null, user = null;
+  try { [db, user] = await Promise.all([claude.use("db"), claude.use("user")]); } catch (e) {}
+  S.user = user;
+  if (user) { try { S.isAdmin = !!(await user.canEdit()); } catch {} }
+  if (S.isAdmin) { try { S.assets = await claude.use("assets"); } catch {} }
+  if (location.hash === "#login") { history.replaceState(null, "", location.pathname + location.search); S.lastRoute = null; setTimeout(S.isAdmin ? () => { location.hash = "admin"; } : openLogin, 50); }
+  if (!db) { S.status = "nodb"; clearTimeout(loadTimer); render(); return; }
+  S.db = db;
+  const need = new Set(["settings", ...COLLECTIONS]);
+  const done = key => { need.delete(key); if (!need.size && S.status !== "ready") { S.status = "ready"; clearTimeout(loadTimer); onDataReady(); } };
+  const onErr = key => e => { done(key); if (e.code === "revoked") S.status = "revoked"; render(); };
+  db.doc("site/settings").onSnapshot(d => {
+    S.settings = d.exists ? (d.data() || {}) : {}; S.hasSettings = d.exists;
+    if (!d.metadata.fromCache) done("settings"); render();
+  }, onErr("settings"));
+  for (const c of COLLECTIONS) {
+    db.collection(c).onSnapshot(snap => {
+      S[c] = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      if (!snap.metadata.fromCache) done(c); checkLive(); render();
+    }, onErr(c));
+  }
+}
+
+/* ---------- Preferences ---------- */
+function applyPrefs() {
+  document.documentElement.style.setProperty("--scale", store.get("scale", 1));
+  const th = store.get("theme", ""); if (th) document.documentElement.dataset.theme = th;
+}
+function isDark() { const t = document.documentElement.dataset.theme; return t ? t === "dark" : matchMedia("(prefers-color-scheme: dark)").matches; }
+
+/* ---------- Notifications (what's new since your last visit) ---------- */
+const TYPE_LABEL = { preaching: "Preaching", announcement: "Announcement", event: "Event" };
+const TYPE_ICON = { preaching: "mic", announcement: "mega", event: "cal" };
+const COL_TYPE = { sermons: "preaching", announcements: "announcement", events: "event" };
+const noteKey = i => i.type + ":" + i.id;
+function feedItems() {
+  const out = [];
+  for (const s of publicPreachings()) out.push({ type: "preaching", id: s.id, title: s.title || "New preaching", at: s.publishedAt || s.createdAt || 0, sub: [refOf(s), s.preacher].filter(Boolean).join(" · "), go: "preaching-" + s.id });
+  for (const a of liveAnns()) { const pd = parseDate(a.postDate); out.push({ type: "announcement", id: a.id, title: a.title || "Announcement", at: Math.max(a.createdAt || 0, pd ? pd.getTime() : 0), sub: a.category || "", go: "announcements" }); }
+  for (const e of upcomingEvents()) out.push({ type: "event", id: e.id, title: e.title || "Event", at: e.createdAt || 0, sub: [fmtDate(e.date, { weekday: "short", month: "short", day: "numeric" }), e.location].filter(Boolean).join(" · "), go: "events" });
+  return out.sort((a, b) => b.at - a.at);
+}
+function unreadItems() {
+  if (NOTE.baseline == null || S.status !== "ready") return [];
+  const since = Math.max(NOTE.baseline, Date.now() - 60 * 864e5);
+  return feedItems().filter(i => i.at > since && !NOTE.read.has(noteKey(i)) && !NOTE.mine.has(noteKey(i)));
+}
+function saveNotes() { store.set("baseline", NOTE.baseline); store.set("read", [...NOTE.read].slice(-400)); }
+function markRead(keys) { let ch = false; for (const k of keys) if (!NOTE.read.has(k)) { NOTE.read.add(k); ch = true; } if (ch) saveNotes(); }
+function markAllRead() { NOTE.baseline = Date.now(); NOTE.read.clear(); saveNotes(); }
+const isNew = (type, id) => NOTE.entry.has(type + ":" + id) || S.unreadSet.has(type + ":" + id);
+const newChip = (type, id) => isNew(type, id) ? `<span class="chip soon">New</span>` : "";
+function summarize(items) {
+  const c = { preaching: 0, announcement: 0, event: 0 }; items.forEach(i => c[i.type]++);
+  const parts = []; if (c.preaching) parts.push(plural(c.preaching, "new preaching")); if (c.announcement) parts.push(plural(c.announcement, "new announcement")); if (c.event) parts.push(plural(c.event, "new event"));
+  return parts.length > 1 ? parts.slice(0, -1).join(", ") + " and " + parts[parts.length - 1] : parts[0] || "";
+}
+function onDataReady() {
+  if (NOTE.ready) return; NOTE.ready = true;
+  for (const i of feedItems()) NOTE.announced.add(noteKey(i));
+  if (NOTE.baseline == null) { NOTE.baseline = Date.now(); saveNotes(); return; }
+  const un = unreadItems();
+  if (un.length && !NOTE.popShown) {
+    NOTE.popShown = true;
+    showPop(`<div class="pc-top"><img src="${logoSrc()}" alt=""><div><small>Welcome back</small><b>${esc(summarize(un))} since your last visit</b></div><button class="pc-x" data-act="pop-close" aria-label="Close">✕</button></div>
+      <div class="pc-body"><ul>${un.slice(0, 3).map(i => `<li><strong style="color:var(--ink)">${esc(i.title)}</strong> <span>(${TYPE_LABEL[i.type]})</span></li>`).join("")}${un.length > 3 ? `<li>and ${un.length - 3} more</li>` : ""}</ul>
+      <div class="actions"><button class="btn small" data-act="notes">See what's new</button><button class="link-btn" data-act="pop-close">Later</button></div></div>`, 16000);
+    ringBell();
+  }
+}
+function checkLive() {
+  if (!NOTE.ready) return;
+  const fresh = feedItems().filter(i => !NOTE.announced.has(noteKey(i)));
+  fresh.forEach(i => NOTE.announced.add(noteKey(i)));
+  const show = fresh.filter(i => !NOTE.mine.has(noteKey(i)) && i.at >= NOTE.sessionStart - 6e4);
+  if (!show.length) return;
+  const i = show[0];
+  showPop(`<div class="pc-top"><img src="${logoSrc()}" alt=""><div><small>Just posted · ${TYPE_LABEL[i.type]}</small><b>${esc(i.title)}</b></div><button class="pc-x" data-act="pop-close" aria-label="Close">✕</button></div>
+    <div class="pc-body">${i.sub ? `<p style="color:var(--muted)">${esc(i.sub)}</p>` : ""}${show.length > 1 ? `<p class="hint">and ${show.length - 1} more update${show.length > 2 ? "s" : ""}</p>` : ""}<div class="actions"><button class="btn small" data-act="note-go" data-id="${esc(i.go)}" data-key="${esc(noteKey(i))}">View</button><button class="link-btn" data-act="notes">All updates</button></div></div>`, 14000);
+  ringBell();
+}
+function ringBell() { const b = document.getElementById("bell"); if (b) { b.classList.remove("ring"); void b.offsetWidth; b.classList.add("ring"); } }
+let popTimer = null;
+function showPop(html, ms) {
+  let el = document.getElementById("popcard");
+  if (!el) { el = document.createElement("div"); el.id = "popcard"; el.className = "popcard"; el.setAttribute("role", "status"); document.body.appendChild(el); }
+  el.innerHTML = html; el.hidden = false; el.style.animation = "none"; void el.offsetWidth; el.style.animation = "";
+  clearTimeout(popTimer); popTimer = setTimeout(() => { el.hidden = true; }, ms);
+  el.onmouseenter = () => clearTimeout(popTimer);
+}
+function openNotes() {
+  const un = unreadItems(); const unKeys = new Set(un.map(noteKey));
+  const earlier = feedItems().filter(i => !unKeys.has(noteKey(i))).slice(0, 6);
+  const row = (i, unread) => `<li><button type="button" class="${unread ? "" : "seen"}" data-act="note-go" data-id="${esc(i.go)}" data-key="${esc(noteKey(i))}"><span class="ic ${i.type}">${ICON[TYPE_ICON[i.type]]}</span><span><small>${TYPE_LABEL[i.type]}${i.at ? " · " + esc(timeAgo(i.at)) : ""}</small><b>${esc(i.title)}</b>${i.sub ? `<small>${esc(i.sub)}</small>` : ""}</span>${unread ? `<span class="unread-dot" aria-label="New"></span>` : "<span></span>"}</button></li>`;
+  openModal("What's new", `
+    <div class="notice-head"><p class="hint">New preachings, announcements and events since your last visit appear here.</p>${un.length ? `<button class="btn small ghost" data-act="notes-read">Mark all as read</button>` : ""}</div>
+    ${un.length ? `<ul class="notice-list">${un.map(i => row(i, true)).join("")}</ul>` : `<div class="empty" style="padding:20px"><p>You're all caught up. 🙏</p></div>`}
+    ${earlier.length ? `<h3 style="margin:20px 0 10px;font-size:1.2rem">Earlier</h3><ul class="notice-list">${earlier.map(i => row(i, false)).join("")}</ul>` : ""}
+    <p class="hint" style="margin-top:16px">Updates show here each time you open the website on this device. Keep the link or the QR code handy so you can check back.</p>`);
+}
+function timeAgo(t) {
+  const m = Math.round((Date.now() - t) / 6e4);
+  if (m < 1) return "just now"; if (m < 60) return m + " min ago";
+  const h = Math.round(m / 60); if (h < 24) return h + (h === 1 ? " hour ago" : " hours ago");
+  const d = Math.round(h / 24); if (d < 7) return d === 1 ? "yesterday" : d + " days ago";
+  return new Date(t).toLocaleDateString("en-US", { month: "short", day: "numeric" });
+}
+
+/* ---------- Sharing ---------- */
+// The QR code and printable card are drawn in the browser for whatever address the site is on.
+const SHARE = { qr: "", card: "" };
+const loadImg = src => new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = rej; i.src = src; });
+const qrImg = alt => SHARE.qr ? `<img src="${SHARE.qr}" alt="${alt}">` : `<div class="skel" style="aspect-ratio:1;height:auto;min-height:120px"></div>`;
+SHARE.ready = (async () => {
+  try {
+    if (typeof qrcode !== "function") return;
+    const q = qrcode(0, "H"); q.addData(SITE_URL); q.make();
+    const n = q.getModuleCount(), quiet = 2, cell = Math.max(8, Math.floor(1080 / (n + quiet * 2))), dim = cell * (n + quiet * 2);
+    const c = document.createElement("canvas"); c.width = c.height = dim; const g = c.getContext("2d");
+    g.fillStyle = "#ffffff"; g.fillRect(0, 0, dim, dim); g.fillStyle = "#142a5c";
+    for (let r = 0; r < n; r++) for (let k = 0; k < n; k++) if (q.isDark(r, k)) g.fillRect((k + quiet) * cell, (r + quiet) * cell, cell, cell);
+    let logo = null; try { logo = await loadImg("logo.png"); } catch {}
+    if (logo) {
+      const lw = dim * 0.24, lh = lw * logo.height / logo.width, pad = dim * 0.025, bw = lw + pad * 2, bh = lh + pad * 2, x = (dim - bw) / 2, y = (dim - bh) / 2;
+      g.fillStyle = "#ffffff"; g.beginPath(); g.roundRect ? g.roundRect(x, y, bw, bh, bw * 0.18) : g.rect(x, y, bw, bh); g.fill();
+      g.drawImage(logo, x + pad, y + pad, lw, lh);
+    }
+    SHARE.qr = c.toDataURL("image/png");
+    try { await Promise.all([document.fonts.load('600 86px "Cormorant Garamond"'), document.fonts.load('500 46px "Cormorant Garamond"'), document.fonts.load('700 34px "Source Sans 3"'), document.fonts.load('500 32px "Source Sans 3"')]); } catch {}
+    const W = 1200, H = 1650, k = document.createElement("canvas"); k.width = W; k.height = H; const d = k.getContext("2d");
+    const bg = d.createRadialGradient(600, 250, 50, 600, 250, 900); bg.addColorStop(0, "#1f3f85"); bg.addColorStop(1, "#142a5c"); d.fillStyle = bg; d.fillRect(0, 0, W, H);
+    if (logo) { const lw = 230, lh = lw * logo.height / logo.width; d.drawImage(logo, (W - lw) / 2, 70, lw, lh); }
+    d.textAlign = "center"; d.textBaseline = "top";
+    d.fillStyle = "#e7cf95"; d.font = '700 34px "Source Sans 3", sans-serif'; d.fillText("TARLAC GOSPEL OF GRACE CHURCH", W / 2, 330);
+    d.fillStyle = "#ffffff"; d.font = '600 86px "Cormorant Garamond", Georgia, serif'; d.fillText("Scan to visit our website", W / 2, 380);
+    d.fillStyle = "#dce2f0"; d.font = '500 32px "Source Sans 3", sans-serif'; d.fillText("Preachings · Announcements · Events · KJV Bible", W / 2, 495);
+    const fw = 820, fx = (W - fw) / 2, fy = 570; d.fillStyle = "#ffffff"; d.beginPath(); d.roundRect ? d.roundRect(fx, fy, fw, fw, 40) : d.rect(fx, fy, fw, fw); d.fill();
+    d.imageSmoothingEnabled = false; d.drawImage(c, fx + 30, fy + 30, fw - 60, fw - 60); d.imageSmoothingEnabled = true;
+    d.fillStyle = "#ffffff"; d.font = '500 46px "Cormorant Garamond", Georgia, serif'; d.fillText("“…to testify the gospel of the grace of God.”", W / 2, 1420);
+    d.fillStyle = "#e7cf95"; d.font = '600 30px "Source Sans 3", sans-serif'; d.fillText("Acts 20:24 (KJV)", W / 2, 1480);
+    d.fillStyle = "#bec8e1"; d.font = '400 28px "Source Sans 3", sans-serif'; d.fillText(SITE_URL.replace(/^https?:\/\//, "").replace(/\/$/, ""), W / 2, 1560);
+    SHARE.card = k.toDataURL("image/png");
+  } catch (e) { console.warn("QR code could not be drawn", e); }
+  finally { if (S.lastRoute != null) { renderFooter(); if (route() === "admin") render(); } }
+})();
+
+/* ---------- Pastor login ---------- */
+function openLogin() {
+  if (!window.TGGC_BACKEND || !TGGC_BACKEND.configured) return toast("The church database isn't connected yet. Follow README step 3 to finish setup.", true);
+  openModal("Pastor & editor login", `<form id="login-form" class="grid" style="gap:14px">
+    ${fld("lg-email", "Email", inp("lg-email", "", "email", 'required autocomplete="username"'))}
+    ${fld("lg-pw", "Password", inp("lg-pw", "", "password", 'required autocomplete="current-password"'))}
+    <p class="hint">Only for the pastor and church helpers who post updates. Visitors don't need an account.</p>
+    <div class="modal-foot" style="justify-content:space-between"><button class="link-btn" type="button" data-act="forgot">Forgot password?</button><span class="actions"><button class="btn ghost" type="button" data-close>Cancel</button><button class="btn" type="submit" id="save-btn">Log in</button></span></div>
+  </form>`);
+  $("#login-form").onsubmit = e => { e.preventDefault(); saving($("#save-btn"), async () => { await TGGC_BACKEND.signIn(val("lg-email"), $("#lg-pw").value); location.hash = "admin"; location.reload(); }); };
+}
+async function forgotPassword() {
+  const email = val("lg-email");
+  if (!email) { toast("Type your email above first, then tap “Forgot password?”.", true); const el = $("#lg-email"); if (el) el.focus(); return; }
+  try { await TGGC_BACKEND.resetPassword(email); toast("Check your email for a link to set a new password."); } catch (e) { toast(e.message || "Couldn't send the reset email.", true); }
+}
+function openNewPassword() {
+  openModal("Set a new password", `<form id="pw-form" class="grid" style="gap:14px">
+    ${fld("pw-new", "New password", inp("pw-new", "", "password", 'required minlength="8" autocomplete="new-password"'), "At least 8 characters.")}
+    ${formFoot("Save password")}</form>`);
+  $("#pw-form").onsubmit = e => { e.preventDefault(); saving($("#save-btn"), async () => { await TGGC_BACKEND.updatePassword($("#pw-new").value); closeModal(); toast("Password saved. You're logged in."); setTimeout(() => { location.hash = "admin"; location.reload(); }, 900); }); };
+}
+if (window.TGGC_BACKEND && TGGC_BACKEND.onRecovery) TGGC_BACKEND.onRecovery(() => setTimeout(openNewPassword, 300));
+function openShare() {
+  const fb = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(SITE_URL);
+  openModal("Share our website", `<div class="qr-box">${qrImg("QR code that opens the " + esc(CHURCH) + " website")}
+    <div class="grid" style="gap:14px">
+      <p style="font-size:1.1rem">Point a phone camera at this code to open the website.</p>
+      <div class="url-field"><label class="sr" for="share-url">Website link</label><input id="share-url" type="text" readonly value="${SITE_URL}"><button class="btn small" type="button" data-act="copy" data-id="${SITE_URL}">Copy link</button></div>
+      <div class="actions"><a class="btn small ghost" href="${esc(fb)}" target="_blank" rel="noopener">Share on Facebook</a><button class="btn small ghost" type="button" data-act="dl" data-id="qr" data-name="TGGC-website-QR-code.png">Download QR code</button><button class="btn small ghost" type="button" data-act="dl" data-id="card" data-name="TGGC-QR-card-for-printing.png">Download printable card</button></div>
+      <p class="hint">Print the card for the bulletin board, or send the QR code in your group chats.</p>
+    </div></div>`, { wide: true });
+}
+async function downloadFile(file, name) {
+  if (file === "qr" || file === "card") { await SHARE.ready; file = SHARE[file]; if (!file) return toast("The QR code couldn't be created. Reload the page and try again.", true); }
+  if (location.protocol === "file:") { const a = document.createElement("a"); a.href = file; a.download = name; document.body.appendChild(a); a.click(); a.remove(); return; }
+  let d = null; try { d = window.claude && await claude.use("downloads"); } catch {}
+  if (!d) { toast("Downloading isn't available here. Press and hold the QR image (or right-click it) to save it.", true); return; }
+  try { const blob = await (await fetch(file)).blob(); await d.save({ filename: name, data: blob }); toast("Saved."); }
+  catch (e) { if (e && e.code === "declined") return; if (e && e.code === "rate_limited") return toast("A save is already waiting for your answer.", true); toast("That file couldn't be saved. Press and hold the image to save it instead.", true); }
+}
+
+/* ---------- Rendering ---------- */
+function route() {
+  let h = decodeURIComponent(location.hash.slice(1)) || "home";
+  if (h === "sermons") h = "preachings"; if (h.startsWith("sermon-")) h = "preaching-" + h.slice(7);
+  return h;
+}
+function preserveForm(fn) {
+  const app = $("#app"); const keep = {}; const active = document.activeElement;
+  app.querySelectorAll("input[id], textarea[id], select[id]").forEach(el => { keep[el.id] = el.type === "checkbox" ? el.checked : el.value; });
+  const focusId = active && app.contains(active) ? active.id : null;
+  const selStart = focusId && active.selectionStart != null ? active.selectionStart : null;
+  fn();
+  for (const [id, v] of Object.entries(keep)) { const el = document.getElementById(id); if (el && app.contains(el) && !el.hasAttribute("data-nokeep")) { if (el.type === "checkbox") el.checked = v; else if (el.type !== "file") el.value = v; } }
+  if (focusId) { const el = document.getElementById(focusId); if (el) { el.focus(); if (selStart != null && el.setSelectionRange) try { el.setSelectionRange(selStart, selStart); } catch {} } }
+}
+function render() {
+  const r = route(); const changed = r !== S.lastRoute; S.lastRoute = r;
+  if (changed) S.bibleSel.clear();
+  S.unread = unreadItems(); S.unreadSet = new Set(S.unread.map(noteKey));
+  if (changed) {
+    NOTE.entry = new Set(S.unreadSet);
+    const seen = r.startsWith("preaching-") ? ["preaching:" + r.slice(10)] : r === "announcements" ? S.unread.filter(i => i.type === "announcement").map(noteKey) : r === "events" ? S.unread.filter(i => i.type === "event").map(noteKey) : [];
+    if (seen.length) { markRead(seen); S.unread = unreadItems(); S.unreadSet = new Set(S.unread.map(noteKey)); }
+  }
+  renderTop(r); renderRibbon(); renderFooter();
+  const app = $("#app");
+  preserveForm(() => {
+    if (r.startsWith("preaching-")) app.innerHTML = viewPreaching(r.slice(10));
+    else if (r === "preachings") { app.innerHTML = viewPreachings(); renderResults(); }
+    else if (r === "announcements") app.innerHTML = viewAnnouncements();
+    else if (r === "events") app.innerHTML = viewEvents();
+    else if (r === "bible" || r.startsWith("bible-")) app.innerHTML = viewBible(r);
+    else if (r === "gallery") app.innerHTML = viewGallery();
+    else if (r === "about") app.innerHTML = viewAbout();
+    else if (r === "give") app.innerHTML = viewGive();
+    else if (r === "admin" && S.isAdmin) app.innerHTML = viewAdmin();
+    else app.innerHTML = viewHome();
+  });
+  if (changed) { app.classList.remove("enter"); void app.offsetWidth; app.classList.add("enter"); setTimeout(() => app.classList.remove("enter"), 700); }
+  afterRender(r, changed);
+}
+function afterRender(r, changed) {
+  document.title = r === "home" ? CHURCH : `${({ preachings: "Preaching Archives", announcements: "Announcements", events: "Events", gallery: "Gallery", about: "About", give: "Give", admin: "Pastor's Desk" })[r] || (r.startsWith("bible") ? "Bible (KJV)" : r.startsWith("preaching-") ? "Preaching" : "Home")} · ${CHURCH}`;
+  document.documentElement.style.setProperty("--top-h", $("#top").offsetHeight + "px");
+  if (r.startsWith("bible") && KJV && changed) { const t = $(".vs.target"); if (t) setTimeout(() => t.scrollIntoView({ block: "center", behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }), 60); }
+  onScroll();
+}
+
+const archSvg = (cls = "brand-mark") => `<svg class="${cls}" viewBox="0 0 40 40" aria-hidden="true"><path d="M8 36V18a12 12 0 0 1 24 0v18" fill="none" stroke="#e7cf95" stroke-width="2.2"/><path d="M20 10v18M14 16h12" stroke="#e7cf95" stroke-width="2.2" stroke-linecap="round"/></svg>`;
+function renderTop(r) {
+  const custom = !!blobUrl(cfg().logoId);
+  const base = r.startsWith("preaching-") ? "preachings" : r.startsWith("bible") ? "bible" : r;
+  const scale = store.get("scale", 1);
+  $("#topbar").innerHTML = `
+    <a class="brand" href="#home"><img src="${logoSrc()}" alt=""${custom ? ' class="custom"' : ""}><span><small>Tarlac, Philippines</small><b>${esc(CHURCH)}</b></span></a>
+    <div class="tools">
+      <button class="tool" type="button" data-act="palette" aria-label="Search the site">${ICON.search}<span class="lbl">Search</span><kbd>/</kbd></button>
+      <button class="tool" type="button" data-act="share" aria-label="Share this website with a QR code">${ICON.qr}<span class="lbl">Share</span></button>
+      <button class="tool" id="bell" type="button" data-act="notes" aria-label="What's new${S.unread.length ? `: ${S.unread.length} unread` : ""}">${ICON.bell}${S.unread.length ? `<span class="badge">${S.unread.length > 9 ? "9+" : S.unread.length}</span>` : ""}</button>
+      <button class="tool" type="button" data-act="font-down" aria-label="Smaller text"${scale <= .9 ? " disabled" : ""}>A−</button>
+      <button class="tool" type="button" data-act="font-up" aria-label="Larger text"${scale >= 1.3 ? " disabled" : ""}>A+</button>
+      <button class="tool" type="button" data-act="theme" aria-label="Switch light or dark mode">${isDark() ? ICON.sun : ICON.moon}</button>
+      <button class="tool menu-btn" type="button" data-act="menu" aria-label="Menu" aria-expanded="${document.body.classList.contains("nav-open")}">${ICON.menu}</button>
+    </div>`;
+  const navCount = { preachings: "preaching", announcements: "announcement", events: "event" };
+  $("#nav").innerHTML = NAV.map(([k, l]) => { const n = navCount[k] ? S.unread.filter(i => i.type === navCount[k]).length : 0; return `<a href="#${k}"${base === k ? ' aria-current="page"' : ""}>${l}${n ? `<span class="ndot" aria-label="${n} new">${n}</span>` : ""}</a>`; }).join("") + (S.isAdmin ? `<a class="admin-link" href="#admin"${base === "admin" ? ' aria-current="page"' : ""}>Pastor's Desk</a>` : "");
+}
+function renderRibbon() {
+  let msg = "";
+  if (S.status === "nodb") msg = (window.TGGC_BACKEND && TGGC_BACKEND.configured) ? `The church database can't be reached right now, so preachings and announcements aren't showing. Please try again in a little while. The King James Bible still works.` : `Setup isn't finished: add your Supabase Project URL and key to <code>config.js</code> (see README step 3). The King James Bible already works.`;
+  else if (S.status === "slow") msg = `The church archive is taking longer than usual to load. Check your connection; it will appear on its own once connected.`;
+  else if (S.status === "revoked") msg = `Your access to this page changed. Reload the page to continue.`;
+  else if (S.isAdmin && S.status === "ready" && !cfg().serviceTimes) msg = `Welcome, Pastor. Add your service times, address and contact details so visitors know when to come. <button class="btn small" data-act="edit-settings">Set up church details</button>`;
+  $("#ribbon").innerHTML = msg ? `<div class="ribbon"><div class="wrap">${msg}</div></div>` : "";
+}
+function renderFooter() {
+  const s = cfg(); const times = lines(s.serviceTimes);
+  const fb = safeUrl(s.facebook), yt = safeUrl(s.youtube), live = safeUrl(s.liveUrl), map = safeUrl(s.mapUrl);
+  $("#footer").innerHTML = `<div class="wrap">
+    <div><img class="flogo" src="${logoSrc()}" alt=""><h3>${esc(CHURCH)}</h3><p class="small" style="margin-bottom:6px">“…to testify the gospel of the grace of God.” Acts 20:24</p>${s.address ? `<p>${esc(s.address)}</p>` : `<p>Tarlac, Philippines</p>`}${map ? `<p><a href="${esc(map)}" target="_blank" rel="noopener">Get directions</a></p>` : ""}</div>
+    <div><h3>Gatherings</h3>${times.length ? times.map(([a, b]) => `<p>${esc(a)}${b ? ` · ${esc(b)}` : ""}</p>`).join("") : `<p class="small">Service times will be posted soon.</p>`}</div>
+    <div><h3>Contact</h3>${s.phone ? `<p>Phone: ${esc(s.phone)}</p>` : ""}${s.email ? `<p>Email: ${esc(s.email)}</p>` : ""}
+      ${fb ? `<p><a href="${esc(fb)}" target="_blank" rel="noopener">Facebook page</a></p>` : ""}${yt ? `<p><a href="${esc(yt)}" target="_blank" rel="noopener">YouTube channel</a></p>` : ""}${live ? `<p><a href="${esc(live)}" target="_blank" rel="noopener">Watch the livestream</a></p>` : ""}
+      ${!s.phone && !s.email && !fb && !yt ? `<p class="small">Contact details will be posted soon.</p>` : ""}</div>
+    <div><h3>Scan to visit</h3><button class="fqr" type="button" data-act="share" aria-label="Open the share window">${qrImg("QR code for this website")}</button><p style="margin-top:8px"><a href="#" data-act="share">Share this website</a></p></div>
+    <div><h3>Explore</h3>${S.isAdmin ? `<p><a href="#admin">Pastor's Desk</a></p>` : `<p><a href="#login" data-act="login">Pastor login</a></p>`}<p><a href="#preachings">Preaching Archives</a></p><p><a href="#bible">Read the Bible (KJV)</a></p><p><a href="#events">Upcoming events</a></p></div>
+    <p class="copy">Scripture quotations are from the King James Version (KJV).</p>
+  </div>`;
+}
+
+function datebox(s) {
+  const d = parseDate(s); if (!d) return `<div class="datebox"><div class="d">·</div></div>`;
+  return `<div class="datebox"><div class="m">${d.toLocaleDateString("en-US", { month: "short" })}</div><div class="d">${d.getDate()}</div><div class="w">${d.toLocaleDateString("en-US", { weekday: "short" })}</div></div>`;
+}
+const adminRow = (kind, id) => S.isAdmin ? `<div class="admin-row"><button class="link-btn" data-act="edit-${kind}" data-id="${esc(id)}">Edit</button><button class="link-btn danger" data-act="del-${kind}" data-id="${esc(id)}">Delete</button></div>` : "";
+const playBtn = s => blobUrl(s.audioId) ? `<button class="play-btn" type="button" data-act="play" data-id="${esc(s.id)}">${ICON.play}Listen</button>` : "";
+const refBtn = s => { const r = parseRef(refOf(s)); return r ? `<button type="button" class="ref-link scripture" data-act="ref" data-ref="${esc(refLabel(r))}">${esc(refOf(s))}</button>` : (refOf(s) ? `<span class="scripture">${esc(refOf(s))}</span>` : ""); };
+function pChips(s) {
+  const c = [];
+  if (s.status === "draft") c.push(`<span class="chip draft">Draft · only editors see this</span>`);
+  if (s.status !== "draft" && isNew("preaching", s.id)) c.push(`<span class="chip soon">New</span>`);
+  if (s.series) c.push(`<button class="chip" type="button" data-act="filter-series" data-id="${esc(s.series)}">${esc(s.series)}</button>`);
+  if (safeUrl(s.videoUrl)) c.push(`<span class="chip">Video</span>`);
+  if (blobUrl(s.pdfId)) c.push(`<span class="chip">PDF notes</span>`);
+  return c.length ? `<div class="chips">${c.join("")}</div>` : "";
+}
+function pCard(s) {
+  return `<article class="card hover pc">
+    <div class="thumb" style="background-image:linear-gradient(180deg, rgba(8,20,50,.25), rgba(8,20,50,.85)), url('${coverFor(s)}')"><span>${esc(refOf(s) || fmtDate(s.date, { month: "long", day: "numeric" }))}</span></div>
+    <div class="inner">
+    <div class="meta"><span>${esc(fmtDate(s.date, { year: "numeric", month: "long", day: "numeric" }))}</span>${s.preacher ? `<span>${esc(s.preacher)}</span>` : ""}</div>
+    <h3><a href="#preaching-${esc(s.id)}">${esc(s.title || "Untitled preaching")}</a></h3>
+    <div class="actions" style="gap:12px">${refBtn(s)}${playBtn(s)}</div>
+    ${s.summary ? `<p class="summary">${esc(s.summary)}</p>` : ""}
+    ${pChips(s)}${adminRow("preaching", s.id)}
+    </div>
+  </article>`;
+}
+function pRow(s) {
+  return `<div class="row">${datebox(s.date)}<div>
+      <h3><a href="#preaching-${esc(s.id)}">${esc(s.title || "Untitled preaching")}</a></h3>
+      <div class="meta">${refBtn(s)}${s.preacher ? `<span>${esc(s.preacher)}</span>` : ""}${playBtn(s)}</div>
+      ${s.summary ? `<p class="summary" style="margin-top:6px">${esc(s.summary)}</p>` : ""}
+      <div style="margin-top:8px">${pChips(s)}</div>
+    </div><div class="side">${S.isAdmin ? `<button class="link-btn" data-act="edit-preaching" data-id="${esc(s.id)}">Edit</button><button class="link-btn danger" data-act="del-preaching" data-id="${esc(s.id)}">Delete</button>` : ""}</div></div>`;
+}
+function annCard(a, showState) {
+  const img = blobUrl(a.imageId), st = annState(a), open = S.openAnn.has(a.id);
+  const chips = [];
+  if (a.pinned) chips.push(`<span class="chip pin">Pinned</span>`);
+  if (a.category === "Urgent") chips.push(`<span class="chip urgent">Urgent</span>`); else if (a.category) chips.push(`<span class="chip">${esc(a.category)}</span>`);
+  if (st === "live" && isNew("announcement", a.id)) chips.push(`<span class="chip soon">New</span>`);
+  if (showState && st !== "live") chips.push(`<span class="chip ${st === "scheduled" ? "warn" : "draft"}">${st === "scheduled" ? "Scheduled for " + esc(fmtDate(a.postDate, { month: "short", day: "numeric" })) : st === "expired" ? "Expired" : "Draft"}</span>`);
+  const link = safeUrl(a.link); const long = (a.body || "").length > 260;
+  return `<article class="card ann${a.category === "Urgent" ? " is-urgent" : ""}${open ? " open" : ""}">
+    ${chips.length ? `<div class="chips">${chips.join("")}</div>` : ""}
+    <h3>${esc(a.title || "Announcement")}</h3>
+    <div class="meta"><span>Posted ${esc(fmtDate(a.postDate || "", { month: "long", day: "numeric", year: "numeric" }) || "recently")}</span>${a.expires ? `<span>Until ${esc(fmtDate(a.expires, { month: "short", day: "numeric" }))}</span>` : ""}</div>
+    ${img ? `<img src="${img}" alt="" loading="lazy" data-act="zoom-img" data-src="${img}">` : ""}
+    ${a.body ? `<div class="prose ${long ? "clip" : ""}" style="font-size:1rem;font-family:var(--body);line-height:1.6">${md(a.body)}</div>` : ""}
+    <div class="actions">${long ? `<button class="link-btn" data-act="toggle-ann" data-id="${esc(a.id)}">${open ? "Show less" : "Read more"}</button>` : ""}${link ? `<a class="btn small" href="${esc(link)}" target="_blank" rel="noopener">${esc(a.linkLabel || "Learn more")}</a>` : ""}</div>
+    ${adminRow("ann", a.id)}
+  </article>`;
+}
+function eventRow(e) {
+  const time = [fmtTime(e.start), fmtTime(e.end)].filter(Boolean).join(" – ");
+  const n = daysUntil(e.date); const rel = n != null && n >= 0 ? relDay(n) : "";
+  return `<div class="row">${datebox(e.date)}<div>
+    <h3>${esc(e.title || "Event")}</h3>
+    <div class="meta">${newChip("event", e.id)}${rel ? `<span class="chip soon">${esc(rel)}</span>` : ""}${time ? `<span>${esc(time)}</span>` : ""}${e.endDate && e.endDate !== e.date ? `<span>Until ${esc(fmtDate(e.endDate, { month: "short", day: "numeric" }))}</span>` : ""}${e.location ? `<span>📍 ${esc(e.location)}</span>` : ""}${e.category ? `<span class="chip">${esc(e.category)}</span>` : ""}</div>
+    ${e.description ? `<div class="body">${md(e.description)}</div>` : ""}
+  </div><div class="side">${S.isAdmin ? `<button class="link-btn" data-act="edit-event" data-id="${esc(e.id)}">Edit</button><button class="link-btn danger" data-act="del-event" data-id="${esc(e.id)}">Delete</button>` : ""}</div></div>`;
+}
+const isLoading = () => S.status === "connecting";
+const skel = (n = 3) => `<div class="grid three">${Array.from({ length: n }, () => `<div class="skel"></div>`).join("")}</div>`;
+const emptyBox = (text, act, label) => `<div class="empty"><p>${text}</p>${S.isAdmin && act ? `<button class="btn" data-act="${act}">${label}</button>` : ""}</div>`;
+
+/* ---------- Views ---------- */
+function viewHome() {
+  const s = cfg(); const times = lines(s.serviceTimes); const hero = blobUrl(s.heroImageId); const live = safeUrl(s.liveUrl);
+  const list = publicPreachings(); const latest = list[0];
+  const anns = liveAnns().slice(0, 3); const evs = upcomingEvents().slice(0, 4);
+  const cover = latest && coverFor(latest);
+  const lr = latest && parseRef(refOf(latest)); const snip = lr && KJV ? getPassage(lr).slice(0, 2).map(x => x.t).join(" ") : "";
+  if (lr && !KJV) loadKJV().then(() => route() === "home" && render()).catch(() => {});
+  const vr = parseRef(s.verseRef || "");
+  const slides = heroSlides(); if (S.slide >= slides.length) S.slide = 0;
+  return `
+  <section class="hero" aria-label="Welcome">
+    <div class="slides" aria-hidden="true">${slides.map((x, i) => `<div class="slide${i === S.slide ? " on" : ""}" style="background-image:url('${x.src}');background-position:${x.pos}"></div>`).join("")}</div>
+    <div class="slide-ui"><span id="slide-cap">${esc(slides[S.slide].cap)}</span><div class="dots" role="group" aria-label="Choose a photo">${slides.map((x, i) => `<button type="button" data-act="slide" data-id="${i}" aria-label="Photo ${i + 1}" aria-current="${i === S.slide}"></button>`).join("")}</div><button class="slide-pause" type="button" data-act="slide-pause" aria-label="${S.slidePaused ? "Play slideshow" : "Pause slideshow"}">${S.slidePaused ? ICON.play : ICON.pause}</button></div>
+    <div class="wrap">
+      <div>
+        <div class="eyebrow">Welcome to</div>
+        <h1>${esc(CHURCH)}</h1>
+        <p class="tag">${esc(s.tagline || "A family of believers gathering to worship God, grow in His Word and serve one another.")}</p>
+        ${s.verseText ? `<div class="verse"><q>${esc(s.verseText)}</q><div class="cite"><span>${esc(s.verseRef || "")} (KJV) · Verse of the week</span>${vr ? `<button type="button" data-act="ref" data-ref="${esc(refLabel(vr))}">Read in context</button>` : ""}</div></div>` : ""}
+        <div class="actions">
+          ${latest ? `<a class="btn light" href="#preaching-${esc(latest.id)}">Hear the latest preaching</a>` : `<a class="btn light" href="#preachings">Browse the Preaching Archives</a>`}
+          ${live ? `<a class="btn outline-light" href="${esc(live)}" target="_blank" rel="noopener">Watch live</a>` : `<a class="btn outline-light" href="#about">Plan a visit</a>`}
+          <a class="btn outline-light" href="#bible">${ICON.book}Open the Bible</a>
+        </div>
+      </div>
+      <aside class="panel" aria-label="Service times">
+        ${countdownHtml()}
+        <h3>Join us this week</h3>
+        ${times.length ? `<ul>${times.map(([a, b]) => `<li><span>${esc(a)}</span><span>${esc(b)}</span></li>`).join("")}</ul>` : `<p style="opacity:.8">Service times will be posted soon.</p>`}
+        ${s.address ? `<p class="addr">📍 ${esc(s.address)}</p>` : ""}
+      </aside>
+    </div>
+  </section>
+  <section class="keyverse" aria-label="2 Timothy 2:15">
+    <div class="narrow">
+      <span class="ref-badge">${ICON.book.replace('<svg', '<svg width="16" height="16"')} The verse we live by</span>
+      <blockquote><span class="q">“</span>Study to shew thyself approved unto God, a workman that needeth not to be ashamed, <mark>rightly dividing the word of truth.</mark><span class="q">”</span></blockquote>
+      <div class="rule"></div>
+      <cite>2 Timothy 2:15 · King James Version</cite>
+      <div class="actions" style="justify-content:center"><button class="btn light" type="button" data-act="ref" data-ref="2 Timothy 2:15">Read in context</button><a class="btn outline-light" href="#bible-55-2-15">Open 2 Timothy 2</a><button class="btn outline-light" type="button" data-act="copy" data-id="Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth. (2 Timothy 2:15, KJV)">Copy verse</button></div>
+    </div>
+  </section>
+  <div class="wrap">
+    <section class="block">
+      <div class="sec-head"><div><div class="eyebrow">This week</div><h2>Announcements</h2></div><div class="actions">${S.isAdmin ? `<button class="btn small" data-act="new-ann">Post an announcement</button>` : ""}<a class="more-link" href="#announcements">See all →</a></div></div>
+      ${isLoading() ? skel(3) : anns.length ? `<div class="grid three">${anns.map(a => annCard(a)).join("")}</div>` : emptyBox("No announcements right now.", "new-ann", "Post the first announcement")}
+    </section>
+    <section class="block">
+      <div class="sec-head"><div><div class="eyebrow">From the pulpit</div><h2>Latest preaching</h2></div><div class="actions">${S.isAdmin ? `<button class="btn small" data-act="new-preaching">Add a preaching</button>` : ""}<a class="more-link" href="#preachings">Preaching Archives →</a></div></div>
+      ${isLoading() ? `<div class="skel" style="height:260px"></div>` : latest ? `<article class="card feature">
+          <div class="cover" style="background-image:linear-gradient(180deg, rgba(8,20,50,.45), rgba(8,20,50,.9)), url('${cover}')">${snip ? `<div class="kjv-snip">“${esc(snip)}”</div>` : ""}${refOf(latest) ? `<div class="ref">${esc(refOf(latest))}</div>` : ""}</div>
+          <div class="txt">
+            <div class="meta"><span>${esc(fmtDate(latest.date))}</span>${latest.preacher ? `<span>${esc(latest.preacher)}</span>` : ""}</div>
+            <h2 style="font-size:2rem"><a href="#preaching-${esc(latest.id)}" style="color:inherit;text-decoration:none">${esc(latest.title)}</a></h2>
+            ${latest.summary ? `<p class="summary">${esc(latest.summary)}</p>` : ""}
+            ${pChips(latest)}
+            <div class="actions" style="margin-top:auto"><a class="btn" href="#preaching-${esc(latest.id)}">Read the preaching</a>${playBtn(latest)}</div>
+          </div></article>
+          ${list.length > 1 ? `<div class="grid three" style="margin-top:16px">${list.slice(1, 4).map(pCard).join("")}</div>` : ""}`
+        : emptyBox("The Preaching Archives are empty for now.", "new-preaching", "Add the first preaching")}
+    </section>
+    <section class="block">
+      <div class="sec-head"><div><div class="eyebrow">Life at TGGC</div><h2>Our church family</h2></div><a class="more-link" href="#gallery">Open the gallery →</a></div>
+      <div class="mosaic">
+        ${[[BUILTIN_PHOTOS[0], "big"], [BUILTIN_PHOTOS[1], "wide"], [BUILTIN_PHOTOS[2], ""], [{ ...BUILTIN_PHOTOS[3], src: P.nightWide }, ""]].map(([g, cls]) => `<button class="ph ${cls}" type="button" data-act="open-photo" data-id="${g.id}" aria-label="${esc(g.caption)}"><img src="${g.src}" alt="${esc(g.caption)}" loading="lazy"><span>${esc(g.caption)}</span></button>`).join("")}
+      </div>
+    </section>
+  </div>
+  <section class="theme" style="margin-top:44px" aria-label="Our foundation">
+    <div class="wrap"><img src="logo.png" alt="${esc(CHURCH)} logo">
+      <div><div class="eyebrow" style="color:var(--gold)">Our foundation · Acts 20:24 (KJV)</div>
+        <blockquote>“${esc(ACTS_20_24).replace("the gospel of the grace of God", "<mark>the gospel of the grace of God</mark>")}”</blockquote>
+        <div class="actions" style="margin-top:20px"><button class="btn light" type="button" data-act="ref" data-ref="Acts 20:22-27">Read it in context</button><a class="btn outline-light" href="#about">About our church</a></div>
+      </div></div>
+  </section>
+  <div class="wrap">
+    <section class="block">
+      <div class="sec-head"><div><div class="eyebrow">Mark your calendar</div><h2>Upcoming events</h2></div><div class="actions">${S.isAdmin ? `<button class="btn small" data-act="new-event">Add an event</button>` : ""}<a class="more-link" href="#events">Full calendar →</a></div></div>
+      <div class="ev-grid">
+        <div>${isLoading() ? `<div class="skel"></div>` : evs.length ? `<div class="rows">${evs.map(eventRow).join("")}</div>` : emptyBox("No upcoming events have been posted yet.", "new-event", "Add an event")}</div>
+        ${visitCard()}
+      </div>
+    </section>
+  </div>`;
+}
+function visitCard() {
+  const s = cfg(); const times = lines(s.serviceTimes); const map = safeUrl(s.mapUrl);
+  return `<aside class="visit" style="--img:url('${P.brothers}')">
+    <div class="eyebrow" style="color:var(--gold)">You're welcome here</div><h3>Plan your visit</h3>
+    ${times.length ? `<ul>${times.map(([a, b]) => `<li><span>${esc(a)}</span><span>${esc(b)}</span></li>`).join("")}</ul>` : `<p style="opacity:.85">Service times will be posted soon.</p>`}
+    <p style="opacity:.9">📍 ${esc(s.address || "Tarlac, Philippines")}</p>
+    <div class="actions">${map ? `<a class="btn light small" href="${esc(map)}" target="_blank" rel="noopener">Get directions</a>` : ""}<a class="btn outline-light small" href="#about">About us</a><button class="btn outline-light small" type="button" data-act="share">${ICON.qr.replace("<svg", '<svg width="16" height="16"')}Share</button></div>
+  </aside>`;
+}
+
+function viewPreachings() {
+  const all = visiblePreachings(); const pub = publicPreachings(); const f = S.f;
+  const books = BOOKS.filter(b => all.some(s => s.book === b));
+  const seriesMap = {}; for (const s of pub) if (s.series) seriesMap[s.series] = (seriesMap[s.series] || 0) + 1;
+  const series = Object.keys(seriesMap).sort();
+  const years = [...new Set(all.map(s => (s.date || "").slice(0, 4)).filter(Boolean))].sort().reverse();
+  const first = pub.length ? pub[pub.length - 1].date : "";
+  return banner(P.worship, "center 35%", `<div class="eyebrow">Every message, kept</div><h1>Preaching Archives</h1>
+      <p class="lead">Search by title, passage or series, browse by book of the Bible, or tap a scripture reference to read it in the King James Version.</p>
+      <div class="stats"><span class="stat"><b>${pub.length}</b> ${pub.length === 1 ? "preaching" : "preachings"}</span><span class="stat"><b>${series.length}</b> series</span><span class="stat"><b>${new Set(pub.map(s => s.book).filter(Boolean)).size}</b> books of the Bible</span>${first ? `<span class="stat">Since <b>${esc(fmtDate(first, { month: "long", year: "numeric" }))}</b></span>` : ""}</div>
+      ${S.isAdmin ? `<div class="actions" style="margin-top:8px"><button class="btn light" data-act="new-preaching">Add a preaching</button></div>` : ""}`) + `<div class="wrap">
+    ${series.length ? `<h3 style="margin:18px 0 10px">Series</h3><div class="shelf">${series.map(x => `<button class="series" type="button" data-act="filter-series" data-id="${esc(x)}" aria-pressed="${f.series === x}"><b>${esc(x)}</b><span>${plural(seriesMap[x], "message")}</span></button>`).join("")}</div>` : ""}
+    <div class="filters" role="search">
+      <div class="q searchbox">${ICON.search}<label class="sr" for="f-q">Search the Preaching Archives</label><input id="f-q" type="search" placeholder="Search title, passage, notes…" value="${esc(f.q)}" data-filter="q"></div>
+      <div><label class="sr" for="f-book">Book</label><select id="f-book" data-filter="book"><option value="">All books</option>${books.map(b => `<option${b === f.book ? " selected" : ""}>${esc(b)}</option>`).join("")}</select></div>
+      <div><label class="sr" for="f-series">Series</label><select id="f-series" data-filter="series"><option value="">All series</option>${series.map(b => `<option${b === f.series ? " selected" : ""}>${esc(b)}</option>`).join("")}</select></div>
+      <div><label class="sr" for="f-year">Year</label><select id="f-year" data-filter="year"><option value="">All years</option>${years.map(b => `<option${b === f.year ? " selected" : ""}>${esc(b)}</option>`).join("")}</select></div>
+      <div><label class="sr" for="f-sort">Sort</label><select id="f-sort" data-filter="sort"><option value="new"${f.sort === "new" ? " selected" : ""}>Newest first</option><option value="old"${f.sort === "old" ? " selected" : ""}>Oldest first</option><option value="bible"${f.sort === "bible" ? " selected" : ""}>Bible order</option></select></div>
+    </div>
+    <div id="results"></div>
+  </div>`;
+}
+function renderResults() {
+  const box = $("#results"); if (!box) return;
+  if (isLoading()) { box.innerHTML = skel(3); return; }
+  const f = S.f; const q = f.q.trim().toLowerCase();
+  const list = visiblePreachings().filter(s =>
+    (!f.book || s.book === f.book) && (!f.series || s.series === f.series) && (!f.year || (s.date || "").startsWith(f.year)) &&
+    (!q || [s.title, refOf(s), s.series, s.summary, s.body, s.preacher, (s.tags || []).join(" ")].join(" ").toLowerCase().includes(q)));
+  if (f.sort === "old") list.reverse();
+  const active = [["q", f.q && `“${f.q}”`], ["book", f.book], ["series", f.series], ["year", f.year]].filter(x => x[1]);
+  const bar = `<div class="active-filters"><span class="hint">Showing ${plural(list.length, "preaching")}</span>${active.map(([k, v]) => `<button class="chip" type="button" data-act="clear-one" data-id="${k}">${esc(v)} ✕</button>`).join("")}${active.length > 1 ? `<button class="link-btn" data-act="clear-filters">Clear all</button>` : ""}
+    <span style="margin-left:auto" class="seg" role="group" aria-label="Layout"><button type="button" data-act="view" data-id="list" aria-pressed="${S.view === "list"}">List</button><button type="button" data-act="view" data-id="grid" aria-pressed="${S.view === "grid"}">Cards</button></span></div>`;
+  if (!S.sermons.length) { box.innerHTML = emptyBox("No preachings yet. Once they're added, they'll appear here by date.", "new-preaching", "Add the first preaching"); return; }
+  if (!list.length) { box.innerHTML = bar + `<div class="empty"><p>No preachings match those filters.</p><button class="btn ghost" data-act="clear-filters">Clear filters</button></div>`; return; }
+  const groups = []; let cur = null;
+  if (f.sort === "bible") list.sort((a, b) => (BOOKS.indexOf(a.book) + 1 || 999) - (BOOKS.indexOf(b.book) + 1 || 999) || String(a.passage || "").localeCompare(String(b.passage || ""), undefined, { numeric: true }));
+  for (const s of list) { const g = f.sort === "bible" ? (s.book || "Other passages") : ((s.date || "").slice(0, 4) || "Undated"); if (!cur || cur.g !== g) { cur = { g, items: [] }; groups.push(cur); } cur.items.push(s); }
+  box.innerHTML = bar + groups.map(g => `<div class="year-head">${esc(g.g)} <small>${plural(g.items.length, "message")}</small></div>` +
+    (S.view === "grid" ? `<div class="grid three">${g.items.map(pCard).join("")}</div>` : `<div class="rows">${g.items.map(pRow).join("")}</div>`)).join("");
+}
+
+function viewPreaching(id) {
+  const s = S.sermons.find(x => x.id === id);
+  if (!s || (s.status === "draft" && !S.isAdmin)) return `<div class="narrow">${isLoading() ? `<div class="skel" style="margin-top:40px;height:300px"></div>` : `<div class="empty" style="margin-top:40px"><p>This preaching isn't available.</p><a class="btn" href="#preachings">Back to the Preaching Archives</a></div>`}</div>`;
+  const list = publicPreachings(); const i = list.findIndex(x => x.id === id);
+  const newer = i > 0 ? list[i - 1] : null, older = i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  const cover = blobUrl(s.coverId), audio = blobUrl(s.audioId), pdf = blobUrl(s.pdfId), video = safeUrl(s.videoUrl);
+  const more = s.series ? list.filter(x => x.series === s.series && x.id !== s.id).slice(0, 6) : [];
+  const r = parseRef(refOf(s)); let passage = "";
+  if (r) {
+    if (KJV) { const vs = getPassage(r); passage = vs.length ? `<div class="passage${vs.length <= 6 ? " open" : ""}" id="passage"><div class="ph"><div><div class="eyebrow">Scripture reading · KJV</div><strong class="scripture">${esc(refLabel(r))}</strong></div><div class="actions"><button class="btn small ghost" data-act="copy-passage" data-ref="${esc(refLabel(r))}">Copy</button><a class="btn small ghost" href="${bibleHash(r.b, r.c1, r.v1)}">Open in Bible</a></div></div><div class="vtext${vs.length > 6 ? " long" : ""}">${versesHtml(vs)}</div>${vs.length > 6 ? `<button class="link-btn" data-act="toggle-passage" style="margin-top:8px">Show the whole passage</button>` : ""}</div>` : ""; }
+    else { passage = `<div class="skel" style="height:120px;margin:20px 0"></div>`; loadKJV().then(() => route() === "preaching-" + id && render()).catch(() => {}); }
+  }
+  return banner(coverFor(s), "center 35%", `
+    <a class="back" href="#preachings">← Preaching Archives</a>
+      ${pChips(s)}
+      <h1>${esc(s.title || "Untitled preaching")}</h1>
+      ${refOf(s) ? `<div class="scripture" style="font-size:1.4rem">${esc(refOf(s))}</div>` : ""}
+      <div class="meta"><span>${esc(fmtDate(s.date))}</span>${s.preacher ? `<span>${esc(s.preacher)}</span>` : ""}${s.body ? `<span>${Math.max(1, Math.round(s.body.split(/\s+/).length / 200))} min read</span>` : ""}</div>
+      ${S.isAdmin ? `<div class="actions"><button class="btn small light" data-act="edit-preaching" data-id="${esc(s.id)}">Edit preaching</button><button class="btn small outline-light" data-act="del-preaching" data-id="${esc(s.id)}">Delete</button></div>` : ""}`, true) + `<div class="narrow">
+    ${audio || video || pdf ? `<div class="media-box">
+      ${audio ? `<button class="btn" data-act="play" data-id="${esc(s.id)}">${ICON.play}Play this preaching</button>` : ""}
+      ${video ? `<a class="btn${audio ? " ghost" : ""}" href="${esc(video)}" target="_blank" rel="noopener">Watch the video</a>` : ""}
+      ${pdf ? `<a class="btn ghost" href="${pdf}" target="_blank" rel="noopener">Open PDF notes</a>` : ""}
+    </div>` : ""}
+    ${passage}
+    ${s.summary ? `<p class="lead-sum" style="margin:20px 0">${esc(s.summary)}</p>` : ""}
+    ${s.body ? `<div class="prose">${md(s.body)}</div>` : (!s.summary ? `<p class="hint">No written notes for this preaching.</p>` : "")}
+    ${(s.tags || []).length ? `<div class="chips" style="margin-top:24px">${s.tags.map(t => `<span class="chip">${esc(t)}</span>`).join("")}</div>` : ""}
+    ${more.length ? `<section class="block"><h3 style="margin-bottom:12px">More from “${esc(s.series)}”</h3><div class="rows">${more.map(pRow).join("")}</div></section>` : ""}
+    <nav class="pager" aria-label="More preachings">${older ? `<a href="#preaching-${esc(older.id)}"><small>← Previous</small>${esc(older.title)}</a>` : "<span></span>"}${newer ? `<a class="next" href="#preaching-${esc(newer.id)}"><small>Next →</small>${esc(newer.title)}</a>` : "<span></span>"}</nav>
+  </div>`;
+}
+
+function viewAnnouncements() {
+  const live = liveAnns(); const cats = [...new Set(live.map(a => a.category).filter(Boolean))];
+  const shown = S.annCat ? live.filter(a => a.category === S.annCat) : live;
+  const other = S.isAdmin ? S.announcements.filter(a => annState(a) !== "live").sort((a, b) => (b.postDate || "").localeCompare(a.postDate || "")) : [];
+  return banner(P.fellowship, "center 40%", `<div class="eyebrow">Church news</div><h1>Announcements</h1><p class="lead">Updates, reminders and news for the whole church family.</p>
+      ${S.isAdmin ? `<div class="actions"><button class="btn light" data-act="new-ann">Post an announcement</button></div>` : ""}`) + `<div class="wrap">
+    ${cats.length > 1 ? `<div class="seg" role="group" aria-label="Filter by category" style="margin:14px 0;flex-wrap:wrap"><button type="button" data-act="ann-cat" data-id="" aria-pressed="${!S.annCat}">All</button>${cats.map(c => `<button type="button" data-act="ann-cat" data-id="${esc(c)}" aria-pressed="${S.annCat === c}">${esc(c)}</button>`).join("")}</div>` : ""}
+    <section class="block" style="padding-top:12px">${isLoading() ? skel(2) : shown.length ? `<div class="grid two">${shown.map(a => annCard(a)).join("")}</div>` : emptyBox("No announcements right now. Check back soon.", "new-ann", "Post an announcement")}</section>
+    ${other.length ? `<section class="block"><div class="sec-head"><div><div class="eyebrow">Only editors see these</div><h2>Drafts, scheduled &amp; expired</h2></div></div><div class="grid two">${other.map(a => annCard(a, true)).join("")}</div></section>` : ""}
+  </div>`;
+}
+
+function viewEvents() {
+  const up = upcomingEvents(), past = pastEvents().slice(0, 20); const times = lines(cfg().serviceTimes);
+  return banner(P.nightWide, "center 60%", `<div class="eyebrow">Calendar</div><h1>Events</h1><p class="lead">Special services, fellowships and gatherings. Everyone is welcome.</p>
+      ${S.isAdmin ? `<div class="actions"><button class="btn light" data-act="new-event">Add an event</button></div>` : ""}`) + `<div class="wrap">
+    ${times.length ? `<section class="block" style="padding-top:16px"><h3 style="margin-bottom:10px">Every week</h3><div class="rows">${times.map(([a, b]) => `<div class="row" style="grid-template-columns:1fr auto"><div><strong>${esc(a)}</strong></div><div class="side" style="font-variant-numeric:tabular-nums;color:var(--accent);font-weight:700">${esc(b)}</div></div>`).join("")}</div></section>` : ""}
+    <section class="block"><h3 style="margin-bottom:10px">Coming up</h3>${isLoading() ? `<div class="skel"></div>` : up.length ? `<div class="rows">${up.map(eventRow).join("")}</div>` : emptyBox("No upcoming events yet.", "new-event", "Add an event")}</section>
+    ${past.length ? `<section class="block"><details><summary style="cursor:pointer;font-weight:700">Past events (${past.length})</summary><div class="rows" style="margin-top:12px">${past.map(eventRow).join("")}</div></details></section>` : ""}
+  </div>`;
+}
+
+function viewBible(r) {
+  const parts = r.split("-"); const b = parts[1] ? Math.min(66, Math.max(1, +parts[1] || 1)) - 1 : null;
+  const c = parts[2] ? Math.max(1, +parts[2] || 1) : null; const v = parts[3] ? +parts[3] || null : null;
+  if (!KJV) {
+    loadKJV().then(() => { if (route().startsWith("bible")) { S.lastRoute = null; render(); } }).catch(() => { const el = $("#bible-load"); if (el) el.innerHTML = `<div class="empty"><p>The Bible couldn't load. Check your connection.</p><button class="btn" data-act="reload-kjv">Try again</button></div>`; });
+    return `<div class="wrap"><div class="page-head"><div class="eyebrow">Holy Bible</div><h1>King James Version</h1></div><div id="bible-load"><div class="skel" style="height:300px"></div></div></div>`;
+  }
+  const head = `<div class="page-head"><div class="eyebrow">Holy Bible · Authorized King James Version</div><h1>${b == null ? "The Bible" : esc(BOOKS[b]) + (c ? " " + c : "")}</h1></div>`;
+  const bookSel = `<div><label class="sr" for="bb-book">Book</label><select id="bb-book" data-nokeep data-act-change="bible-book">${BOOKS.map((x, i) => `<option value="${i + 1}"${i === b ? " selected" : ""}>${esc(x)}</option>`).join("")}</select></div>`;
+  const search = `<form id="bible-search" class="searchbox">${ICON.search}<label class="sr" for="bb-q">Search the Bible or go to a verse</label><input id="bb-q" type="search" placeholder="Search words, or type John 3:16" value="${esc(S.bibleQ)}" data-nokeep></form>`;
+  let results = "";
+  if (S.bibleResults) results = `<section class="block results"><div class="sec-head"><h3>${S.bibleResults.items.length >= 200 ? "First 200" : S.bibleResults.items.length} verses with “${esc(S.bibleResults.q)}”</h3><button class="link-btn" data-act="clear-bible-search">Close results</button></div>${S.bibleResults.items.length ? S.bibleResults.items.map(x => `<div class="res"><a href="${bibleHash(x.b, x.c, x.v)}">${esc(BOOKS[x.b])} ${x.c}:${x.v}</a><div style="font-family:var(--read)">${highlight(x.t, S.bibleResults.q)}</div></div>`).join("") : `<p class="hint">No verses found. Try a different word.</p>`}</section>`;
+  if (b == null || c == null) {
+    const pick = b == null ? `<h3>Old Testament</h3><div class="testament">${BOOKS.slice(0, 39).map((x, i) => `<a href="#bible-${i + 1}">${esc(x)}</a>`).join("")}</div><h3>New Testament</h3><div class="testament">${BOOKS.slice(39).map((x, i) => `<a href="#bible-${i + 40}">${esc(x)}</a>`).join("")}</div>`
+      : `<h3>Choose a chapter</h3><div class="chgrid">${KJV[b].map((_, i) => `<a href="#bible-${b + 1}-${i + 1}">${i + 1}</a>`).join("")}</div>`;
+    const top = b == null ? banner(P.worship, "center 30%", `<div class="eyebrow">Holy Bible · Authorized King James Version</div><h1>The Bible</h1><p class="lead">All 66 books of the King James Version. Choose a book, search any word, or type a reference like John 3:16.</p>`) + `<div class="wrap">` : `<div class="wrap">${head}`;
+    return `${top}<div class="bible-bar" style="grid-template-columns:1fr 2fr">${bookSel}${search}</div>${results}<div style="margin-top:20px">${pick}</div></div>`;
+  }
+  const ch = KJV[b][c - 1]; if (!ch) { location.hash = `bible-${b + 1}-1`; return ""; }
+  const prev = c > 1 ? [b, c - 1] : b > 0 ? [b - 1, KJV[b - 1].length] : null;
+  const next = c < KJV[b].length ? [b, c + 1] : b < 65 ? [b + 1, 1] : null;
+  return `<div class="wrap">
+    ${head}
+    <div class="bible-bar">${bookSel}
+      <div><label class="sr" for="bb-ch">Chapter</label><select id="bb-ch" data-nokeep data-act-change="bible-ch">${KJV[b].map((_, i) => `<option value="${i + 1}"${i + 1 === c ? " selected" : ""}>Chapter ${i + 1}</option>`).join("")}</select></div>
+      <div class="nav-ch">${prev ? `<a class="btn small ghost" href="#bible-${prev[0] + 1}-${prev[1]}" aria-label="Previous chapter">←</a>` : ""}${next ? `<a class="btn small ghost" href="#bible-${next[0] + 1}-${next[1]}" aria-label="Next chapter">→</a>` : ""}</div>
+      ${search}</div>
+    ${results}
+    <div class="narrow" style="width:min(760px,100%)"><div class="chapter">
+      <p class="hint" style="font-family:var(--body);margin-bottom:10px">Tap verses to select them, then copy.</p>
+      ${ch.map((t, i) => `<span class="vs${v === i + 1 ? " target" : ""}${S.bibleSel.has(i + 1) ? " sel" : ""}" data-act="verse" data-id="${i + 1}" id="v${i + 1}"><sup>${i + 1}</sup>${esc(t)} </span>`).join("")}
+    </div>
+    <nav class="pager">${prev ? `<a href="#bible-${prev[0] + 1}-${prev[1]}"><small>← Previous</small>${esc(BOOKS[prev[0]])} ${prev[1]}</a>` : "<span></span>"}${next ? `<a class="next" href="#bible-${next[0] + 1}-${next[1]}"><small>Next →</small>${esc(BOOKS[next[0]])} ${next[1]}</a>` : "<span></span>"}</nav></div>
+    ${S.bibleSel.size ? `<div class="selbar" role="toolbar" aria-label="Selected verses"><span>${plural(S.bibleSel.size, "verse")} selected</span><button type="button" data-act="copy-verses">Copy</button><button type="button" class="x" data-act="clear-verses" aria-label="Clear selection">✕</button></div>` : ""}
+  </div>`;
+}
+function highlight(t, q) { const e = esc(t); const words = q.trim().split(/\s+/).filter(w => w.length > 1).map(w => esc(w).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")); return words.length ? e.replace(new RegExp(`(${words.join("|")})`, "gi"), "<mark>$1</mark>") : e; }
+function bibleSearch(q) {
+  q = q.trim(); if (!q || !KJV) return;
+  const r = parseRef(q); if (r) { S.bibleResults = null; location.hash = bibleHash(r.b, r.c1, r.v1).slice(1); return; }
+  const words = q.toLowerCase().split(/\s+/).filter(Boolean); const items = [];
+  outer: for (let b = 0; b < 66; b++) for (let c = 0; c < KJV[b].length; c++) for (let v = 0; v < KJV[b][c].length; v++) {
+    const t = KJV[b][c][v], tl = t.toLowerCase();
+    if (words.every(w => tl.includes(w))) { items.push({ b, c: c + 1, v: v + 1, t }); if (items.length >= 200) break outer; }
+  }
+  S.bibleResults = { q, items }; render();
+}
+
+function viewGallery() {
+  const items = galleryOrder(); const albums = []; const map = {};
+  for (const g of items) { const k = g.album || "Church life"; if (!map[k]) { map[k] = []; albums.push(k); } map[k].push(g); }
+  return banner(P.brothers, "center 30%", `<div class="eyebrow">Memories</div><h1>Gallery</h1><p class="lead">Photos from our services, fellowships and gatherings. Tap a photo to view it larger, then use the arrows to move between photos.</p>
+      <div class="stats"><span class="stat"><b>${items.length}</b> photos</span><span class="stat"><b>${albums.length}</b> ${albums.length === 1 ? "album" : "albums"}</span></div>
+      ${S.isAdmin ? `<div class="actions"><button class="btn light" data-act="add-photos">Upload photos</button></div>` : ""}`) + `<div class="wrap">
+    ${albums.map(a => `<section class="album"><h3>${esc(a)} <small>${plural(map[a].length, "photo")}</small></h3><div class="photos">${map[a].map(g => { const u = photoSrc(g); return u ? `<button class="photo" data-act="open-photo" data-id="${esc(g.id)}" aria-label="${esc(g.caption || "Open photo")}"><img src="${u}" alt="${esc(g.caption || "")}" loading="lazy">${g.caption ? `<span>${esc(g.caption)}</span>` : ""}</button>` : ""; }).join("")}</div></section>`).join("")}
+    ${isLoading() ? `<div class="skel" style="margin-top:20px"></div>` : ""}
+  </div>`;
+}
+const photoSrc = g => g.src || blobUrl(g.imageId);
+const galleryOrder = () => { const items = [...S.gallery].sort(sortByDateDesc); const order = []; const seen = {}; for (const g of items) { const k = g.album || "Church life"; (seen[k] = seen[k] || []).push(g); } for (const k of Object.keys(seen)) order.push(...seen[k]); return order.concat(BUILTIN_PHOTOS); };
+
+function viewAbout() {
+  const s = cfg(); const photo = blobUrl(s.pastorPhotoId); const mins = lines(s.ministries); const times = lines(s.serviceTimes); const map = safeUrl(s.mapUrl);
+  const minPhotos = [P.worship, P.fellowship, P.brothers, P.nightWide];
+  return banner(P.brothers, "center 28%", `<div class="eyebrow">Who we are</div><h1>About ${esc(CHURCH)}</h1>${s.tagline ? `<p class="lead">${esc(s.tagline)}</p>` : ""}
+    ${S.isAdmin ? `<div class="actions"><button class="btn light" data-act="edit-settings">Edit church details</button></div>` : ""}`) + `<div class="wrap">
+    <section class="block"><div class="card logo-meaning"><img src="logo.png" alt="${esc(CHURCH)} logo">
+      <div><div class="eyebrow">Our logo and theme verse</div><h2 style="margin:6px 0 10px">The gospel of the grace of God</h2>
+      <p style="color:var(--muted)">The cross of Christ, the open Word of God, and the nations of Asia, gathered under our theme verse:</p>
+      <p style="font-family:var(--read);font-style:italic;font-size:1.15rem;margin-top:10px">“${esc(ACTS_20_24)}” <button class="ref-link scripture" style="font-style:normal" data-act="ref" data-ref="Acts 20:24">Acts 20:24 (KJV)</button></p></div></div></section>
+    <div class="grid two" style="margin-top:8px;align-items:start">
+      <section class="card"><img class="about-img" src="${P.family}" alt="Photo collage of the TGGC church family" style="max-height:380px;object-fit:contain;background:var(--accent-soft)"><h2>Our story &amp; mission</h2>${s.about ? `<div class="prose" style="font-size:1.05rem">${md(s.about)}</div>` : `<p class="hint">The church's story and mission will be shared here soon.</p>`}</section>
+      <section class="card">${photo ? `<img class="about-img" src="${photo}" alt="${esc(s.pastorName || "Our pastor")}" style="max-height:380px">` : `<img class="about-img" src="${P.fellowship}" alt="Church family gathered after the service" style="max-height:380px">`}
+        <div class="eyebrow">Our pastor</div><h2>${esc(s.pastorName || "Our Pastor")}</h2>${s.pastorBio ? `<div class="prose" style="font-size:1.05rem">${md(s.pastorBio)}</div>` : `<p class="hint">A message from our pastor will be posted here soon.</p>`}</section>
+    </div>
+    ${s.beliefs ? `<section class="block"><div class="card"><h2>What we believe</h2><div class="prose" style="font-size:1.05rem">${md(s.beliefs)}</div></div></section>` : ""}
+    ${mins.length ? `<section class="block"><h2 style="margin-bottom:14px">Ministries</h2><div class="grid three">${mins.map(([a, b], i) => `<div class="card hover pc"><div class="thumb" style="background-image:linear-gradient(180deg, rgba(8,20,50,.2), rgba(8,20,50,.8)), url('${minPhotos[i % minPhotos.length]}')"><span>${esc(a)}</span></div><div class="inner">${b ? `<p style="color:var(--muted)">${esc(b)}</p>` : `<p class="hint">Ask us how to join.</p>`}</div></div>`).join("")}</div></section>` : ""}
+    <section class="block"><h2 style="margin-bottom:14px">Plan your visit</h2><div class="ev-grid">
+      <div class="grid two"><div class="card"><h3>When</h3>${times.length ? times.map(([a, b]) => `<p><strong>${esc(a)}</strong>${b ? ` · ${esc(b)}` : ""}</p>`).join("") : `<p class="hint">Service times will be posted soon.</p>`}</div>
+      <div class="card"><h3>Where</h3>${s.address ? `<p>${esc(s.address)}</p>` : `<p>Tarlac, Philippines</p>`}${map ? `<p><a class="btn small" href="${esc(map)}" target="_blank" rel="noopener">Open in Maps</a></p>` : ""}${s.phone ? `<p>Phone: ${esc(s.phone)}</p>` : ""}${s.email ? `<p>Email: ${esc(s.email)}</p>` : ""}</div></div>
+      ${visitCard()}
+    </div></section>
+  </div>`;
+}
+
+function viewGive() {
+  const s = cfg();
+  return banner(P.fellowship, "center 45%", `<div class="eyebrow">Tithes &amp; offerings</div><h1>Give</h1>
+      <p class="lead" style="font-family:var(--read);font-style:italic">“Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver.” <button class="ref-link scripture" style="font-style:normal;color:var(--gold)" data-act="ref" data-ref="2 Corinthians 9:7">2 Corinthians 9:7 (KJV)</button></p>`, true) + `<div class="narrow">
+    <div class="card" style="margin-top:28px">${s.givingInfo ? `<div class="prose" style="font-size:1.05rem">${md(s.givingInfo)}</div>${givingCopyButtons(s.givingInfo)}` : `<p class="hint">Giving details (bank or e-wallet accounts) will be posted here soon. You may also give during our worship services.</p>`}
+    ${S.isAdmin ? `<div class="admin-row"><button class="link-btn" data-act="edit-settings">Edit giving details</button></div>` : ""}</div>
+  </div>`;
+}
+function givingCopyButtons(t) {
+  const nums = [...new Set((t.match(/\b\d[\d\s-]{8,}\d\b/g) || []).map(x => x.trim()))].slice(0, 4);
+  return nums.length ? `<div class="actions" style="margin-top:10px">${nums.map(n => `<button class="btn small ghost" data-act="copy" data-id="${esc(n.replace(/\s|-/g, ""))}">Copy ${esc(n)}</button>`).join("")}</div>` : "";
+}
+
+function viewAdmin() {
+  const s = cfg(); const pub = publicPreachings(); const drafts = S.sermons.filter(x => x.status === "draft");
+  const live = liveAnns(); const up = upcomingEvents();
+  const checks = [[!!s.serviceTimes, "Service times"], [!!(s.address || s.phone), "Address and contact details"], [!!s.pastorName, "Pastor's name and bio"], [!!s.verseText, "Verse of the week"], [S.sermons.length > 0, "First preaching in the archive"], [!!s.givingInfo, "Giving details"]];
+  const doneN = checks.filter(c => c[0]).length;
+  return banner(P.worship, "center 35%", `<div class="eyebrow">Only editors see this page</div><h1>Pastor's Desk</h1><p class="lead">Post preachings, news and events. Changes appear for everyone right away.</p>
+      <div class="actions"><span class="stat">Logged in as <b>${esc(window.TGGC_BACKEND && TGGC_BACKEND.email ? TGGC_BACKEND.email() : "")}</b></span><button class="btn small outline-light" type="button" data-act="logout">Log out</button></div>`) + `<div class="wrap">
+    <div class="quick">
+      <button type="button" data-act="new-preaching"><i>＋</i><b>Add a preaching</b><span>Notes, audio, PDF and KJV passage</span></button>
+      <button type="button" data-act="new-ann"><i>＋</i><b>Post an announcement</b><span>Pin it, schedule it or mark it urgent</span></button>
+      <button type="button" data-act="new-event"><i>＋</i><b>Add an event</b><span>Shows a countdown on the calendar</span></button>
+      <button type="button" data-act="add-photos"><i>＋</i><b>Upload photos</b><span>Several at once, resized for you</span></button>
+      <button type="button" data-act="edit-verse"><i>✎</i><b>Verse of the week</b><span>Type a reference, KJV text fills in</span></button>
+      <button type="button" data-act="edit-settings"><i>✎</i><b>Church details</b><span>Times, address, pastor, giving</span></button>
+    </div>
+    <div class="tiles">
+      <div class="tile"><b>${pub.length}</b><span>Preachings published</span></div>
+      <div class="tile"><b>${drafts.length}</b><span>Preaching drafts</span></div>
+      <div class="tile"><b>${live.length}</b><span>Announcements live</span></div>
+      <div class="tile"><b>${up.length}</b><span>Upcoming events</span></div>
+      <div class="tile"><b>${S.gallery.length}</b><span>Photos in the gallery</span></div>
+    </div>
+    <div class="grid two" style="margin-top:24px;align-items:start">
+      <section class="card"><h3>Getting the site ready</h3><p class="hint">${doneN} of ${checks.length} done</p><div class="meter"><div style="width:${Math.round(doneN / checks.length * 100)}%"></div></div><ul class="checklist">${checks.map(([ok, l]) => `<li class="${ok ? "done" : ""}"><span class="dot">${ok ? "✓" : ""}</span>${esc(l)}</li>`).join("")}</ul></section>
+      <div class="grid">
+        ${drafts.length ? `<section class="card"><h3>Preaching drafts</h3>${drafts.map(d => `<p><a href="#preaching-${esc(d.id)}">${esc(d.title || "Untitled")}</a> <span class="hint">${esc(fmtDate(d.date, { month: "short", day: "numeric" }))}</span></p>`).join("")}</section>` : ""}
+        <section class="card"><h3>Share with the church</h3>
+          <div style="display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center">${SHARE.card ? `<img class="share-card-prev" src="${SHARE.card}" alt="Printable QR card preview">` : `<div class="skel" style="height:160px"></div>`}<div class="grid" style="gap:8px"><p class="hint" style="font-size:.98rem">Print this card for the bulletin board or post it in your group chats. Scanning it opens the website.</p><div class="actions"><button class="btn small" data-act="dl" data-id="card" data-name="TGGC-QR-card-for-printing.png">Download printable card</button><button class="btn small ghost" data-act="share">Open share window</button></div></div></div>
+          <p class="hint" style="font-size:.95rem;margin-top:8px">Visitors get a “What's new” notice when new preachings, announcements or events are posted. To let a helper (secretary, media team) post too, add them in Supabase: Authentication → Users → Add user, then add their email to the editors table.</p></section>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------- Hero light canvas ---------- */
+let lightRaf = 0;
+function drawLight() {
+  const c = $("#light"); if (!c) return; cancelAnimationFrame(lightRaf);
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const ctx = c.getContext("2d"); const dpr = Math.min(2, devicePixelRatio || 1);
+  const size = () => { c.width = c.offsetWidth * dpr; c.height = c.offsetHeight * dpr; };
+  size();
+  const motes = Array.from({ length: 40 }, () => ({ x: Math.random(), y: Math.random(), r: Math.random() * 1.8 + .4, s: Math.random() * .00025 + .00008, a: Math.random() * .5 + .15 }));
+  const frame = t => {
+    if (!document.body.contains(c)) return;
+    if (c.width !== c.offsetWidth * dpr) size();
+    const w = c.width, h = c.height; ctx.clearRect(0, 0, w, h);
+    const sway = reduce ? 0 : Math.sin(t / 4000) * .04;
+    for (let i = 0; i < 4; i++) {
+      const x0 = w * (.62 + i * .09 + sway), g = ctx.createLinearGradient(x0, 0, x0 - w * .25, h);
+      g.addColorStop(0, "rgba(231,207,149,0.10)"); g.addColorStop(1, "rgba(231,207,149,0)");
+      ctx.fillStyle = g; ctx.beginPath(); ctx.moveTo(x0, 0); ctx.lineTo(x0 + w * .05, 0); ctx.lineTo(x0 - w * .18, h); ctx.lineTo(x0 - w * .32, h); ctx.closePath(); ctx.fill();
+    }
+    for (const m of motes) { if (!reduce) { m.y -= m.s * 16; if (m.y < -.02) { m.y = 1.02; m.x = Math.random(); } } ctx.fillStyle = `rgba(244,234,210,${m.a})`; ctx.beginPath(); ctx.arc(m.x * w, m.y * h, m.r * dpr, 0, 7); ctx.fill(); }
+    if (!reduce) lightRaf = requestAnimationFrame(frame);
+  };
+  lightRaf = requestAnimationFrame(frame);
+}
+
+/* ---------- Modal ---------- */
+let modalClose = null, lastFocus = null;
+function openModal(title, html, { wide = false, palette = false, onClose } = {}) {
+  if (!$("#modal").hidden) { modalClose = null; }
+  lastFocus = document.activeElement;
+  $("#modal-title").textContent = title; $("#modal-body").innerHTML = html;
+  const card = $(".modal-card"); card.classList.toggle("wide", wide); card.classList.toggle("palette", palette);
+  $("#modal").hidden = false; modalClose = onClose || null;
+  const first = $("#modal-body").querySelector("input:not([type=hidden]):not([type=checkbox]), textarea, select, button"); if (first) first.focus();
+}
+function closeModal() { $("#modal").hidden = true; $("#modal-body").innerHTML = ""; S.lb = null; if (modalClose) { const f = modalClose; modalClose = null; f(); } if (lastFocus && document.body.contains(lastFocus)) lastFocus.focus(); }
+function confirmBox(msg, yes = "Delete") {
+  return new Promise(res => {
+    openModal("Are you sure?", `<p>${esc(msg)}</p><div class="modal-foot"><button class="btn ghost" type="button" id="cf-no">Cancel</button><button class="btn danger" type="button" id="cf-yes">${esc(yes)}</button></div>`, { onClose: () => res(false) });
+    $("#cf-no").onclick = () => closeModal();
+    $("#cf-yes").onclick = () => { modalClose = null; closeModal(); res(true); };
+  });
+}
+async function showRef(refStr) {
+  const r = parseRef(refStr); if (!r) return;
+  openModal(refLabel(r) + " (KJV)", `<div class="skel" style="height:120px"></div>`);
+  try { await loadKJV(); } catch { $("#modal-body").innerHTML = `<p>The Bible couldn't load. Check your connection and try again.</p>`; return; }
+  if ($("#modal").hidden) return;
+  const vs = getPassage(r);
+  $("#modal-body").innerHTML = vs.length ? `<div class="vtext" style="max-height:none">${versesHtml(vs)}</div>
+    <div class="modal-foot"><button class="btn ghost" type="button" data-act="copy-passage" data-ref="${esc(refLabel(r))}">Copy</button><a class="btn" href="${bibleHash(r.b, r.c1, r.v1)}" data-close>Read the whole chapter</a></div>` : `<p>That passage wasn't found. Check the chapter and verse numbers.</p>`;
+}
+
+/* ---------- Command palette ---------- */
+function openPalette() {
+  openModal("Search", `<div class="searchbox">${ICON.search}<label class="sr" for="pal-q">Search preachings, announcements, events, or a Bible verse</label><input id="pal-q" type="search" autocomplete="off" placeholder="Try “grace”, “youth camp” or “Romans 8:28”"></div><ul class="pal-list" id="pal-list" role="listbox"></ul><p class="hint" style="margin-top:10px">↑ ↓ to move · Enter to open · Esc to close</p>`, { palette: true });
+  S.palIdx = 0; paletteResults("");
+  $("#pal-q").addEventListener("input", e => { S.palIdx = 0; paletteResults(e.target.value); });
+  $("#pal-q").addEventListener("keydown", e => {
+    const items = [...document.querySelectorAll("#pal-list button")];
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); S.palIdx = (S.palIdx + (e.key === "ArrowDown" ? 1 : -1) + items.length) % Math.max(1, items.length); items.forEach((b, i) => b.setAttribute("aria-selected", i === S.palIdx)); items[S.palIdx] && items[S.palIdx].scrollIntoView({ block: "nearest" }); }
+    if (e.key === "Enter") { e.preventDefault(); items[S.palIdx] && items[S.palIdx].click(); }
+  });
+}
+function paletteResults(q) {
+  const ql = q.trim().toLowerCase(); const out = [];
+  const r = parseRef(q); if (r) out.push(["Bible", `${refLabel(r)} (KJV)`, "Read this passage", "ref:" + refLabel(r)]);
+  for (const [k, l] of NAV) if (!ql || l.toLowerCase().includes(ql)) out.push(["Page", l, "", "#" + k]);
+  if (ql) {
+    for (const s of visiblePreachings()) if ([s.title, refOf(s), s.series, s.summary, s.body].join(" ").toLowerCase().includes(ql)) out.push(["Preaching", s.title, [fmtDate(s.date, { month: "short", day: "numeric", year: "numeric" }), refOf(s)].filter(Boolean).join(" · "), "#preaching-" + s.id]);
+    for (const a of liveAnns()) if ([a.title, a.body].join(" ").toLowerCase().includes(ql)) out.push(["News", a.title, a.category || "", "#announcements"]);
+    for (const e of upcomingEvents()) if ([e.title, e.location, e.description].join(" ").toLowerCase().includes(ql)) out.push(["Event", e.title, fmtDate(e.date, { month: "short", day: "numeric" }), "#events"]);
+    if (ql.length > 2 && !r) out.push(["Bible", `Search the KJV for “${q.trim()}”`, "", "bsearch:" + q.trim()]);
+  }
+  const list = $("#pal-list"); if (!list) return;
+  list.innerHTML = out.slice(0, 14).map(([t, l, sub, go], i) => `<li><button type="button" role="option" aria-selected="${i === S.palIdx}" data-act="pal-go" data-id="${esc(go)}"><small>${esc(t)}</small><span>${esc(l)}${sub ? `<em>${esc(sub)}</em>` : ""}</span></button></li>`).join("") || `<li class="hint" style="padding:10px">Nothing found.</li>`;
+}
+function palGo(go) {
+  closeModal();
+  if (go.startsWith("ref:")) return showRef(go.slice(4));
+  if (go.startsWith("bsearch:")) { S.bibleQ = go.slice(8); if (!route().startsWith("bible")) location.hash = "bible"; loadKJV().then(() => bibleSearch(S.bibleQ)).catch(() => toast("The Bible couldn't load.", true)); return; }
+  location.hash = go.slice(1);
+}
+
+/* ---------- Player ---------- */
+const audio = $("#pl-audio");
+function playPreaching(id) {
+  const s = S.sermons.find(x => x.id === id); const u = s && blobUrl(s.audioId); if (!u) return;
+  if (S.playing !== id) { audio.src = u; S.playing = id; $("#pl-title").textContent = s.title; }
+  $("#player").hidden = false; document.body.classList.add("has-player");
+  audio.play().catch(() => toast("Tap play to start the audio.", true));
+}
+function syncPlayer() {
+  $("#pl-toggle").innerHTML = audio.paused ? ICON.play : ICON.pause; $("#pl-toggle").setAttribute("aria-label", audio.paused ? "Play" : "Pause");
+  $("#pl-cur").textContent = mmss(audio.currentTime); $("#pl-dur").textContent = mmss(audio.duration);
+  if (!S.seeking && audio.duration) $("#pl-seek").value = Math.round(audio.currentTime / audio.duration * 1000);
+}
+["play", "pause", "timeupdate", "loadedmetadata", "ended"].forEach(e => audio.addEventListener(e, syncPlayer));
+$("#pl-toggle").onclick = () => audio.paused ? audio.play().catch(() => {}) : audio.pause();
+$("#pl-seek").addEventListener("input", e => { S.seeking = true; if (audio.duration) $("#pl-cur").textContent = mmss(e.target.value / 1000 * audio.duration); });
+$("#pl-seek").addEventListener("change", e => { S.seeking = false; if (audio.duration) audio.currentTime = e.target.value / 1000 * audio.duration; });
+$("#pl-back").onclick = () => { audio.currentTime = Math.max(0, audio.currentTime - 15); };
+$("#pl-fwd").onclick = () => { audio.currentTime = Math.min(audio.duration || 0, audio.currentTime + 30); };
+$("#pl-speed").onclick = () => { const sp = [1, 1.25, 1.5, 0.75]; const n = sp[(sp.indexOf(audio.playbackRate) + 1) % sp.length]; audio.playbackRate = n; $("#pl-speed").textContent = n + "×"; };
+$("#pl-close").onclick = () => { audio.pause(); $("#player").hidden = true; document.body.classList.remove("has-player"); };
+syncPlayer();
+
+/* ---------- Gallery lightbox ---------- */
+function photoView(id) {
+  const all = galleryOrder(); const i = all.findIndex(x => x.id === id); const g = all[i]; if (!g) return;
+  S.lb = { i, ids: all.map(x => x.id) };
+  openModal(`${g.album || "Photo"} · ${i + 1} of ${all.length}`, `<div class="lightbox"><img src="${photoSrc(g)}" alt="${esc(g.caption || "")}">${all.length > 1 ? `<button class="lb-nav prev" data-act="lb" data-id="-1" aria-label="Previous photo">‹</button><button class="lb-nav next" data-act="lb" data-id="1" aria-label="Next photo">›</button>` : ""}</div>
+    ${g.caption ? `<p style="margin-top:12px">${esc(g.caption)}</p>` : ""}${g.date ? `<p class="hint">${esc(fmtDate(g.date, { month: "long", day: "numeric", year: "numeric" }))}</p>` : ""}
+    ${S.isAdmin && !g.src ? `<form id="ph-form" class="field" style="margin-top:14px"><label for="ph-cap">Caption</label><input id="ph-cap" type="text" value="${esc(g.caption)}" maxlength="140">
+      <div class="modal-foot"><button class="btn danger" type="button" data-act="del-photo" data-id="${esc(g.id)}">Delete photo</button><button class="btn" type="submit" id="save-btn">Save caption</button></div></form>` : ""}`, { wide: true });
+  S.lb = { i, ids: all.map(x => x.id) };
+  const f = $("#ph-form"); if (f) f.onsubmit = e => { e.preventDefault(); saving($("#save-btn"), async () => { const { id: _i, ...rest } = g; await writeDoc("gallery", g.id, { ...rest, caption: val("ph-cap") }); closeModal(); toast("Caption saved."); }); };
+}
+function lbStep(d) { if (!S.lb) return; const n = (S.lb.i + d + S.lb.ids.length) % S.lb.ids.length; photoView(S.lb.ids[n]); }
+
+/* ---------- Form helpers ---------- */
+const fld = (id, label, input, hint = "", full = false) => `<div class="field${full ? " full" : ""}"><label for="${id}">${label}</label>${input}${hint ? `<p class="hint">${hint}</p>` : ""}</div>`;
+const inp = (id, v = "", type = "text", attrs = "") => `<input id="${id}" type="${type}" value="${esc(v)}" ${attrs}>`;
+const ta = (id, v = "", rows = 4, attrs = "") => `<textarea id="${id}" rows="${rows}" ${attrs}>${esc(v)}</textarea>`;
+const sel = (id, opts, v) => `<select id="${id}">${opts.map(o => { const [val, lab] = Array.isArray(o) ? o : [o, o]; return `<option value="${esc(val)}"${val === (v || "") ? " selected" : ""}>${esc(lab)}</option>`; }).join("")}</select>`;
+function fileFld(id, label, accept, cur, kind, hint = "") {
+  const u = blobUrl(cur);
+  const preview = u ? `<div class="current-file">${kind === "image" ? `<img src="${u}" alt="">` : `<span>Current file attached.</span>`}<label class="check"><input type="checkbox" id="${id}-rm"> Remove</label></div>` : "";
+  return fld(id, label, `${preview}<input id="${id}" type="file" accept="${accept}">`, hint || (S.assets ? "" : "Log in as an editor to upload files."));
+}
+const val = id => { const el = document.getElementById(id); return el ? (el.type === "checkbox" ? el.checked : el.value.trim()) : ""; };
+const mdHint = "Tip: start a line with # for a heading, &gt; for a quote, - for a bullet. Wrap words in **double stars** for bold. Bible references like John 3:16 become tappable automatically.";
+async function shrinkImage(file, max = 1800) {
+  if (!/^image\/(jpeg|png|webp)$/.test(file.type)) return file;
+  try {
+    const bmp = await createImageBitmap(file); const scale = Math.min(1, max / Math.max(bmp.width, bmp.height));
+    if (scale === 1 && file.size < 1.5e6) return file;
+    const c = document.createElement("canvas"); c.width = Math.round(bmp.width * scale); c.height = Math.round(bmp.height * scale);
+    c.getContext("2d").drawImage(bmp, 0, 0, c.width, c.height);
+    return await new Promise(r => c.toBlob(b => r(b || file), "image/jpeg", 0.85));
+  } catch { return file; }
+}
+async function uploadFrom(id, kind, cur) {
+  const el = document.getElementById(id); const rm = document.getElementById(id + "-rm"); const file = el && el.files && el.files[0];
+  if (file) {
+    if (!S.assets) throw new Error("Uploads aren't available for your account.");
+    const blob = kind === "image" ? await shrinkImage(file) : file;
+    if (blob.size > 50 * 1024 * 1024) throw new Error(`“${file.name}” is larger than 50 MB. For long recordings, upload to YouTube or Facebook and paste the link instead.`);
+    return (await S.assets.upload(blob)).id;
+  }
+  if (rm && rm.checked) return "";
+  return cur || "";
+}
+async function saving(btn, fn) {
+  const label = btn.textContent; btn.disabled = true; btn.textContent = "Saving…";
+  try { await fn(); } catch (e) { toast(errMsg(e), true); btn.disabled = false; btn.textContent = label; }
+}
+const formFoot = l => `<div class="modal-foot"><button class="btn ghost" type="button" data-close>Cancel</button><button class="btn" type="submit" id="save-btn">${l}</button></div>`;
+async function writeDoc(col, id, data) { if (COL_TYPE[col]) NOTE.mine.add(COL_TYPE[col] + ":" + id); await S.db.collection(col).doc(id).set(data); }
+function wirePreview(bookId, passId, outId) {
+  const upd = async () => {
+    const out = $("#" + outId); if (!out) return;
+    const r = parseRef(`${val(bookId)} ${val(passId)}`);
+    if (!r) { out.innerHTML = `<span class="hint">Choose a book and type the chapter and verses to preview the KJV text.</span>`; return; }
+    try { await loadKJV(); } catch { out.textContent = "The Bible couldn't load."; return; }
+    const vs = getPassage(r); out.innerHTML = vs.length ? `<strong>${esc(refLabel(r))} (KJV)</strong><br>${versesHtml(vs.slice(0, 12))}${vs.length > 12 ? " …" : ""}` : `<span class="hint">That passage wasn't found.</span>`;
+  };
+  ["input", "change"].forEach(ev => { $("#" + bookId).addEventListener(ev, upd); $("#" + passId).addEventListener(ev, upd); });
+  upd();
+}
+
+/* ---------- Editors ---------- */
+function preachingForm(id) {
+  const s = S.sermons.find(x => x.id === id) || { date: today(), preacher: cfg().pastorName || "", status: "published" };
+  const seriesList = [...new Set(S.sermons.map(x => x.series).filter(Boolean))];
+  openModal(id ? "Edit preaching" : "Add a preaching", `<form id="ed-form"><div class="form-grid">
+    ${fld("s-title", "Title *", inp("s-title", s.title, "text", 'required maxlength="160"'), "", true)}
+    ${fld("s-date", "Date preached *", inp("s-date", s.date, "date", "required"))}
+    ${fld("s-preacher", "Preacher", inp("s-preacher", s.preacher, "text", 'maxlength="80"'))}
+    ${fld("s-book", "Bible book", sel("s-book", [["", "— Choose a book —"], ...BOOKS], s.book))}
+    ${fld("s-passage", "Chapter and verses", inp("s-passage", s.passage, "text", 'placeholder="e.g. 3:16-21" maxlength="60"'))}
+    <div class="field full"><span class="hint">Scripture preview</span><div class="kjv-preview" id="s-prev"></div></div>
+    ${fld("s-series", "Series", inp("s-series", s.series, "text", 'list="series-list" maxlength="80" placeholder="e.g. Walking by Faith"') + `<datalist id="series-list">${seriesList.map(x => `<option value="${esc(x)}">`).join("")}</datalist>`)}
+    ${fld("s-status", "Visibility", sel("s-status", [["published", "Published for everyone"], ["draft", "Draft (only editors see it)"]], s.status))}
+    ${fld("s-summary", "Short summary", ta("s-summary", s.summary, 3, 'maxlength="600"'), "One to three sentences shown in the archive.", true)}
+    ${fld("s-body", "Preaching notes or full manuscript", ta("s-body", s.body, 14), mdHint, true)}
+    ${fld("s-video", "Video link (YouTube or Facebook)", inp("s-video", s.videoUrl, "url", 'placeholder="https://…"'), "", true)}
+    ${fileFld("s-audio", "Audio recording", "audio/*", s.audioId, "audio", "MP3 or M4A, up to 50 MB (about 1 hour at standard quality).")}
+    ${fileFld("s-pdf", "Notes PDF", "application/pdf", s.pdfId, "pdf")}
+    ${fileFld("s-cover", "Cover image", "image/*", s.coverId, "image")}
+    ${fld("s-tags", "Topics", inp("s-tags", (s.tags || []).join(", "), "text", 'placeholder="faith, grace, family"'), "Separate with commas.")}
+  </div>${formFoot(id ? "Save changes" : "Save preaching")}</form>`, { wide: true });
+  wirePreview("s-book", "s-passage", "s-prev");
+  $("#ed-form").onsubmit = e => { e.preventDefault(); saving($("#save-btn"), async () => {
+    const nid = id || newId();
+    if (val("s-video") && !safeUrl(val("s-video"))) throw new Error("The video link should start with https://");
+    const data = {
+      title: val("s-title"), date: val("s-date"), preacher: val("s-preacher"), book: val("s-book"), passage: val("s-passage"),
+      series: val("s-series"), status: val("s-status"), summary: val("s-summary"), body: $("#s-body").value,
+      videoUrl: safeUrl(val("s-video")), tags: val("s-tags").split(",").map(t => t.trim()).filter(Boolean).slice(0, 12),
+      audioId: await uploadFrom("s-audio", "audio", s.audioId), pdfId: await uploadFrom("s-pdf", "pdf", s.pdfId), coverId: await uploadFrom("s-cover", "image", s.coverId),
+      createdAt: s.createdAt || Date.now(), updatedAt: Date.now()
+    };
+    data.publishedAt = data.status === "published" ? (s.status === "published" && id ? (s.publishedAt || s.createdAt || Date.now()) : Date.now()) : null;
+    await writeDoc("sermons", nid, data); closeModal(); toast(id ? "Preaching updated." : "Preaching saved."); if (!id) location.hash = "preaching-" + nid;
+  }); };
+}
+function annForm(id) {
+  const a = S.announcements.find(x => x.id === id) || { postDate: today(), category: "General", status: "published" };
+  openModal(id ? "Edit announcement" : "Post an announcement", `<form id="ed-form"><div class="form-grid">
+    ${fld("a-title", "Headline *", inp("a-title", a.title, "text", 'required maxlength="140"'), "", true)}
+    ${fld("a-cat", "Category", sel("a-cat", ANN_CATS, a.category))}
+    ${fld("a-status", "Visibility", sel("a-status", [["published", "Published"], ["draft", "Draft"]], a.status))}
+    ${fld("a-post", "Show from", inp("a-post", a.postDate, "date"), "Set a future date to schedule it.")}
+    ${fld("a-exp", "Hide after (optional)", inp("a-exp", a.expires, "date"), "Leave empty to keep it up.")}
+    ${fld("a-body", "Details", ta("a-body", a.body, 7), mdHint, true)}
+    ${fld("a-link", "Link (optional)", inp("a-link", a.link, "url", 'placeholder="https://…"'))}
+    ${fld("a-linklabel", "Link text", inp("a-linklabel", a.linkLabel, "text", 'placeholder="Register here"'))}
+    ${fileFld("a-img", "Image or poster", "image/*", a.imageId, "image")}
+    <div class="field"><label class="check"><input type="checkbox" id="a-pin"${a.pinned ? " checked" : ""}> Pin to the top</label></div>
+  </div>${formFoot(id ? "Save changes" : "Post")}</form>`, { wide: true });
+  $("#ed-form").onsubmit = e => { e.preventDefault(); saving($("#save-btn"), async () => {
+    const data = { title: val("a-title"), category: val("a-cat"), status: val("a-status"), postDate: val("a-post") || today(), expires: val("a-exp"), body: $("#a-body").value,
+      link: safeUrl(val("a-link")), linkLabel: val("a-linklabel"), pinned: val("a-pin"), imageId: await uploadFrom("a-img", "image", a.imageId), createdAt: a.createdAt || Date.now(), updatedAt: Date.now() };
+    if (data.expires && data.expires < data.postDate) throw new Error("The 'Hide after' date is before the 'Show from' date.");
+    await writeDoc("announcements", id || newId(), data); closeModal(); toast(id ? "Announcement updated." : "Announcement posted.");
+  }); };
+}
+function eventForm(id) {
+  const ev = S.events.find(x => x.id === id) || { date: today(), category: "Fellowship" };
+  openModal(id ? "Edit event" : "Add an event", `<form id="ed-form"><div class="form-grid">
+    ${fld("e-title", "Event name *", inp("e-title", ev.title, "text", 'required maxlength="140"'), "", true)}
+    ${fld("e-date", "Date *", inp("e-date", ev.date, "date", "required"))}
+    ${fld("e-enddate", "Ends on (multi-day events)", inp("e-enddate", ev.endDate, "date"))}
+    ${fld("e-start", "Starts at", inp("e-start", ev.start, "time"))}
+    ${fld("e-end", "Ends at", inp("e-end", ev.end, "time"))}
+    ${fld("e-loc", "Location", inp("e-loc", ev.location, "text", 'maxlength="140"'))}
+    ${fld("e-cat", "Category", sel("e-cat", EVENT_CATS, ev.category))}
+    ${fld("e-desc", "Details", ta("e-desc", ev.description, 5), "", true)}
+  </div>${formFoot(id ? "Save changes" : "Add event")}</form>`);
+  $("#ed-form").onsubmit = e => { e.preventDefault(); saving($("#save-btn"), async () => {
+    const data = { title: val("e-title"), date: val("e-date"), endDate: val("e-enddate"), start: val("e-start"), end: val("e-end"), location: val("e-loc"), category: val("e-cat"), description: $("#e-desc").value, createdAt: ev.createdAt || Date.now(), updatedAt: Date.now() };
+    if (data.endDate && data.endDate < data.date) throw new Error("The end date is before the start date.");
+    await writeDoc("events", id || newId(), data); closeModal(); toast(id ? "Event updated." : "Event added.");
+  }); };
+}
+function photosForm() {
+  const albums = [...new Set(S.gallery.map(g => g.album).filter(Boolean))];
+  openModal("Upload photos", `<form id="ed-form"><div class="form-grid">
+    ${fld("g-album", "Album", inp("g-album", "", "text", 'list="album-list" required maxlength="80" placeholder="e.g. Youth Camp 2026"') + `<datalist id="album-list">${albums.map(x => `<option value="${esc(x)}">`).join("")}</datalist>`)}
+    ${fld("g-date", "Date taken", inp("g-date", today(), "date"))}
+    ${fld("g-files", "Photos *", `<input id="g-files" type="file" accept="image/*" multiple required>`, "Pick several at once. Large photos are resized automatically.", true)}
+    ${fld("g-cap", "Caption for these photos (optional)", inp("g-cap", "", "text", 'maxlength="140"'), "", true)}
+  </div><p class="hint" id="g-progress"></p>${formFoot("Upload")}</form>`);
+  $("#ed-form").onsubmit = e => { e.preventDefault(); saving($("#save-btn"), async () => {
+    if (!S.assets) throw new Error("Uploads aren't available for your account.");
+    const files = [...$("#g-files").files]; if (!files.length) throw new Error("Choose at least one photo.");
+    let n = 0;
+    for (const f of files) {
+      $("#g-progress").textContent = `Uploading ${n + 1} of ${files.length}…`;
+      const blob = await shrinkImage(f);
+      if (blob.size > 50 * 1024 * 1024) { toast(`Skipped “${f.name}”: larger than 50 MB.`, true); continue; }
+      const r = await S.assets.upload(blob);
+      await writeDoc("gallery", newId(), { imageId: r.id, album: val("g-album"), date: val("g-date"), caption: val("g-cap"), createdAt: Date.now() });
+      n++;
+    }
+    closeModal(); toast(`${plural(n, "photo")} uploaded.`);
+  }); };
+}
+function settingsForm() {
+  const s = cfg();
+  openModal("Church details", `<form id="ed-form"><div class="form-grid">
+    ${fld("c-pastor", "Pastor's name", inp("c-pastor", s.pastorName, "text", 'maxlength="80" placeholder="Ptr. Juan Dela Cruz"'))}
+    ${fld("c-tag", "Tagline", inp("c-tag", s.tagline, "text", 'maxlength="160"'), "A one-line welcome under the church name.")}
+    ${fld("c-times", "Service times", ta("c-times", s.serviceTimes, 4, 'placeholder="Sunday Worship Service | 9:00 AM\nWednesday Prayer Meeting | 7:00 PM"'), "One per line: name | time. Include the day name so the home page can count down to the next service.", true)}
+    ${fld("c-addr", "Address", ta("c-addr", s.address, 2), "", true)}
+    ${fld("c-map", "Google Maps link", inp("c-map", s.mapUrl, "url", 'placeholder="https://maps.app.goo.gl/…"'))}
+    ${fld("c-phone", "Phone", inp("c-phone", s.phone, "tel"))}
+    ${fld("c-email", "Email", inp("c-email", s.email, "email"))}
+    ${fld("c-fb", "Facebook page", inp("c-fb", s.facebook, "url", 'placeholder="https://facebook.com/…"'))}
+    ${fld("c-yt", "YouTube channel", inp("c-yt", s.youtube, "url"))}
+    ${fld("c-live", "Livestream link", inp("c-live", s.liveUrl, "url"), "Shows a “Watch live” button on the home page.")}
+    ${fld("c-about", "Our story & mission", ta("c-about", s.about, 6), mdHint, true)}
+    ${fld("c-bio", "About the pastor", ta("c-bio", s.pastorBio, 5), "", true)}
+    ${fld("c-beliefs", "What we believe", ta("c-beliefs", s.beliefs, 6), "", true)}
+    ${fld("c-mins", "Ministries", ta("c-mins", s.ministries, 4, 'placeholder="Youth Ministry | Fridays, 6 PM\nChildren\'s Church | During Sunday service"'), "One per line: name | short description", true)}
+    ${fld("c-give", "Giving details", ta("c-give", s.givingInfo, 5, 'placeholder="GCash: 0917 000 0000 (Church Name)\nBank: …"'), "Account numbers get a Copy button automatically.", true)}
+    ${fileFld("c-logo", "Church logo", "image/*", s.logoId, "image")}
+    ${fileFld("c-pphoto", "Pastor's photo", "image/*", s.pastorPhotoId, "image")}
+    ${fileFld("c-hero", "Home page background photo", "image/*", s.heroImageId, "image", "Added as the first photo of the home page slideshow. A wide photo works best.")}
+  </div>${formFoot("Save details")}</form>`, { wide: true });
+  $("#ed-form").onsubmit = e => { e.preventDefault(); saving($("#save-btn"), async () => {
+    const data = { ...s, churchName: CHURCH, pastorName: val("c-pastor"), tagline: val("c-tag"), serviceTimes: $("#c-times").value,
+      address: val("c-addr"), mapUrl: safeUrl(val("c-map")), phone: val("c-phone"), email: val("c-email"), facebook: safeUrl(val("c-fb")), youtube: safeUrl(val("c-yt")), liveUrl: safeUrl(val("c-live")),
+      about: $("#c-about").value, pastorBio: $("#c-bio").value, beliefs: $("#c-beliefs").value, ministries: $("#c-mins").value, givingInfo: $("#c-give").value,
+      logoId: await uploadFrom("c-logo", "image", s.logoId), pastorPhotoId: await uploadFrom("c-pphoto", "image", s.pastorPhotoId), heroImageId: await uploadFrom("c-hero", "image", s.heroImageId), updatedAt: Date.now() };
+    await S.db.doc("site/settings").set(data); closeModal(); toast("Church details saved.");
+  }); };
+}
+function verseForm() {
+  const s = cfg();
+  openModal("Verse of the week", `<form id="ed-form"><div class="form-grid">
+    ${fld("v-ref", "Bible reference", inp("v-ref", s.verseRef, "text", 'placeholder="e.g. Joshua 1:9" required'), "The King James text fills in on its own. You can still edit it.", true)}
+    ${fld("v-text", "Verse text (KJV)", ta("v-text", s.verseText, 4, "required"), "", true)}
+  </div>${formFoot("Save verse")}</form>`);
+  let t; $("#v-ref").addEventListener("input", () => { clearTimeout(t); t = setTimeout(async () => {
+    const r = parseRef(val("v-ref")); if (!r) return; try { await loadKJV(); } catch { return; }
+    const vs = getPassage(r); if (vs.length && vs.length <= 8) $("#v-text").value = vs.map(x => x.t).join(" ");
+  }, 300); });
+  $("#ed-form").onsubmit = e => { e.preventDefault(); saving($("#save-btn"), async () => {
+    const r = parseRef(val("v-ref"));
+    await S.db.doc("site/settings").set({ ...s, churchName: CHURCH, verseText: val("v-text"), verseRef: r ? refLabel(r) : val("v-ref"), updatedAt: Date.now() }); closeModal(); toast("Verse of the week updated.");
+  }); };
+}
+
+/* ---------- Actions ---------- */
+async function delDoc(col, id, what) {
+  if (!(await confirmBox(`Delete ${what}? This can't be undone.`))) return;
+  try { await S.db.collection(col).doc(id).delete(); toast("Deleted."); if (col === "sermons" && route() === "preaching-" + id) location.hash = "preachings"; } catch (e) { toast(errMsg(e), true); }
+}
+const NEEDS_DB = new Set(["new-preaching", "edit-preaching", "del-preaching", "new-ann", "edit-ann", "del-ann", "new-event", "edit-event", "del-event", "add-photos", "del-photo", "edit-settings", "edit-verse"]);
+document.addEventListener("click", async e => {
+  if (e.target.closest("[data-close]") || e.target.id === "modal") { closeModal(); return; }
+  const b = e.target.closest("[data-act]"); if (!b) return;
+  const id = b.dataset.id, act = b.dataset.act;
+  if (NEEDS_DB.has(act) && !S.db) { toast("Still connecting. Try again in a moment.", true); return; }
+  switch (act) {
+    case "new-preaching": return preachingForm();
+    case "edit-preaching": return preachingForm(id);
+    case "del-preaching": { const s = S.sermons.find(x => x.id === id); return delDoc("sermons", id, `the preaching “${s ? s.title : ""}”`); }
+    case "new-ann": return annForm();
+    case "edit-ann": return annForm(id);
+    case "del-ann": return delDoc("announcements", id, "this announcement");
+    case "new-event": return eventForm();
+    case "edit-event": return eventForm(id);
+    case "del-event": return delDoc("events", id, "this event");
+    case "add-photos": return photosForm();
+    case "open-photo": return photoView(id);
+    case "lb": return lbStep(+id);
+    case "zoom-img": return openModal("Image", `<div class="lightbox"><img src="${esc(b.dataset.src)}" alt=""></div>`, { wide: true });
+    case "del-photo": closeModal(); return delDoc("gallery", id, "this photo");
+    case "edit-settings": return settingsForm();
+    case "edit-verse": return verseForm();
+    case "ann-cat": S.annCat = id || ""; return render();
+    case "toggle-ann": S.openAnn.has(id) ? S.openAnn.delete(id) : S.openAnn.add(id); return render();
+    case "filter-series": S.f = { ...S.f, series: S.f.series === id && route() === "preachings" ? "" : id }; if (route() !== "preachings") location.hash = "preachings"; else render(); return;
+    case "clear-one": S.f[id] = ""; return render();
+    case "clear-filters": S.f = { q: "", book: "", series: "", year: "", sort: S.f.sort }; return render();
+    case "view": S.view = id; store.set("view", id); return renderResults();
+    case "ref": return showRef(b.dataset.ref);
+    case "copy-passage": { await loadKJV().catch(() => {}); const r = parseRef(b.dataset.ref); const vs = getPassage(r); if (vs.length) copyText(`${vs.map(x => x.t).join(" ")}\n— ${refLabel(r)} (KJV)`); return; }
+    case "toggle-passage": { const p = $("#passage"); if (p) { p.classList.add("open"); b.remove(); } return; }
+    case "copy": return copyText(id);
+    case "play": return playPreaching(id);
+    case "slide": return setSlide(+id);
+    case "slide-pause": S.slidePaused = !S.slidePaused; b.innerHTML = S.slidePaused ? ICON.play : ICON.pause; b.setAttribute("aria-label", S.slidePaused ? "Play slideshow" : "Pause slideshow"); return;
+    case "palette": return openPalette();
+    case "share": e.preventDefault(); return openShare();
+    case "login": e.preventDefault(); return openLogin();
+    case "forgot": return forgotPassword();
+    case "logout": try { await TGGC_BACKEND.signOut(); } catch {} location.hash = "home"; location.reload(); return;
+    case "dl": return downloadFile(id, b.dataset.name);
+    case "notes": { const pc = document.getElementById("popcard"); if (pc) pc.hidden = true; return openNotes(); }
+    case "notes-read": markAllRead(); closeModal(); render(); return toast("All caught up.");
+    case "note-go": { markRead([b.dataset.key]); const pc = document.getElementById("popcard"); if (pc) pc.hidden = true; if (!$("#modal").hidden) closeModal(); if (location.hash.slice(1) === id) render(); else location.hash = id; return; }
+    case "pop-close": { const pc = document.getElementById("popcard"); if (pc) pc.hidden = true; return; }
+    case "pal-go": return palGo(id);
+    case "menu": document.body.classList.toggle("nav-open"); b.setAttribute("aria-expanded", document.body.classList.contains("nav-open")); return;
+    case "font-up": case "font-down": { const sc = Math.round(Math.min(1.3, Math.max(.9, store.get("scale", 1) + (act === "font-up" ? .1 : -.1))) * 10) / 10; store.set("scale", sc); applyPrefs(); renderTop(route()); return; }
+    case "theme": { const t = isDark() ? "light" : "dark"; document.documentElement.dataset.theme = t; store.set("theme", t); renderTop(route()); return; }
+    case "verse": { const n = +id; S.bibleSel.has(n) ? S.bibleSel.delete(n) : S.bibleSel.add(n); return render(); }
+    case "clear-verses": S.bibleSel.clear(); return render();
+    case "copy-verses": { const [, bb, cc] = route().split("-"); const b0 = +bb - 1, c0 = +cc; const ns = [...S.bibleSel].sort((x, y) => x - y); const txt = ns.map(n => `${n} ${KJV[b0][c0 - 1][n - 1]}`).join("\n"); const range = ns.length > 1 && ns[ns.length - 1] - ns[0] === ns.length - 1 ? `${ns[0]}-${ns[ns.length - 1]}` : ns.join(","); return copyText(`${txt}\n— ${BOOKS[b0]} ${c0}:${range} (KJV)`); }
+    case "clear-bible-search": S.bibleResults = null; S.bibleQ = ""; return render();
+    case "reload-kjv": S.lastRoute = null; return render();
+  }
+});
+document.addEventListener("change", e => {
+  const a = e.target.dataset && e.target.dataset.actChange;
+  if (a === "bible-book") location.hash = `bible-${e.target.value}-1`;
+  if (a === "bible-ch") { const b = route().split("-")[1]; location.hash = `bible-${b}-${e.target.value}`; }
+  const k = e.target.dataset && e.target.dataset.filter; if (k) { S.f[k] = e.target.value; renderResults(); }
+});
+document.addEventListener("input", e => { const k = e.target.dataset && e.target.dataset.filter; if (k === "q") { S.f.q = e.target.value; renderResults(); } });
+document.addEventListener("submit", e => { if (e.target.id === "bible-search") { e.preventDefault(); S.bibleQ = val("bb-q"); bibleSearch(S.bibleQ); } });
+document.addEventListener("keydown", e => {
+  const typing = /^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement && document.activeElement.tagName);
+  if (!$("#modal").hidden) {
+    if (e.key === "Escape") closeModal();
+    if (S.lb && (e.key === "ArrowRight" || e.key === "ArrowLeft") && !typing) lbStep(e.key === "ArrowRight" ? 1 : -1);
+    return;
+  }
+  if ((e.key === "/" && !typing) || (e.key.toLowerCase() === "k" && (e.metaKey || e.ctrlKey))) { e.preventDefault(); openPalette(); }
+  if (route().startsWith("bible-") && !typing && (e.key === "ArrowRight" || e.key === "ArrowLeft")) { const a = $(e.key === "ArrowRight" ? ".nav-ch a[aria-label='Next chapter']" : ".nav-ch a[aria-label='Previous chapter']"); if (a) location.hash = a.getAttribute("href").slice(1); }
+});
+function onScroll() {
+  const y = scrollY; $("#totop").hidden = y < 700;
+  const p = $("#progress");
+  if (route().startsWith("preaching-")) { const h = document.documentElement.scrollHeight - innerHeight; p.style.width = h > 0 ? Math.min(100, y / h * 100) + "%" : "0"; } else p.style.width = "0";
+}
+addEventListener("scroll", onScroll, { passive: true });
+addEventListener("resize", () => document.documentElement.style.setProperty("--top-h", $("#top").offsetHeight + "px"));
+$("#totop").onclick = () => scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", () => renderTop(route()));
+
+boot();
+</script>
+</body>
+</html>
