@@ -15,5 +15,5 @@ window.TGGC_CONFIG = {
 
   // Optional: the address people should use, for the QR code and share links.
   // Leave empty to use the address the site is opened from (for example https://tggc.netlify.app).
-  SITE_URL: ""
+  SITE_URL: "https://tggc.site/"
 };
