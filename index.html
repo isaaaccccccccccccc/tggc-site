@@ -1501,7 +1501,7 @@ function viewAbout() {
 
 function viewGive() {
   const s = cfg();
-  return banner(P.fellowship, "center 45%", `<div class="eyebrow">Tithes &amp; offerings</div><h1>Give</h1>
+  return banner(P.fellowship, "center 45%", `<div class="eyebrow">Cheerful Giving</div><h1>Give</h1>
       <p class="lead" style="font-family:var(--read);font-style:italic">“Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver.” <button class="ref-link scripture" style="font-style:normal;color:var(--gold)" data-act="ref" data-ref="2 Corinthians 9:7">2 Corinthians 9:7 (KJV)</button></p>`, true) + `<div class="narrow">
     <div class="card" style="margin-top:28px">${s.givingInfo ? `<div class="prose" style="font-size:1.05rem">${md(s.givingInfo)}</div>${givingCopyButtons(s.givingInfo)}` : `<p class="hint">Giving details (bank or e-wallet accounts) will be posted here soon. You may also give during our worship services.</p>`}
     ${S.isAdmin ? `<div class="admin-row"><button class="link-btn" data-act="edit-settings">Edit giving details</button></div>` : ""}</div>
