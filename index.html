@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tarlac Gospel of Grace Church</title>
 <link rel="icon" href="logo.png">
+<link rel="preload" href="logo.png" as="image">
 <meta name="description" content="Tarlac Gospel of Grace Church: preachings, announcements, events and the King James Bible.">
 <meta property="og:title" content="Tarlac Gospel of Grace Church">
 <meta property="og:description" content="Preachings, announcements, events and the King James Bible. “…to testify the gospel of the grace of God.” Acts 20:24">
@@ -627,10 +628,158 @@ body.has-player .toast { bottom: 104px; }
 .totop { position: fixed; right: 18px; bottom: 18px; z-index: 34; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; box-shadow: var(--shadow-up); font-size: 1.1rem; }
 body.has-player .totop { bottom: 104px; }
 .totop[hidden] { display: none; }
+/* ---------- Intro (opening animation) ---------- */
+html.intro-on #topbar .brand img { opacity: 0; }
+.intro { position: fixed; inset: 0; z-index: 2147483000; display: grid; place-items: center; color: #fff; cursor: pointer; overflow: hidden; -webkit-tap-highlight-color: transparent; -webkit-user-select: none; user-select: none; animation: inFailsafe .6s ease 9s forwards; }
+.in-bg { position: absolute; inset: 0; background: radial-gradient(110% 80% at 50% 42%, #15306a 0%, #0a1430 46%, #040915 100%); }
+.intro.iris .in-bg { -webkit-mask-image: radial-gradient(circle at var(--cx, 50%) var(--cy, 50%), transparent calc(var(--hole) - 80px), #000 var(--hole)); mask-image: radial-gradient(circle at var(--cx, 50%) var(--cy, 50%), transparent calc(var(--hole) - 80px), #000 var(--hole)); }
+.in-stage { position: relative; display: grid; justify-items: center; text-align: center; padding: 24px; }
+.in-mark { position: relative; width: clamp(156px, 40vw, 216px); aspect-ratio: 1; display: grid; place-items: center; }
+.in-fx { position: absolute; left: 50%; top: 50%; width: 0; height: 0; pointer-events: none; }
+.in-rays { position: absolute; left: -600px; top: -600px; width: 1200px; height: 1200px; background: repeating-conic-gradient(from 0deg, rgba(236,201,120,.10) 0deg 2.5deg, transparent 2.5deg 15deg); -webkit-mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,.45) 20%, transparent 48%); mask-image: radial-gradient(circle, #000 0%, rgba(0,0,0,.45) 20%, transparent 48%); opacity: 0; animation: inFadeIn 2s ease .2s forwards, inRot 70s linear infinite; }
+.in-glow { position: absolute; left: -290px; top: -290px; width: 580px; height: 580px; border-radius: 50%; background: radial-gradient(circle, rgba(236,201,120,.30) 0%, rgba(47,95,208,.34) 26%, rgba(47,95,208,0) 62%); opacity: 0; transform: scale(.3); animation: inBloom 1.5s cubic-bezier(.2,.8,.2,1) .05s forwards, inBreathe 4.5s ease-in-out 1.6s infinite; }
+.in-dust { position: absolute; left: -330px; top: -280px; width: 660px; height: 560px; }
+.in-dust i { position: absolute; left: var(--x); top: var(--y); width: var(--s); height: var(--s); border-radius: 50%; background: #f6e2a8; box-shadow: 0 0 8px rgba(236,201,120,.9); opacity: 0; animation: inDust var(--t) ease-in-out var(--d) infinite; }
+.in-ring { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; transform: rotate(-90deg); filter: drop-shadow(0 0 6px rgba(236,201,120,.55)); }
+.in-track { fill: none; stroke: rgba(255,255,255,.09); stroke-width: 1; }
+.in-arc { fill: none; stroke: url(#in-grad); stroke-width: 2.2; stroke-linecap: round; stroke-dasharray: 603.2; stroke-dashoffset: 603.2; animation: inDraw 1.6s cubic-bezier(.65,0,.35,1) .25s forwards; }
+.in-fly { position: relative; width: 76%; will-change: transform; }
+.in-logo { display: block; width: 100%; height: auto; opacity: 0; transform: scale(.8) rotate(-8deg); filter: blur(14px); animation: inLogo 1.3s cubic-bezier(.2,.8,.2,1) .3s forwards; }
+.in-shine { position: absolute; inset: 0; pointer-events: none; -webkit-mask: url(logo.png) center / 100% 100% no-repeat; mask: url(logo.png) center / 100% 100% no-repeat; background: linear-gradient(110deg, transparent 40%, rgba(255,255,255,.8) 50%, transparent 60%) 0 0 / 260% 100% no-repeat; background-position: 100% 0; opacity: 0; animation: inShine 1.15s cubic-bezier(.45,0,.25,1) 1.4s forwards; }
+.in-txt { margin-top: clamp(26px, 4.5vh, 40px); transition: opacity .35s ease, transform .5s ease; }
+.in-name { font-family: var(--display); font-weight: 600; font-size: clamp(1.75rem, 5vw, 3.1rem); letter-spacing: -0.04em; line-height: 1.12; text-wrap: balance; max-width: 22ch; margin: 0 auto; }
+.in-name > * { display: inline-block; opacity: 0; transform: translateY(20px); filter: blur(8px); }
+.in-name em { font-family: var(--serif); font-style: italic; font-weight: 400; color: var(--gold); font-size: 1.14em; letter-spacing: -0.01em; padding-right: .06em; }
+.intro.txt .in-name > * { animation: inWord .95s cubic-bezier(.2,.8,.2,1) forwards; animation-delay: calc(var(--i) * 85ms); }
+.in-line { width: 0; height: 1px; margin: 18px auto 14px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+.intro.txt .in-line { animation: inLine 1.1s cubic-bezier(.2,.8,.2,1) .5s forwards; }
+.in-sub { font-size: .7rem; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.7); opacity: 0; }
+.in-sub b { display: block; margin-top: 7px; color: var(--gold); font-weight: 600; letter-spacing: .26em; }
+.intro.txt .in-sub { animation: inFadeUp .9s ease .7s forwards; }
+.in-skip { position: absolute; left: 50%; bottom: max(24px, env(safe-area-inset-bottom)); transform: translateX(-50%); font-size: .68rem; font-weight: 500; letter-spacing: .18em; text-transform: uppercase; color: rgba(255,255,255,.38); opacity: 0; animation: inFadeIn .8s ease 1.8s forwards; white-space: nowrap; }
+/* Waiting for the church's content: the ring keeps turning */
+.intro:not(.go) .in-stage *:not(.in-glow):not(.in-rays), .intro:not(.go) .in-skip { animation-play-state: paused !important; }
+.intro.wait .in-ring { animation: inSpin 1.1s linear infinite; }
+.intro.wait .in-arc { animation: none; stroke-dashoffset: 0; stroke-dasharray: 150 453.2; }
+/* Quick version for reloads in the same visit */
+.intro.quick .in-txt, .intro.quick .in-skip, .intro.quick .in-dust { display: none; }
+.intro.quick .in-logo { animation-duration: .7s; animation-delay: 0s; }
+.intro.quick .in-arc { animation-duration: .8s; animation-delay: 0s; }
+.intro.quick .in-shine { animation-duration: .7s; animation-delay: .4s; }
+.intro.quick .in-glow { animation-duration: .7s, 4.5s; animation-delay: 0s, .7s; }
+.intro.quick .in-rays { animation-delay: 0s, 0s; animation-duration: .8s, 70s; }
+/* Reduced motion: a calm still card */
+.intro.still * { animation: none !important; }
+.intro.still .in-logo { opacity: 1; transform: none; filter: none; }
+.intro.still .in-arc { stroke-dashoffset: 0; }
+.intro.still .in-glow { opacity: 1; transform: none; }
+.intro.still .in-rays { opacity: .7; }
+.intro.still .in-name > *, .intro.still .in-sub { opacity: 1; transform: none; filter: none; }
+.intro.still .in-line { width: 84px; }
+.intro.still .in-dust, .intro.still .in-shine, .intro.still .in-skip { display: none; }
+/* Leaving */
+.intro.out { cursor: default; pointer-events: none; }
+.intro.out .in-txt { opacity: 0; transform: translateY(-12px); }
+.intro.out .in-skip, .intro.out .in-shine { display: none; }
+.intro.out .in-fx { opacity: 0; transition: opacity .5s ease; }
+.intro.out .in-ring { opacity: 0; transform: rotate(-90deg) scale(1.18); transition: opacity .4s ease, transform .6s cubic-bezier(.2,.8,.2,1); animation: none; }
+.intro.out.iris .in-bg { --hole: 115vmax; transition: --hole 1.05s cubic-bezier(.7,0,.2,1) .12s; }
+.intro.out.fade .in-bg { opacity: 0; transition: opacity .8s ease .15s; }
+.intro.out.noflight { opacity: 0; transition: opacity .55s ease; }
+@keyframes inFadeIn { to { opacity: 1; } }
+@keyframes inFadeUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes inRot { to { transform: rotate(360deg); } }
+@keyframes inSpin { from { transform: rotate(-90deg); } to { transform: rotate(270deg); } }
+@keyframes inBloom { to { opacity: 1; transform: scale(1); } }
+@keyframes inBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+@keyframes inDraw { to { stroke-dashoffset: 0; } }
+@keyframes inLogo { to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes inShine { 0% { opacity: 1; background-position: 100% 0; } 100% { opacity: 1; background-position: 0% 0; } }
+@keyframes inWord { to { opacity: 1; transform: none; filter: blur(0); } }
+@keyframes inLine { to { width: 84px; } }
+@keyframes inDust { 0% { opacity: 0; transform: translateY(18px) scale(.6); } 35% { opacity: .9; } 100% { opacity: 0; transform: translateY(-80px) scale(1); } }
+@keyframes inFailsafe { to { opacity: 0; visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } .rv.pre { transform: none; } .kv-text .w { color: var(--ink); } .kv-text .w.em { color: var(--accent); } }
 </style>
 </head>
 <body>
+<div id="intro" class="intro" aria-hidden="true">
+  <div class="in-bg"></div>
+  <div class="in-stage">
+    <div class="in-mark">
+      <div class="in-fx"><div class="in-rays"></div><div class="in-glow"></div><div class="in-dust"></div></div>
+      <svg class="in-ring" viewBox="0 0 200 200"><defs><linearGradient id="in-grad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#fff3cf"/><stop offset=".5" stop-color="#ecc978"/><stop offset="1" stop-color="#b98a2e"/></linearGradient></defs><circle class="in-track" cx="100" cy="100" r="96"/><circle class="in-arc" cx="100" cy="100" r="96"/></svg>
+      <div class="in-fly"><img class="in-logo" src="logo.png" alt="" width="400" height="377" decoding="sync"><span class="in-shine"></span></div>
+    </div>
+    <div class="in-txt">
+      <div class="in-name"><span style="--i:0">Tarlac</span> <span style="--i:1">Gospel</span> <span style="--i:2">of</span> <em style="--i:3">Grace</em> <span style="--i:4">Church</span></div>
+      <div class="in-line"></div>
+      <div class="in-sub">The gospel of the grace of God<b>Acts 20:24</b></div>
+    </div>
+  </div>
+  <div class="in-skip">Tap anywhere to skip</div>
+</div>
+<script>
+/* Opening animation. Paints first, plays once the site's code has loaded, then hands over to the site. */
+(function () {
+  var el = document.getElementById("intro"); if (!el) return;
+  var root = document.documentElement, t0 = Date.now(), ts = 0;
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches, seen = false;
+  try { seen = sessionStorage.getItem("tggc-intro") === "1"; sessionStorage.setItem("tggc-intro", "1"); } catch (e) {}
+  var mode = reduce ? "still" : (seen || location.hash === "#login") ? "quick" : "full";
+  var MIN = { full: 2900, quick: 950, still: 700 }[mode];
+  var iris = false;
+  try { if (mode !== "still" && window.CSS && CSS.registerProperty) { CSS.registerProperty({ name: "--hole", syntax: "<length>", inherits: false, initialValue: "0px" }); iris = true; } } catch (e) { iris = !!(window.CSS && CSS.supports && CSS.supports("mask-image", "none")); }
+  el.classList.add(mode); if (iris) el.classList.add("iris");
+  root.classList.add("intro-on");
+  if (mode === "full") {
+    var h = ""; for (var i = 0; i < 24; i++) h += '<i style="--x:' + (Math.random() * 100).toFixed(1) + '%;--y:' + (Math.random() * 100).toFixed(1) + '%;--s:' + (1.2 + Math.random() * 2.4).toFixed(1) + 'px;--t:' + (4 + Math.random() * 4).toFixed(1) + 's;--d:' + (Math.random() * 3).toFixed(2) + 's"></i>';
+    el.querySelector(".in-dust").innerHTML = h;
+  }
+  var fontsReady = (mode === "full" && document.fonts && document.fonts.load) ? Promise.race([Promise.all([document.fonts.load('600 32px "Geist"'), document.fonts.load('italic 32px "Instrument Serif"')]), new Promise(function (r) { setTimeout(r, 1400); })]).catch(function () {}) : Promise.resolve();
+  var started = false, playing = false, ready = false, gone = false, doneRes, api = window.TGGC_INTRO = { active: true, mode: mode };
+  api.done = new Promise(function (r) { doneRes = r; });
+  var at = function (fn, ms) { return setTimeout(fn, Math.max(0, ms - (Date.now() - ts))); };
+  api.start = function () {
+    if (started || gone) return; started = true;
+    var raf = window.requestAnimationFrame || function (f) { setTimeout(f, 16); };
+    raf(function () { raf(function () {
+      if (gone) return; ts = Date.now(); playing = true; el.classList.add("go");
+      if (mode === "full") fontsReady.then(function () { at(function () { el.classList.add("txt"); }, 850); });
+      at(function () { if (!ready && !gone) el.classList.add("wait"); }, MIN + 250);
+      if (ready) at(exit, MIN);
+    }); });
+  };
+  api.ready = function (o) {
+    if (ready || gone) return; o = o || {}; api.logo = o.logo;
+    var fin = false, go = function () { if (fin) return; fin = true; ready = true; el.classList.remove("wait"); if (playing) at(exit, MIN); };
+    if (o.img) { var im = new Image(); im.onload = im.onerror = go; im.src = o.img; setTimeout(go, 1800); } else go();
+  };
+  setTimeout(api.start, 2000);
+  setTimeout(function () { exit(); }, 9000);
+  var onKey = function (e) { if (!e.metaKey && !e.ctrlKey && !e.altKey) exit(); };
+  var skip = function (e) { if (e.cancelable && e.type !== "click") e.preventDefault(); exit(); };
+  el.addEventListener("click", skip); el.addEventListener("wheel", skip, { passive: false }); el.addEventListener("touchmove", skip, { passive: false });
+  addEventListener("keydown", onKey);
+  function exit() {
+    if (gone) return; gone = true; api.active = false;
+    removeEventListener("keydown", onKey); el.classList.remove("wait"); el.classList.add("go");
+    var fly = el.querySelector(".in-fly"), mark = el.querySelector(".in-mark"), target = document.querySelector("#topbar .brand img");
+    var a = fly.getBoundingClientRect(), b = target ? target.getBoundingClientRect() : null, m = mark.getBoundingClientRect();
+    var custom = api.logo && api.logo !== "logo.png";
+    var canFly = mode !== "still" && !custom && b && b.width > 0 && b.bottom > 0 && a.width > 0 && fly.animate;
+    var finish = function () { root.classList.remove("intro-on"); if (el.parentNode) el.parentNode.removeChild(el); doneRes(); };
+    if (!canFly) { root.classList.remove("intro-on"); el.classList.add("out", "noflight"); setTimeout(finish, mode === "still" ? 0 : 600); return; }
+    el.style.setProperty("--cx", (m.left + m.width / 2) + "px"); el.style.setProperty("--cy", (m.top + m.height / 2) + "px");
+    el.classList.add("out", iris ? "iris" : "fade");
+    var dx = (b.left + b.width / 2) - (a.left + a.width / 2), dy = (b.top + b.height / 2) - (a.top + a.height / 2), s = b.width / a.width;
+    var lg = el.querySelector(".in-logo"); lg.style.animation = "none"; lg.style.opacity = "1"; lg.style.transform = "none"; lg.style.filter = "none";
+    var anim = fly.animate([{ transform: "translate(0px, 0px) scale(1)" }, { transform: "translate(" + dx.toFixed(1) + "px, " + dy.toFixed(1) + "px) scale(" + s.toFixed(4) + ")" }], { duration: 1000, delay: 120, easing: "cubic-bezier(.7,0,.2,1)", fill: "forwards" });
+    var landed = false, land = function () { if (landed) return; landed = true; root.classList.remove("intro-on"); setTimeout(finish, 140); };
+    anim.onfinish = land; setTimeout(land, 1500);
+  }
+})();
+</script>
 <div class="progress" id="progress"></div>
 <header class="top" id="top"><div class="shell"><div class="bar" id="topbar"></div><nav class="main" id="nav" aria-label="Main"></nav></div></header>
 <div id="ribbon"></div>
@@ -896,23 +1045,30 @@ const upcomingEvents = () => S.events.filter(e => (e.endDate || e.date || "") >=
 const pastEvents = () => S.events.filter(e => (e.endDate || e.date || "") < today()).sort(sortByDateDesc);
 
 let loadTimer = null;
+function introReady() {
+  const I = window.TGGC_INTRO; if (!I || !I.active) return;
+  const sl = route() === "home" ? heroSlides()[0] : null;
+  I.ready({ img: sl && sl.src, logo: logoSrc() });
+}
+const afterIntro = fn => { const I = window.TGGC_INTRO; if (I && I.active) I.done.then(() => setTimeout(fn, 450)); else fn(); };
 async function boot() {
   applyPrefs();
   NOTE.baseline = store.get("baseline", null); NOTE.read = new Set(store.get("read", []));
   render();
+  if (window.TGGC_INTRO && TGGC_INTRO.start) TGGC_INTRO.start();
   window.addEventListener("hashchange", () => { document.body.classList.remove("nav-open"); render(); window.scrollTo(0, 0); });
   loadTimer = setTimeout(() => { if (S.status === "connecting") { S.status = "slow"; render(); } }, 10000);
-  if (!window.claude || typeof window.claude.use !== "function") { S.status = "nodb"; clearTimeout(loadTimer); render(); return; }
+  if (!window.claude || typeof window.claude.use !== "function") { S.status = "nodb"; clearTimeout(loadTimer); render(); introReady(); return; }
   let db = null, user = null;
   try { [db, user] = await Promise.all([claude.use("db"), claude.use("user")]); } catch (e) {}
   S.user = user;
   if (user) { try { S.isAdmin = !!(await user.canEdit()); } catch {} }
   if (S.isAdmin) { try { S.assets = await claude.use("assets"); } catch {} }
   if (location.hash === "#login") { history.replaceState(null, "", location.pathname + location.search); S.lastRoute = null; setTimeout(S.isAdmin ? () => { location.hash = "admin"; } : openLogin, 50); }
-  if (!db) { S.status = "nodb"; clearTimeout(loadTimer); render(); return; }
+  if (!db) { S.status = "nodb"; clearTimeout(loadTimer); render(); introReady(); return; }
   S.db = db;
   const need = new Set(["settings", ...COLLECTIONS]);
-  const done = key => { need.delete(key); if (!need.size && S.status !== "ready") { S.status = "ready"; clearTimeout(loadTimer); onDataReady(); } };
+  const done = key => { need.delete(key); if (!need.size && S.status !== "ready") { S.status = "ready"; clearTimeout(loadTimer); onDataReady(); introReady(); } };
   const onErr = key => e => { done(key); if (e.code === "revoked") S.status = "revoked"; render(); };
   db.doc("site/settings").onSnapshot(d => {
     S.settings = d.exists ? (d.data() || {}) : {}; S.hasSettings = d.exists;
@@ -967,10 +1123,10 @@ function onDataReady() {
   const un = unreadItems();
   if (un.length && !NOTE.popShown) {
     NOTE.popShown = true;
-    showPop(`<div class="pc-top"><img src="${logoSrc()}" alt=""><div><small>Welcome back</small><b>${esc(summarize(un))} since your last visit</b></div><button class="pc-x" data-act="pop-close" aria-label="Close">✕</button></div>
+    afterIntro(() => { showPop(`<div class="pc-top"><img src="${logoSrc()}" alt=""><div><small>Welcome back</small><b>${esc(summarize(un))} since your last visit</b></div><button class="pc-x" data-act="pop-close" aria-label="Close">✕</button></div>
       <div class="pc-body"><ul>${un.slice(0, 3).map(i => `<li><strong style="color:var(--ink)">${esc(i.title)}</strong> <span>(${TYPE_LABEL[i.type]})</span></li>`).join("")}${un.length > 3 ? `<li>and ${un.length - 3} more</li>` : ""}</ul>
       <div class="actions"><button class="btn small" data-act="notes">See what's new</button><button class="link-btn" data-act="pop-close">Later</button></div></div>`, 16000);
-    ringBell();
+    ringBell(); });
   }
 }
 function checkLive() {
