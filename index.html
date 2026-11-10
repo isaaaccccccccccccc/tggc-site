@@ -609,7 +609,7 @@ body.has-player .popcard { bottom: 104px; }
 
 .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 12px 18px; border-radius: 999px; z-index: 60; font-weight: 500; max-width: calc(100% - 32px); box-shadow: var(--shadow-up); animation: pop .25s ease; }
 body.has-player .toast { bottom: 104px; }
-.toast.err { background: var(--danger); color: #fff; border-radius: 16px; }
+.toast.err { background: var(--danger); color: #fff; border-radius: 16px; max-width: min(640px, calc(100% - 32px)); line-height: 1.45; }
 .toast[hidden] { display: none; }
 .totop { position: fixed; right: 18px; bottom: 18px; z-index: 34; width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; box-shadow: var(--shadow-up); font-size: 1.1rem; }
 body.has-player .totop { bottom: 104px; }
@@ -812,7 +812,7 @@ function md(src) {
 
 function toast(msg, err) {
   const t = $("#toast"); t.textContent = msg; t.className = "toast" + (err ? " err" : ""); t.hidden = false;
-  clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), err ? 6000 : 2800);
+  t.onclick = () => (t.hidden = true); clearTimeout(toast._t); toast._t = setTimeout(() => (t.hidden = true), err ? 12000 : 2800);
 }
 function errMsg(e) {
   const c = e && e.code;
@@ -1700,7 +1700,7 @@ async function uploadAttachments(id, list) {
   const items = attOf(list).filter((a, i) => { const rm = document.getElementById(`${id}-rm-${i}`); return !(rm && rm.checked); });
   const el = document.getElementById(id); const files = el && el.files ? [...el.files] : [];
   if (files.length && !S.assets) throw new Error("Uploads aren't available for your account.");
-  const big = files.find(f => f.size > MAX_FILE); if (big) throw new Error(`“${big.name}” is larger than 50 MB. Upload long videos to YouTube or Facebook and paste the link instead.`);
+  const big = files.find(f => f.size > MAX_FILE); if (big) throw new Error(`“${big.name}” is larger than 50 MB. ${TOO_BIG_HELP}`);
   const btn = $("#save-btn");
   for (let i = 0; i < files.length; i++) {
     const f = files[i]; if (btn) btn.textContent = `Uploading ${i + 1} of ${files.length}…`;
@@ -1732,15 +1732,22 @@ async function uploadFrom(id, kind, cur) {
   if (file) {
     if (!S.assets) throw new Error("Uploads aren't available for your account.");
     const blob = kind === "image" ? await shrinkImage(file) : file;
-    if (blob.size > 50 * 1024 * 1024) throw new Error(`“${file.name}” is larger than 50 MB. For long recordings, upload to YouTube or Facebook and paste the link instead.`);
+    if (blob.size > 50 * 1024 * 1024) throw new Error(`“${file.name}” is larger than 50 MB. ${TOO_BIG_HELP}`);
     return (await S.assets.upload(blob)).id;
   }
   if (rm && rm.checked) return "";
   return cur || "";
 }
+const TOO_BIG_HELP = "To share it, make it smaller first (on a Mac: open it in QuickTime Player, then File → Export As → 720p or 480p), or upload it to YouTube or Facebook and paste the link in “Video link”.";
+function checkFileSizes() {
+  for (const el of document.querySelectorAll("#ed-form input[type=file]")) {
+    if (el.id === "g-files") continue;
+    for (const f of el.files || []) if (f.size > MAX_FILE) throw new Error(`“${f.name}” is ${fmtSize(f.size)}, but each file can be at most 50 MB. Nothing was uploaded. ${TOO_BIG_HELP}`);
+  }
+}
 async function saving(btn, fn) {
   const label = btn.textContent; btn.disabled = true; btn.textContent = "Saving…";
-  try { await fn(); } catch (e) { toast(errMsg(e), true); btn.disabled = false; btn.textContent = label; }
+  try { checkFileSizes(); await fn(); } catch (e) { toast(errMsg(e), true); btn.disabled = false; btn.textContent = label; }
 }
 const formFoot = l => `<div class="modal-foot"><button class="btn ghost" type="button" data-close>Cancel</button><button class="btn" type="submit" id="save-btn">${l}</button></div>`;
 async function writeDoc(col, id, data) { if (COL_TYPE[col]) NOTE.mine.add(COL_TYPE[col] + ":" + id); await S.db.collection(col).doc(id).set(data); }
